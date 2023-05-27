@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Avatar, Appbar, Card, Text, IconButton } from 'react-native-paper';
 import { View, StyleSheet } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { Rating, AirbnbRating } from 'react-native-ratings';
+import { AirbnbRating } from 'react-native-ratings';
 import { ScrollView } from 'react-native';
 
 const reviews = [
