@@ -1,7 +1,4 @@
 {
   "compilerOptions": {},
-  "extends": "expo/tsconfig.base",
-  "include": [
-    "./lib/**/*"
-  ],
+  "extends": "expo/tsconfig.base"
 }
