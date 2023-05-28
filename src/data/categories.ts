@@ -1,4 +1,4 @@
-const categories = [
+export const categories = [
   {
     key: "1",
     category: "Gasista",
@@ -55,5 +55,3 @@ const categories = [
     icon: "plus",
   },
 ];
-
-export default categories;

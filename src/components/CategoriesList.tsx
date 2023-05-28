@@ -1,10 +1,9 @@
 import * as React from "react";
-import { FlatList, View } from "react-native";
-import Category from "./Category";
-import categories from "../data/categories";
-import { StyleSheet } from "react-native";
+import { FlatList, View, StyleSheet } from "react-native";
+import { Category } from "./Category";
+import { categories } from "../data/categories";
 
-const CategoriesList = () => {
+export const CategoriesList = () => {
   const getCategories = () => {
     const sortedCategories = categories.sort((a, b) =>
       a.category >= b.category ? 1 : -1
@@ -29,8 +28,6 @@ const CategoriesList = () => {
     </View>
   );
 };
-
-export default CategoriesList;
 
 export const styles = StyleSheet.create({
   categoriesListContainer: {

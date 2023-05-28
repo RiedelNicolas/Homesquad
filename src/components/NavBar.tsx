@@ -1,6 +1,6 @@
 import * as React from "react";
 import { BottomNavigation, Text } from "react-native-paper";
-import Profile from "../screens/ProfesionalProfile";
+import { Profile } from "../screens/ProfesionalProfile";
 
 const ProfileRoute = () => <Profile />;
 
@@ -10,7 +10,7 @@ const RecentsRoute = () => <Text>Recents</Text>;
 
 const NotificationsRoute = () => <Text>Notifications</Text>;
 
-const NavBar = () => {
+export const NavBar = () => {
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
     {
@@ -44,5 +44,3 @@ const NavBar = () => {
     />
   );
 };
-
-export default NavBar;

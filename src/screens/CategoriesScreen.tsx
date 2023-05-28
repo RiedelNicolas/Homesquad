@@ -1,10 +1,10 @@
 import * as React from "react";
 import { View, StyleSheet } from "react-native";
-import CategoriesList from "../components/CategoriesList";
+import { CategoriesList } from "../components/CategoriesList";
 import { Image } from "react-native-elements";
 import { commonStyle } from "../utils/style";
 
-const CategoriesScreen = () => {
+export const CategoriesScreen = () => {
   return (
     <View style={styles.screen}>
       <Image style={styles.imageStyle} source={require("../assets/logo.png")} />
@@ -12,8 +12,6 @@ const CategoriesScreen = () => {
     </View>
   );
 };
-
-export default CategoriesScreen;
 
 const styles = StyleSheet.create({
   screen: {

@@ -4,6 +4,8 @@ module.exports = {
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:import/recommended",
+    "plugin:import/typescript",
     "prettier",
   ],
   parser: "@typescript-eslint/parser",
@@ -13,7 +15,19 @@ module.exports = {
   },
   ignorePatterns: [".eslintrc.cjs", "babel.config.js"],
   plugins: ["@typescript-eslint", "prettier"],
+  settings: {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/resolver": {
+      typescript: true,
+      node: true
+    }
+  },
   rules: {
+    "import/no-unresolved": "error",
+    "import/no-default-export": "error",
+    "@typescript-eslint/no-unsafe-assignment": "warn",
     "prettier/prettier": "error"
   },
   root: true,

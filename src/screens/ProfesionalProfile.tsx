@@ -39,7 +39,7 @@ const Professional = () => {
   );
 };
 
-const Profile = () => (
+export const Profile = () => (
   <View>
     <Appbar.Header>
       <Appbar.BackAction />
@@ -75,5 +75,3 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
 });
-
-export default Profile;
