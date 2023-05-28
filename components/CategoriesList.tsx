@@ -1,17 +1,17 @@
 import * as React from 'react';
 import { View } from 'react-native';
-import Category from '../components/Category';
-import categories from '../jsons/categories';
-import { styles } from '../styles/CategociesScreenStyle';
+import Category from './Category';
+import categories from '../data/categories';
+import { StyleSheet } from 'react-native';
 
-const CategoriesContainer = () => {
+const CategoriesList = () => {
 
     function renderCategories() {
         const categoriesToRender: any = [];
         for (let i = 0; i < categories.length; i++) {
             categoriesToRender.push(
                 <Category
-                    key={i}
+                    key={categories[i].key}
                     name={categories[i].category}
                     icon={categories[i].icon}
                 />
@@ -22,11 +22,20 @@ const CategoriesContainer = () => {
 
     return (
         <View
-            style={styles.categoriesContainer}
+            style={styles.categoriesListContainer}
         >
             {renderCategories()}
         </View>
     )
 }
 
-export default CategoriesContainer;
+export default CategoriesList;
+
+export const styles = StyleSheet.create({
+    categoriesListContainer: {
+        flex: 1,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+    },
+});
