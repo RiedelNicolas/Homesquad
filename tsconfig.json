@@ -1,7 +1,5 @@
 {
   "compilerOptions": {},
   "extends": "expo/tsconfig.base",
-  "include": [
-    "./lib/**/*"
-  ],
+  "include": ["src"]
 }

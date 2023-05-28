@@ -1,9 +1,8 @@
 # HomeSquad!
 
-### Para correr la app en development : 
+### Para correr la app en development :
 
-* yarn install
-* npx expo start
-
+- yarn install
+- npx expo start
 
 Listo, easy peasy

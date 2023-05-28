@@ -4,6 +4,9 @@ __generated__
 web-build
 bare-apps
 
+# ESLint
+.eslintcache
+
 # macOS
 .DS_Store
 
