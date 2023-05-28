@@ -17,11 +17,6 @@ const CategoriesScreen = () => {
 
 export default CategoriesScreen;
 
-
-const deviceWidth = Math.round(Dimensions.get('window').width);
-const offset = 40;
-const radius = 20;
-
 const styles = StyleSheet.create({
     screen: {
         backgroundColor: commonStyle.backgroundColor,
@@ -31,6 +26,7 @@ const styles = StyleSheet.create({
     imageStyle: {
         width: '27%',
         aspectRatio: 1.1,
-        marginVertical: 20,
+        marginTop: 50,
+        marginBottom: 20,
     },
 });
