@@ -11,6 +11,7 @@ module.exports = {
     project: true,
     tsconfigRootDir: __dirname,
   },
+  ignorePatterns: [".eslintrc.cjs", "babel.config.js"],
   plugins: ["@typescript-eslint"],
   root: true,
 };
