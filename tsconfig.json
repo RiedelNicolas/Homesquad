@@ -2,6 +2,9 @@
   "compilerOptions": {},
   "extends": "expo/tsconfig.base",
   "include": [
-    "./lib/**/*"
+    "src"
   ],
+  "exclude": [
+    "babel.config.js"
+  ]
 }
