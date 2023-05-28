@@ -1,56 +1,55 @@
-import React from 'react';
-import { StyleSheet, View, StatusBar, FlatList } from 'react-native';
-import { Header } from '../components/Header';
-import { WorkerCard } from '../components/WorkerCard';
-
+import React from "react";
+import { StyleSheet, View, StatusBar, FlatList } from "react-native";
+import { Header } from "../components/Header";
+import { WorkerCard } from "../components/WorkerCard";
 
 const workers = [
   {
-    name: 'Juan Fernandez',
-    categories: 'San Telmo, CABA',
-    deliveryTime: '35 min',
-    distance: '3.7 km',
-    image: require('../assets/architect_1.jpg'),
+    name: "Juan Fernandez",
+    categories: "San Telmo, CABA",
+    deliveryTime: "35 min",
+    distance: "3.7 km",
+    image: require("../assets/architect_1.jpg"),
     rating: 5,
     reviewsAmount: 30,
     id: 1,
   },
   {
-    name: 'Carlitos Sanchez',
-    categories: 'Haedo, Buenos Aires',
-    deliveryTime: '45 min',
-    distance: '4.3 km',
-    image: require('../assets/architect_2.webp'),
+    name: "Carlitos Sanchez",
+    categories: "Haedo, Buenos Aires",
+    deliveryTime: "45 min",
+    distance: "4.3 km",
+    image: require("../assets/architect_2.webp"),
     rating: 4.5,
     reviewsAmount: 13,
     id: 2,
   },
   {
-    name: 'Martín Morales',
-    categories: 'Ballester, Buenos Aires',
-    deliveryTime: '25 min',
-    distance: '3 km',
-    image: require('../assets/architect_3.webp'),
+    name: "Martín Morales",
+    categories: "Ballester, Buenos Aires",
+    deliveryTime: "25 min",
+    distance: "3 km",
+    image: require("../assets/architect_3.webp"),
     rating: 4,
     reviewsAmount: 14,
     id: 3,
   },
   {
     name: "Facundo Luna",
-    categories: 'Tero Violado, Santa Fe',
-    deliveryTime: '240 min',
-    distance: '450 km',
-    image: require('../assets/architect_4.jpg'),
+    categories: "Tero Violado, Santa Fe",
+    deliveryTime: "240 min",
+    distance: "450 km",
+    image: require("../assets/architect_4.jpg"),
     rating: 5,
     reviewsAmount: 52,
     id: 4,
   },
   {
-    name: 'Ignacio Castro',
-    categories: 'Vicente Lopez, Buenos Aires',
-    deliveryTime: '25 min',
-    distance: '3.1 km',
-    image: require('../assets/architect_5.jpg'),
+    name: "Ignacio Castro",
+    categories: "Vicente Lopez, Buenos Aires",
+    deliveryTime: "25 min",
+    distance: "3.1 km",
+    image: require("../assets/architect_5.jpg"),
     rating: 3.5,
     reviewsAmount: 17,
     id: 5,
@@ -79,9 +78,8 @@ export const WorkersScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#9DB2BF',
-    alignItems: 'center',
+    backgroundColor: "#9DB2BF",
+    alignItems: "center",
     // justifyContent: 'center',
   },
 });
-
