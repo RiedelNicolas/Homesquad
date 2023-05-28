@@ -1,21 +1,21 @@
-import * as React from "react";
-import { Avatar, Appbar, Card, Text, IconButton } from "react-native-paper";
-import { View, StyleSheet } from "react-native";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { Rating } from "react-native-ratings";
+import * as React from 'react';
+import { Avatar, Appbar, Card, Text, IconButton } from 'react-native-paper';
+import { View, StyleSheet } from 'react-native';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Rating } from 'react-native-ratings';
 
 const Professional = () => {
   return (
     <Card>
       <Card.Content style={styles.card}>
-        <Avatar.Image size={150} source={require("../assets/gasista.jpeg")} />
+        <Avatar.Image size={150} source={require('../assets/gasista.jpeg')} />
         <Text variant="titleLarge">Juan Gasista</Text>
-        <View style={{ flexDirection: "row", alignItems: "center" }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           <IconButton
             icon={({ size, color }) => (
               <MaterialCommunityIcons name="phone" size={size} color={color} />
             )}
-            onPress={() => console.log("Phone button pressed")}
+            onPress={() => console.log('Phone button pressed')}
           />
           <Text style={{ marginRight: 10 }}>(11) 2344-5566</Text>
 
@@ -23,7 +23,7 @@ const Professional = () => {
             icon={({ size, color }) => (
               <MaterialCommunityIcons name="email" size={size} color={color} />
             )}
-            onPress={() => console.log("Email button pressed")}
+            onPress={() => console.log('Email button pressed')}
           />
           <Text>juan.servicios@gmail.com</Text>
         </View>
@@ -52,7 +52,7 @@ export const Profile = () => (
         title="Ana Perez"
         subtitle="Gran gasista"
         left={(props) => (
-          <Avatar.Image size={50} source={require("../assets/ana.jpeg")} />
+          <Avatar.Image size={50} source={require('../assets/ana.jpeg')} />
         )}
         right={(props) => <Rating imageSize={30} readonly startingValue={5} />}
       />
@@ -69,9 +69,9 @@ export const Profile = () => (
 
 const styles = StyleSheet.create({
   card: {
-    alignItems: "center",
+    alignItems: 'center',
   },
   rating: {
-    backgroundColor: "#fff",
+    backgroundColor: '#fff',
   },
 });

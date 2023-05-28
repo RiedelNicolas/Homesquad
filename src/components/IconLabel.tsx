@@ -1,6 +1,6 @@
-import React from "react";
-import { View, Text, StyleSheet } from "react-native";
-import { Icon } from "react-native-elements";
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+import { Icon } from 'react-native-elements';
 
 export const IconLabel = ({ name, label, color }) => {
   return (
@@ -19,9 +19,9 @@ export const IconLabel = ({ name, label, color }) => {
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: "row",
+    flexDirection: 'row',
     marginRight: 10,
-    alignItems: "center",
+    alignItems: 'center',
   },
   labelStyle: {
     fontSize: 12,
