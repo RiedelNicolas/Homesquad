@@ -4,7 +4,7 @@ import { Header } from '../components/Header';
 import { WorkerCard } from '../components/WorkerCard';
 
 
-const restaurants = [
+const workers = [
   {
     name: 'Juan Fernandez',
     categories: 'San Telmo, CABA',
@@ -65,11 +65,11 @@ export const WorkersScreen = () => {
       <StatusBar barStyle="dark-content" />
 
       <FlatList
-        data={restaurants}
+        data={workers}
         renderItem={({ item }) => {
           return <WorkerCard info={item} />;
         }}
-        keyExtractor={(restaurant) => restaurant.id.toString()}
+        keyExtractor={(worker) => worker.id.toString()}
         showsVerticalScrollIndicator={false}
       />
     </View>
