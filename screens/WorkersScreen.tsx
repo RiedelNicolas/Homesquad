@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View, StatusBar, FlatList } from 'react-native';
 import { Header } from '../components/Header';
 import { WorkerCard } from '../components/WorkerCard';
+import { Searchbar } from 'react-native-paper';
 
 
-const restaurants = [
+const data = [
   {
     name: 'Juan Fernandez',
     categories: 'San Telmo, CABA',
@@ -58,18 +59,33 @@ const restaurants = [
 ];
 
 export const WorkersScreen = () => {
+
+  const [search, setSearch] = useState('');
+  const [workers, setWorkers] = useState([...data]);
+
+  const searchFilterFunction = (text) => {
+    setSearch(text);
+  };
+
   return (
     <View style={styles.container}>
       <Header label="Architects nearby" />
-      {/* <Card /> */}
+
+      <Searchbar
+        placeholder="Search"
+        onChangeText={query => searchFilterFunction(query)}
+        value={search}
+        mode='view'
+      />
+      
       <StatusBar barStyle="dark-content" />
 
       <FlatList
-        data={restaurants}
+        data={workers}
         renderItem={({ item }) => {
           return <WorkerCard info={item} />;
         }}
-        keyExtractor={(restaurant) => restaurant.id.toString()}
+        keyExtractor={(worker) => worker.id.toString()}
         showsVerticalScrollIndicator={false}
       />
     </View>
@@ -81,7 +97,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#9DB2BF',
     alignItems: 'center',
-    // justifyContent: 'center',
   },
 });
 
