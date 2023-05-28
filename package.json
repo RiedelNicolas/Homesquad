@@ -20,6 +20,8 @@
     "@typescript-eslint/parser": "^5.59.7",
     "eslint": "^8.41.0",
     "eslint-config-prettier": "^8.8.0",
+    "husky": ">=6",
+    "lint-staged": ">=10",
     "prettier": "2.8.8",
     "typescript": "^5.0.4"
   },
@@ -27,9 +29,14 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "prepare": "husky install"
   },
   "version": "1.0.0",
   "private": true,
-  "name": "homesquad"
+  "name": "homesquad",
+  "lint-staged": {
+    "*.{js,ts,tsx}": "eslint --cache --fix",
+    "*.{js,ts,tsx,css,md}": "prettier --write"
+  }
 }
