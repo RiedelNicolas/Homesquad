@@ -2,57 +2,57 @@ const categories = [
     {
         key: '1',
         category: 'Gasista',
-        icon: 'md-checkmark-circle'
+        icon: 'stove'
     },
     {
         key: '2',
         category: 'Paseador de perros',
-        icon: 'md-checkmark-circle'
+        icon: 'dog-service'
     },
     {
         key: '3',
         category: 'Electricista',
-        icon: 'md-checkmark-circle'
+        icon: 'lightning-bolt'
     },
     {
         key: '4',
         category: 'Pintor',
-        icon: 'md-checkmark-circle'
+        icon: 'brush-variant'
     },
     {
         key: '5',
-        category: 'Plomero',
-        icon: 'md-checkmark-circle'
+        category: 'Plomería',
+        icon: 'pipe'
     },
     {
         key: '6',
         category: 'Limpieza',
-        icon: 'md-checkmark-circle'
+        icon: 'broom'
     },
     {
         key: '7',
         category: 'Jardinería',
-        icon: 'md-checkmark-circle'
+        icon: 'flower'
     },
     {
         key: '8',
         category: 'Fumigación',
-        icon: 'md-checkmark-circle'
+        icon: 'bug'
     },
     {
         key: '9',
         category: 'Técnico de aire',
-        icon: 'md-checkmark-circle'
+        icon: 'air-conditioner'
     },
     {
         key: '10',
-        category: 'Carpintero',
-        icon: 'md-checkmark-circle'
+        category: 'Carpintería',
+        icon: 'hand-saw'
     },
     {
         key: '11',
         category: 'Otros',
-        icon: 'md-checkmark-circle'
+        icon: 'plus'
     },
 ]
 

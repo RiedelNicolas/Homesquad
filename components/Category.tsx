@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import { Text } from 'react-native-paper';
-import { Ionicons } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { StyleSheet, Dimensions } from 'react-native';
 import { commonStyle } from '../utils/style';
 
@@ -14,7 +14,7 @@ const Category = ({name, icon}) => {
                 <View
                     style={styles.categoryIcon}
                 >
-                    <Ionicons
+                    <MaterialCommunityIcons
                         name={icon}
                         size={50}
                         color={commonStyle.backgroundColor}

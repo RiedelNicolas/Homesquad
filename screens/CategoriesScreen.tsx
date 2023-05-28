@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Dimensions, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import CategoriesList from '../components/CategoriesList';
 import { Image } from 'react-native-elements';
 import { commonStyle } from '../utils/style';
