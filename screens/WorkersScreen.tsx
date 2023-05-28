@@ -81,11 +81,13 @@ export const WorkersScreen = () => {
       <Header label="Architects nearby" />
 
       <Searchbar
+        style={styles.searchBar}
         placeholder="Search"
         onChangeText={searchFilterFunction}
         onClearIconPress={onClearSearch}
         value={search}
         mode='view'
+        showDivider={false}
       />
       
       <StatusBar barStyle="dark-content" />
@@ -108,5 +110,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#9DB2BF',
     alignItems: 'center',
   },
+  searchBar: {
+    borderBottomEndRadius: 20,
+    borderBottomStartRadius: 20,
+  }
 });
 
