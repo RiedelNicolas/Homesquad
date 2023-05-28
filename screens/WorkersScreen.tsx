@@ -65,7 +65,16 @@ export const WorkersScreen = () => {
 
   const searchFilterFunction = (text) => {
     setSearch(text);
+    const filtered = data.filter((worker) => {
+      return worker.name.includes(text) || worker.categories.includes(text);
+    })
+    setWorkers(filtered);
   };
+
+  const onClearSearch = () => {
+    setWorkers([...data]);
+    setSearch('');
+  }
 
   return (
     <View style={styles.container}>
@@ -73,7 +82,8 @@ export const WorkersScreen = () => {
 
       <Searchbar
         placeholder="Search"
-        onChangeText={query => searchFilterFunction(query)}
+        onChangeText={searchFilterFunction}
+        onClearIconPress={onClearSearch}
         value={search}
         mode='view'
       />
