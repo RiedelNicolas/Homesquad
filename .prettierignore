@@ -3,3 +3,4 @@ node_modules/
 .expo/
 README.md
 package.json
+.eslintcache
