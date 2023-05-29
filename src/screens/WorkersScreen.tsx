@@ -1,7 +1,9 @@
 import React from 'react';
 import { StyleSheet, View, StatusBar, FlatList } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { Header } from '../components/Header';
 import { WorkerCard, WorkerDetails } from '../components/WorkerCard';
+
 import {
   Architect1Image,
   Architect2Image,
@@ -64,6 +66,7 @@ const workers: Array<WorkerDetails & { id: number }> = [
 ];
 
 export const WorkersScreen = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <Header label="Architects nearby" />
@@ -73,7 +76,7 @@ export const WorkersScreen = () => {
       <FlatList
         data={workers}
         renderItem={({ item }) => {
-          return <WorkerCard details={item} />;
+          return <WorkerCard details={item} navigation={navigation} />;
         }}
         keyExtractor={(worker) => worker.id.toString()}
         showsVerticalScrollIndicator={false}

@@ -1,15 +1,17 @@
 import * as React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Image } from 'react-native-elements';
+import { useNavigation } from '@react-navigation/native';
 import { CategoriesList } from '../components/CategoriesList';
 import { commonStyle } from '../utils/style';
 import { LogoImage } from '../assets';
 
 export const CategoriesScreen = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.screen}>
       <Image style={styles.imageStyle} source={LogoImage} />
-      <CategoriesList />
+      <CategoriesList navigation={navigation} />
     </View>
   );
 };
