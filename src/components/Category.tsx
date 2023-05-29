@@ -2,6 +2,7 @@ import * as React from 'react';
 import { TouchableOpacity, View, StyleSheet, Dimensions } from 'react-native';
 import { Text } from 'react-native-paper';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 import { commonStyle } from '../utils/style';
 
 export type CategoryProps = {
@@ -10,9 +11,15 @@ export type CategoryProps = {
 };
 
 export const Category = ({ name, icon }: CategoryProps) => {
+  const navigation = useNavigation();
+  const onPress = () => {
+    // alert(`You pressed ${name}`);
+    navigation.navigate('WorkersScreen');
+  };
+
   return (
     <View style={styles.categoryContainer}>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={onPress}>
         <View style={styles.categoryIcon}>
           <MaterialCommunityIcons
             name={icon}

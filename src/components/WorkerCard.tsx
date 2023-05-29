@@ -1,6 +1,14 @@
 import React from 'react';
-import { View, Text, StyleSheet, Dimensions, Image } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Dimensions,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
 import StarRating from 'react-native-star-rating-widget';
+import { useNavigation } from '@react-navigation/native';
 import { IconLabel } from './IconLabel';
 
 const iconColor = '#6c5ce7';
@@ -20,6 +28,11 @@ export type WorkerCardProps = {
 };
 
 export const WorkerCard = ({ details }: WorkerCardProps) => {
+  const navigation = useNavigation();
+  const onPress = () => {
+    navigation.navigate('Profile');
+  };
+
   const {
     name,
     categories,
@@ -32,27 +45,33 @@ export const WorkerCard = ({ details }: WorkerCardProps) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.cardContainer}>
-        <Image style={styles.imageStyle} source={image} />
-        <View style={styles.infoStyle}>
-          <Text style={styles.titleStyle}>{name}</Text>
-          <Text style={styles.categoryStyle}>{categories}</Text>
+      <TouchableOpacity onPress={onPress}>
+        <View style={styles.cardContainer}>
+          <Image style={styles.imageStyle} source={image} />
+          <View style={styles.infoStyle}>
+            <Text style={styles.titleStyle}>{name}</Text>
+            <Text style={styles.categoryStyle}>{categories}</Text>
 
-          <View style={styles.iconLabelStyle}>
-            <IconLabel name="ios-time" label={deliveryTime} color={iconColor} />
-            <IconLabel name="ios-pin" label={distance} color={iconColor} />
+            <View style={styles.iconLabelStyle}>
+              <IconLabel
+                name="ios-time"
+                label={deliveryTime}
+                color={iconColor}
+              />
+              <IconLabel name="ios-pin" label={distance} color={iconColor} />
+            </View>
+          </View>
+
+          <View style={styles.stars}>
+            <View>
+              <StarRating rating={rating} onChange={() => null} />
+            </View>
+            <View>
+              <Text style={{ fontSize: 15 }}>{`(${reviewsAmount})`}</Text>
+            </View>
           </View>
         </View>
-
-        <View style={styles.stars}>
-          <View>
-            <StarRating rating={rating} onChange={() => null} />
-          </View>
-          <View>
-            <Text style={{ fontSize: 15 }}>{`(${reviewsAmount})`}</Text>
-          </View>
-        </View>
-      </View>
+      </TouchableOpacity>
     </View>
   );
 };
