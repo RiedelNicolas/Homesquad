@@ -1,5 +1,5 @@
-import React from "react";
-import { View, StyleSheet, Text, Dimensions } from "react-native";
+import React from 'react';
+import { View, StyleSheet, Text, Dimensions } from 'react-native';
 
 export const Header = ({ label }) => {
   return (
@@ -9,19 +9,19 @@ export const Header = ({ label }) => {
   );
 };
 
-const deviceWidth = Math.round(Dimensions.get("window").width);
+const deviceWidth = Math.round(Dimensions.get('window').width);
 
 const styles = StyleSheet.create({
   container: {
     width: deviceWidth,
     height: 70,
-    backgroundColor: "#526D82",
-    justifyContent: "flex-end",
+    backgroundColor: '#526D82',
+    justifyContent: 'flex-end',
     paddingBottom: 20,
-    alignItems: "center",
+    alignItems: 'center',
   },
   labelStyle: {
     fontSize: 24,
-    fontWeight: "700",
+    fontWeight: '700',
   },
 });

@@ -1,7 +1,7 @@
-import React from "react";
-import { SafeAreaProvider } from "react-native-safe-area-context";
-import { CategoriesScreen } from "./screens/CategoriesScreen";
-import { registerRootComponent } from "expo";
+import React from 'react';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { CategoriesScreen } from './screens/CategoriesScreen';
+import { registerRootComponent } from 'expo';
 
 function App() {
   return (

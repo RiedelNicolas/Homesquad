@@ -1,8 +1,14 @@
-import React from "react";
-import { View, Text, StyleSheet } from "react-native";
-import { Icon } from "react-native-elements";
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+import { Icon } from 'react-native-elements';
 
-export const IconLabel = ({ name, label, color }) => {
+export type IconLabelProps = {
+  name: string;
+  label: string;
+  color: string;
+};
+
+export const IconLabel = ({ name, label, color }: IconLabelProps) => {
   return (
     <View style={styles.container}>
       <Icon
@@ -19,9 +25,9 @@ export const IconLabel = ({ name, label, color }) => {
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: "row",
+    flexDirection: 'row',
     marginRight: 10,
-    alignItems: "center",
+    alignItems: 'center',
   },
   labelStyle: {
     fontSize: 12,

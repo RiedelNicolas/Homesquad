@@ -22,13 +22,17 @@ module.exports = {
     "import/resolver": {
       typescript: true,
       node: true
-    }
+    },
   },
   rules: {
     "import/no-unresolved": "error",
     "import/no-default-export": "error",
-    "@typescript-eslint/no-unsafe-assignment": "warn",
-    "prettier/prettier": "error"
+    "prettier/prettier": [
+      'error',
+      {
+        singleQuote: true,
+      },
+    ],
   },
   root: true,
 };

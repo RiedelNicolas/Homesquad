@@ -1,18 +1,35 @@
-import React from "react";
-import { View, Text, StyleSheet, Dimensions, Image } from "react-native";
-import StarRating from "react-native-star-rating-widget";
-import { IconLabel } from "./IconLabel";
-import { Worker } from "../screens/WorkersScreen";
-const iconColor = "#6c5ce7";
-export const WorkerCard = ({
-  name,
-  location,
-  deliveryTime,
-  distance,
-  image,
-  rating,
-  reviewsAmount,
-}: Worker) => {
+import React from 'react';
+import { View, Text, StyleSheet, Dimensions, Image } from 'react-native';
+import StarRating from 'react-native-star-rating-widget';
+import { IconLabel } from './IconLabel';
+
+const iconColor = '#6c5ce7';
+
+export type WorkerDetails = {
+  name: string;
+  location: string;
+  deliveryTime: string;
+  distance: string;
+  image: React.ComponentProps<typeof Image>['source'];
+  rating: React.ComponentProps<typeof StarRating>['rating'];
+  reviewsAmount: number | string;
+};
+
+export type WorkerCardProps = {
+  details: WorkerDetails;
+};
+
+export const WorkerCard = ({ details }: WorkerCardProps) => {
+  const {
+    name,
+    location,
+    deliveryTime,
+    distance,
+    image,
+    rating,
+    reviewsAmount,
+  } = details;
+
   return (
     <View style={styles.container}>
       <View style={styles.cardContainer}>
@@ -29,12 +46,7 @@ export const WorkerCard = ({
 
         <View style={styles.stars}>
           <View>
-            <StarRating
-              rating={rating}
-              onChange={() => {
-                return;
-              }}
-            />
+            <StarRating rating={rating} onChange={() => null} />
           </View>
           <View>
             <Text style={{ fontSize: 15 }}>{`(${reviewsAmount})`}</Text>
@@ -45,22 +57,22 @@ export const WorkerCard = ({
   );
 };
 
-const deviceWidth = Math.round(Dimensions.get("window").width);
+const deviceWidth = Math.round(Dimensions.get('window').width);
 const offset = 40;
 const radius = 20;
 const styles = StyleSheet.create({
   container: {
     width: deviceWidth - 20,
-    alignItems: "center",
+    alignItems: 'center',
     marginTop: 25,
   },
   cardContainer: {
     width: deviceWidth - offset,
-    backgroundColor: "#DDE6ED",
+    backgroundColor: '#DDE6ED',
     height: 250,
     borderRadius: radius,
 
-    shadowColor: "#000",
+    shadowColor: '#000',
     shadowOffset: {
       width: 5,
       height: 5,
@@ -75,28 +87,28 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: radius,
     borderTopRightRadius: radius,
     opacity: 0.9,
-    alignContent: "center",
-    alignSelf: "center",
+    alignContent: 'center',
+    alignSelf: 'center',
   },
   titleStyle: {
     fontSize: 20,
-    fontWeight: "800",
+    fontWeight: '800',
   },
   categoryStyle: {
-    fontWeight: "200",
+    fontWeight: '200',
   },
   infoStyle: {
     marginHorizontal: 10,
     marginVertical: 5,
   },
   iconLabelStyle: {
-    flexDirection: "row",
+    flexDirection: 'row',
     marginTop: 10,
   },
   stars: {
-    flexDirection: "row",
+    flexDirection: 'row',
     height: 200,
     flex: 1,
-    alignItems: "center",
+    alignItems: 'center',
   },
 });
