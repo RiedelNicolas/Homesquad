@@ -2,8 +2,6 @@ import React from 'react';
 import { View, StyleSheet, Text, Dimensions } from 'react-native';
 
 export const Header = ({ label }) => {
-  // console.log(label);
-
   return (
     <View style={styles.container}>
       <Text style={styles.labelStyle}>{label}</Text>

@@ -15,3 +15,4 @@ export const Architect5Image =
   require('./bin/architect_5.jpg') as ImageSourcePropType;
 export const GasistaImage =
   require('./bin/gasista.jpeg') as ImageSourcePropType;
+export const UserImage = require('./bin/user.png') as ImageSourcePropType;
