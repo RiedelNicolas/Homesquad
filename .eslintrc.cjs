@@ -27,8 +27,6 @@ module.exports = {
   rules: {
     "import/no-unresolved": "error",
     "import/no-default-export": "error",
-    "@typescript-eslint/no-unsafe-assignment": "warn",
-    "@typescript-eslint/restrict-template-expressions": "warn",
     "prettier/prettier": [
       'error',
       {

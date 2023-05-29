@@ -1,15 +1,22 @@
 import React from 'react';
 import { StyleSheet, View, StatusBar, FlatList } from 'react-native';
 import { Header } from '../components/Header';
-import { WorkerCard } from '../components/WorkerCard';
+import { WorkerCard, WorkerDetails } from '../components/WorkerCard';
+import {
+  Architect1Image,
+  Architect2Image,
+  Architect3Image,
+  Architect4Image,
+  Architect5Image,
+} from '../assets';
 
-const workers = [
+const workers: Array<WorkerDetails & { id: number }> = [
   {
     name: 'Juan Fernandez',
     categories: 'San Telmo, CABA',
     deliveryTime: '35 min',
     distance: '3.7 km',
-    image: require('../assets/architect_1.jpg'),
+    image: Architect1Image,
     rating: 5,
     reviewsAmount: 30,
     id: 1,
@@ -19,7 +26,7 @@ const workers = [
     categories: 'Haedo, Buenos Aires',
     deliveryTime: '45 min',
     distance: '4.3 km',
-    image: require('../assets/architect_2.webp'),
+    image: Architect2Image,
     rating: 4.5,
     reviewsAmount: 13,
     id: 2,
@@ -29,7 +36,7 @@ const workers = [
     categories: 'Ballester, Buenos Aires',
     deliveryTime: '25 min',
     distance: '3 km',
-    image: require('../assets/architect_3.webp'),
+    image: Architect3Image,
     rating: 4,
     reviewsAmount: 14,
     id: 3,
@@ -39,7 +46,7 @@ const workers = [
     categories: 'Tero Violado, Santa Fe',
     deliveryTime: '240 min',
     distance: '450 km',
-    image: require('../assets/architect_4.jpg'),
+    image: Architect4Image,
     rating: 5,
     reviewsAmount: 52,
     id: 4,
@@ -49,7 +56,7 @@ const workers = [
     categories: 'Vicente Lopez, Buenos Aires',
     deliveryTime: '25 min',
     distance: '3.1 km',
-    image: require('../assets/architect_5.jpg'),
+    image: Architect5Image,
     rating: 3.5,
     reviewsAmount: 17,
     id: 5,
@@ -66,7 +73,7 @@ export const WorkersScreen = () => {
       <FlatList
         data={workers}
         renderItem={({ item }) => {
-          return <WorkerCard info={item} />;
+          return <WorkerCard details={item} />;
         }}
         keyExtractor={(worker) => worker.id.toString()}
         showsVerticalScrollIndicator={false}
@@ -80,6 +87,5 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#9DB2BF',
     alignItems: 'center',
-    // justifyContent: 'center',
   },
 });

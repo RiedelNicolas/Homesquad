@@ -3,12 +3,13 @@ import { Avatar, Appbar, Card, Text, IconButton } from 'react-native-paper';
 import { View, StyleSheet } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Rating } from 'react-native-ratings';
+import { AnaImage, GasistaImage } from '../assets';
 
 const Professional = () => {
   return (
     <Card>
       <Card.Content style={styles.card}>
-        <Avatar.Image size={150} source={require('../assets/gasista.jpeg')} />
+        <Avatar.Image size={150} source={GasistaImage} />
         <Text variant="titleLarge">Juan Gasista</Text>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           <IconButton
@@ -51,10 +52,8 @@ export const Profile = () => (
       <Card.Title
         title="Ana Perez"
         subtitle="Gran gasista"
-        left={(props) => (
-          <Avatar.Image size={50} source={require('../assets/ana.jpeg')} />
-        )}
-        right={(props) => <Rating imageSize={30} readonly startingValue={5} />}
+        left={() => <Avatar.Image size={50} source={AnaImage} />}
+        right={() => <Rating imageSize={30} readonly startingValue={5} />}
       />
       <Card.Content>
         <Text variant="bodyMedium">

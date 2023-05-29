@@ -4,7 +4,22 @@ import StarRating from 'react-native-star-rating-widget';
 import { IconLabel } from './IconLabel';
 
 const iconColor = '#6c5ce7';
-export const WorkerCard = ({ info }) => {
+
+export type WorkerDetails = {
+  name: string;
+  categories: string;
+  deliveryTime: string;
+  distance: string;
+  image: React.ComponentProps<typeof Image>['source'];
+  rating: React.ComponentProps<typeof StarRating>['rating'];
+  reviewsAmount: number | string;
+};
+
+export type WorkerCardProps = {
+  details: WorkerDetails;
+};
+
+export const WorkerCard = ({ details }: WorkerCardProps) => {
   const {
     name,
     categories,
@@ -13,7 +28,7 @@ export const WorkerCard = ({ info }) => {
     image,
     rating,
     reviewsAmount,
-  } = info;
+  } = details;
 
   return (
     <View style={styles.container}>

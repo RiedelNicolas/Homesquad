@@ -4,7 +4,12 @@ import { Text } from 'react-native-paper';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { commonStyle } from '../utils/style';
 
-export const Category = ({ name, icon }) => {
+export type CategoryProps = {
+  name: string;
+  icon: React.ComponentProps<typeof MaterialCommunityIcons>['name'];
+};
+
+export const Category = ({ name, icon }: CategoryProps) => {
   return (
     <View style={styles.categoryContainer}>
       <TouchableOpacity>
