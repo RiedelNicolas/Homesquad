@@ -91,7 +91,7 @@ export const WorkersScreen = () => {
 
       <Searchbar
         style={styles.searchBar}
-        placeholder="Search"
+        placeholder="Busqueda"
         onChangeText={searchFilterFunction}
         onClearIconPress={onClearSearch}
         value={search}
