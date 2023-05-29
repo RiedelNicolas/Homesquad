@@ -27,6 +27,7 @@ module.exports = {
   rules: {
     "import/no-unresolved": "error",
     "import/no-default-export": "error",
+    "import/order": "error",
     "prettier/prettier": [
       'error',
       {
