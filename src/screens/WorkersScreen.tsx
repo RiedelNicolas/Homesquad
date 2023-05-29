@@ -70,8 +70,12 @@ export const WorkersScreen = () => {
 
   const searchFilterFunction = (text: string) => {
     setSearch(text);
+    text = text.toLowerCase();
     const filtered = workersData.filter((worker: WorkerDetails) => {
-      return worker.name.includes(text) || worker.location.includes(text);
+      return (
+        worker.name.toLowerCase().includes(text) ||
+        worker.location.toLowerCase().includes(text)
+      );
     });
     setWorkers(filtered);
   };
