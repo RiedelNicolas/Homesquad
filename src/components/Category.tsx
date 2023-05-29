@@ -13,7 +13,6 @@ export type CategoryProps = {
 export const Category = ({ name, icon }: CategoryProps) => {
   const navigation = useNavigation();
   const onPress = () => {
-    // alert(`You pressed ${name}`);
     navigation.navigate('WorkersScreen');
   };
 
