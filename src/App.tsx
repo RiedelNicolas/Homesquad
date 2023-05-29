@@ -4,10 +4,11 @@ import { registerRootComponent } from 'expo';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { CategoriesScreen } from './screens/CategoriesScreen';
-import { Profile } from './screens/ProfesionalProfile';
+import { ProfileScreen } from './screens/ProfesionalProfile';
 import { WorkersScreen } from './screens/WorkersScreen';
+import { RootStackParamList } from './utils/navigator';
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
         <Stack.Navigator initialRouteName={'CategoriesScreen'}>
           <Stack.Screen name="CategoriesScreen" component={CategoriesScreen} />
           <Stack.Screen name="WorkersScreen" component={WorkersScreen} />
-          <Stack.Screen name="Profile" component={Profile} />
+          <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>

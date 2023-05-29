@@ -150,26 +150,28 @@ const Review = (props: ReviewProps) => {
   );
 };
 
-export const Profile = () => (
-  <ScrollView>
-    <Professional
-      name={professional.name}
-      phone={professional.phone}
-      email={professional.email}
-      description={professional.description}
-    />
-    {reviews.map((review) => {
-      return (
-        <Review
-          user={review.user}
-          title={review.title}
-          rating={review.rating}
-          body={review.body}
-        />
-      );
-    })}
-  </ScrollView>
-);
+export const ProfileScreen = () => {
+  return (
+    <ScrollView>
+      <Professional
+        name={professional.name}
+        phone={professional.phone}
+        email={professional.email}
+        description={professional.description}
+      />
+      {reviews.map((review) => {
+        return (
+          <Review
+            user={review.user}
+            title={review.title}
+            rating={review.rating}
+            body={review.body}
+          />
+        );
+      })}
+    </ScrollView>
+  );
+};
 
 const styles = StyleSheet.create({
   card: {

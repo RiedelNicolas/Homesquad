@@ -30,7 +30,7 @@ export type WorkerCardProps = {
 export const WorkerCard = ({ details }: WorkerCardProps) => {
   const navigation = useNavigation();
   const onPress = () => {
-    navigation.navigate('Profile');
+    navigation.navigate('ProfileScreen');
   };
 
   const {
