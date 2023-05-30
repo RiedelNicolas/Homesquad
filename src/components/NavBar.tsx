@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { BottomNavigation, Text } from 'react-native-paper';
-import { Profile } from '../screens/ProfesionalProfile';
+import { ProfileScreen } from '../screens/ProfesionalProfile';
 
-const ProfileRoute = () => <Profile />;
+const ProfileRoute = () => <ProfileScreen />;
 
 const AlbumsRoute = () => <Text>Albums</Text>;
 

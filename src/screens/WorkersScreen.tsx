@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, StatusBar, FlatList } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import { Searchbar } from 'react-native-paper';
 import { Header } from '../components/Header';
 import { WorkerCard, WorkerDetails } from '../components/WorkerCard';
@@ -69,7 +68,6 @@ const workersData: Array<WorkerDetails & { id: number }> = [
 export const WorkersScreen = () => {
   const [search, setSearch] = useState('');
   const [workers, setWorkers] = useState([...workersData]);
-  const navigation = useNavigation();
 
   const searchFilterFunction = (text: string) => {
     setSearch(text);
@@ -107,7 +105,7 @@ export const WorkersScreen = () => {
       <FlatList
         data={workers}
         renderItem={({ item }) => {
-          return <WorkerCard details={item} navigation={navigation} />;
+          return <WorkerCard details={item} />;
         }}
         keyExtractor={(worker) => worker.id.toString()}
         showsVerticalScrollIndicator={false}

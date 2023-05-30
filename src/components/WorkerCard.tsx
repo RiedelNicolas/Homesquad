@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import StarRating from 'react-native-star-rating-widget';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from '../utils/navigator';
 import { IconLabel } from './IconLabel';
 
 const iconColor = '#6c5ce7';
@@ -25,13 +25,12 @@ export type WorkerDetails = {
 
 export type WorkerCardProps = {
   details: WorkerDetails;
-  navigation;
 };
 
 export const WorkerCard = ({ details }: WorkerCardProps) => {
   const navigation = useNavigation();
   const onPress = () => {
-    navigation.navigate('Profile');
+    navigation.navigate('ProfileScreen');
   };
 
   const {
