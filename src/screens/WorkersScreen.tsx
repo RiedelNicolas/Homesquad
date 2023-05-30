@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View, StatusBar, FlatList } from 'react-native';
+import { Searchbar } from 'react-native-paper';
 import { Header } from '../components/Header';
 import { WorkerCard, WorkerDetails } from '../components/WorkerCard';
 
@@ -11,10 +12,10 @@ import {
   Architect5Image,
 } from '../assets';
 
-const workers: Array<WorkerDetails & { id: number }> = [
+const workersData: Array<WorkerDetails & { id: number }> = [
   {
     name: 'Juan Fernandez',
-    categories: 'San Telmo, CABA',
+    location: 'San Telmo, CABA',
     deliveryTime: '35 min',
     distance: '3.7 km',
     image: Architect1Image,
@@ -24,7 +25,7 @@ const workers: Array<WorkerDetails & { id: number }> = [
   },
   {
     name: 'Carlitos Sanchez',
-    categories: 'Haedo, Buenos Aires',
+    location: 'Haedo, Buenos Aires',
     deliveryTime: '45 min',
     distance: '4.3 km',
     image: Architect2Image,
@@ -34,7 +35,7 @@ const workers: Array<WorkerDetails & { id: number }> = [
   },
   {
     name: 'Martín Morales',
-    categories: 'Ballester, Buenos Aires',
+    location: 'Ballester, Buenos Aires',
     deliveryTime: '25 min',
     distance: '3 km',
     image: Architect3Image,
@@ -44,7 +45,7 @@ const workers: Array<WorkerDetails & { id: number }> = [
   },
   {
     name: 'Facundo Luna',
-    categories: 'Tero Violado, Santa Fe',
+    location: 'Tero Violado, Santa Fe',
     deliveryTime: '240 min',
     distance: '450 km',
     image: Architect4Image,
@@ -54,7 +55,7 @@ const workers: Array<WorkerDetails & { id: number }> = [
   },
   {
     name: 'Ignacio Castro',
-    categories: 'Vicente Lopez, Buenos Aires',
+    location: 'Vicente Lopez, Buenos Aires',
     deliveryTime: '25 min',
     distance: '3.1 km',
     image: Architect5Image,
@@ -65,10 +66,40 @@ const workers: Array<WorkerDetails & { id: number }> = [
 ];
 
 export const WorkersScreen = () => {
+  const [search, setSearch] = useState('');
+  const [workers, setWorkers] = useState([...workersData]);
+
+  const searchFilterFunction = (text: string) => {
+    setSearch(text);
+    text = text.toLowerCase();
+    const filtered = workersData.filter((worker: WorkerDetails) => {
+      return (
+        worker.name.toLowerCase().includes(text) ||
+        worker.location.toLowerCase().includes(text)
+      );
+    });
+    setWorkers(filtered);
+  };
+
+  const onClearSearch = () => {
+    setWorkers([...workersData]);
+    setSearch('');
+  };
+
   return (
     <View style={styles.container}>
       <Header label="Architects nearby" />
-      {/* <Card /> */}
+
+      <Searchbar
+        style={styles.searchBar}
+        placeholder="Busqueda"
+        onChangeText={searchFilterFunction}
+        onClearIconPress={onClearSearch}
+        value={search}
+        mode="view"
+        showDivider={false}
+      />
+
       <StatusBar barStyle="dark-content" />
 
       <FlatList
@@ -88,5 +119,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#9DB2BF',
     alignItems: 'center',
+  },
+  searchBar: {
+    borderBottomEndRadius: 20,
+    borderBottomStartRadius: 20,
   },
 });

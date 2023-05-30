@@ -15,7 +15,7 @@ const iconColor = '#6c5ce7';
 
 export type WorkerDetails = {
   name: string;
-  categories: string;
+  location: string;
   deliveryTime: string;
   distance: string;
   image: React.ComponentProps<typeof Image>['source'];
@@ -35,7 +35,7 @@ export const WorkerCard = ({ details }: WorkerCardProps) => {
 
   const {
     name,
-    categories,
+    location,
     deliveryTime,
     distance,
     image,
@@ -50,7 +50,7 @@ export const WorkerCard = ({ details }: WorkerCardProps) => {
           <Image style={styles.imageStyle} source={image} />
           <View style={styles.infoStyle}>
             <Text style={styles.titleStyle}>{name}</Text>
-            <Text style={styles.categoryStyle}>{categories}</Text>
+            <Text style={styles.categoryStyle}>{location}</Text>
 
             <View style={styles.iconLabelStyle}>
               <IconLabel
