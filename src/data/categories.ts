@@ -1,4 +1,11 @@
-export const categories = [
+import { ComponentProps } from 'react';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+
+export const categories: Array<{
+  key: string;
+  category: string;
+  icon: ComponentProps<typeof MaterialCommunityIcons>['name'];
+}> = [
   {
     key: '1',
     category: 'Gasista',

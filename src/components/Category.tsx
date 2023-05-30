@@ -2,8 +2,8 @@ import * as React from 'react';
 import { TouchableOpacity, View, StyleSheet, Dimensions } from 'react-native';
 import { Text } from 'react-native-paper';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
 import { commonStyle } from '../utils/style';
+import { useNavigation } from '../utils/navigator';
 
 export type CategoryProps = {
   name: string;

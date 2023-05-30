@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import StarRating from 'react-native-star-rating-widget';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from '../utils/navigator';
 import { IconLabel } from './IconLabel';
 
 const iconColor = '#6c5ce7';
