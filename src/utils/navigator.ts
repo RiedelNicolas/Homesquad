@@ -7,6 +7,7 @@ export type RootStackParamList = {
   ProfileScreen: undefined;
   CategoriesScreen: undefined;
   WorkersScreen: undefined;
+  ChatScreen: undefined;
 };
 
 export const useNavigation = () => {

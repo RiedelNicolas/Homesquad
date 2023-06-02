@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { CategoriesScreen } from './screens/CategoriesScreen';
 import { ProfileScreen } from './screens/ProfesionalProfile';
 import { WorkersScreen } from './screens/WorkersScreen';
+import { ChatScreen } from './screens/ChatScreen';
 import { RootStackParamList } from './utils/navigator';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -14,10 +15,11 @@ function App() {
   return (
     <SafeAreaProvider>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName={'CategoriesScreen'}>
+        <Stack.Navigator initialRouteName={'ChatScreen'}>
           <Stack.Screen name="CategoriesScreen" component={CategoriesScreen} />
           <Stack.Screen name="WorkersScreen" component={WorkersScreen} />
           <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
+          <Stack.Screen name="ChatScreen" component={ChatScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>
