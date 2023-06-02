@@ -2,6 +2,7 @@ import * as React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import { TextInput } from 'react-native-paper';
 import { ChatBubble } from '../components/ChatBubble';
+import { Proposal } from '../components/Proposal';
 import { commonStyle } from '../utils/style';
 
 export const ChatScreen = () => {
