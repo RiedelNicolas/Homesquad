@@ -1,26 +1,17 @@
 import * as React from 'react';
 import { View, StyleSheet, FlatList } from 'react-native';
-import { TextInput } from 'react-native-paper';
-import { Button } from 'react-native-elements';
 import { ChatBubble } from '../components/ChatBubble';
 import { ChatTextInput } from '../components/ChatTextInput';
 import { messages } from '../data/messages';
 
-function sendMessage(text: string) {
-  messages.push({
-    id: messages.length.toString(),
-    rol: 'sender',
-    message: text,
-  });
-}
-
 export const ChatScreen = () => {
-  const [text, setText] = React.useState('');
+  const [data, setData] = React.useState(messages);
+
   return (
     <View style={styles.container}>
       <View style={styles.chatContainer}>
         <FlatList
-          data={messages}
+          data={data}
           renderItem={({ item }) => (
             <ChatBubble
               message={item.message}
@@ -30,7 +21,7 @@ export const ChatScreen = () => {
           keyExtractor={(item) => item.id}
         />
       </View>
-      <ChatTextInput />
+      <ChatTextInput data={data} setData={setData} />
     </View>
   );
 };

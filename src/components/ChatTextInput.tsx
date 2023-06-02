@@ -4,17 +4,30 @@ import { Button, TextInput } from 'react-native-paper';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { messages } from '../data/messages';
 
-export const ChatTextInput = () => {
+type MessageType = {
+  id: string;
+  rol: string;
+  message: string;
+};
+
+type ChatTextInputPrompts = {
+  data: MessageType[];
+  setData: React.Dispatch<React.SetStateAction<MessageType[]>>;
+};
+
+export const ChatTextInput = ({ data, setData }: ChatTextInputPrompts) => {
   const [text, setText] = React.useState('');
 
   function sendMessage(text: string) {
-    if (String.length > 0) {
+    if (text.trim().length > 0) {
       messages.push({
         id: (messages.length + 1).toString(),
         rol: 'sender',
         message: text,
       });
       setText('');
+      const newData = [...messages];
+      setData(newData);
     }
   }
 
