@@ -7,7 +7,7 @@ export const messages = [
   {
     id: '2',
     rol: 'receiver',
-    messages: 'Hola, te puedo ayudar',
+    message: 'Hola, te puedo ayudar',
   },
   {
     id: '3',
@@ -32,12 +32,17 @@ export const messages = [
   {
     id: '7',
     rol: 'receiver',
-    messages: 'Si me recitás un poema te bajo el precio',
+    message: 'Si me recitás un poema te bajo el precio',
   },
   {
     id: '8',
     rol: 'sender',
-    messages:
+    message:
       'En su labor con destreza y arte, el gasista emprende su noble parte. Con herramientas en mano y pasión en el pecho, brinda confort y seguridad, sin objecto.',
+  },
+  {
+    id: '9',
+    rol: 'receiver',
+    message: '¡Excelente! Te espero el lunes a las 10',
   },
 ];

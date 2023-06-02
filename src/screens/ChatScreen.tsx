@@ -1,23 +1,33 @@
 import * as React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, FlatList } from 'react-native';
 import { TextInput } from 'react-native-paper';
 import { ChatBubble } from '../components/ChatBubble';
 import { Proposal } from '../components/Proposal';
-import { commonStyle } from '../utils/style';
+import { messages } from '../data/messages';
+
+function sendMessage(text: string) {
+  messages.push({
+    id: messages.length.toString(),
+    rol: 'sender',
+    message: text,
+  });
+}
 
 export const ChatScreen = () => {
   const [text, setText] = React.useState('');
   return (
     <View style={styles.container}>
       <View style={styles.chatContainer}>
-        <ChatBubble
-          message={
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
-          }
-          right={true}
+        <FlatList
+          data={messages}
+          renderItem={({ item }) => (
+            <ChatBubble
+              message={item.message}
+              right={item.rol === 'sender' ? true : false}
+            />
+          )}
+          keyExtractor={(item) => item.id}
         />
-        <ChatBubble message={'Holis'} right={true} />
-        <ChatBubble message={'Buenardas'} right={false} />
       </View>
       <View style={styles.inputContainer}>
         <TextInput
