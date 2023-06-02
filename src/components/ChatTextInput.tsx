@@ -1,8 +1,14 @@
 import * as React from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
-import { Button, TextInput } from 'react-native-paper';
+import { TextInput } from 'react-native-paper';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { messages } from '../data/messages';
+
+// TODO: remove this mock when we have a backend
+const price = 4700;
+const newMessage1 = 'Dale, yo te ayudo.';
+const newMessage2 = `¿Te parecen bien ${price} pesos?`;
+const responseTime = 2000;
 
 type MessageType = {
   id: string;
@@ -11,23 +17,44 @@ type MessageType = {
 };
 
 type ChatTextInputPrompts = {
-  data: MessageType[];
   setData: React.Dispatch<React.SetStateAction<MessageType[]>>;
 };
 
-export const ChatTextInput = ({ data, setData }: ChatTextInputPrompts) => {
+export const ChatTextInput = ({ setData }: ChatTextInputPrompts) => {
   const [text, setText] = React.useState('');
 
-  function sendMessage(text: string) {
+  // TODO: we should remove the mock when we have a backend
+  const [messageCounter, setMessageCounter] = React.useState(0);
+
+  React.useEffect(() => {
+    async function recibeMockedMessage() {
+      if (messageCounter === 2) {
+        await delay(responseTime);
+        sendMessage(newMessage1, 'receiver');
+        await delay(responseTime);
+        sendMessage(newMessage2, 'receiver');
+      }
+    }
+    recibeMockedMessage().catch((error) => console.log(error));
+  }, [messageCounter]);
+
+  function delay(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
+  // TODO: here ends the mock
+
+  function sendMessage(text: string, rol: string) {
     if (text.trim().length > 0) {
       messages.push({
         id: (messages.length + 1).toString(),
-        rol: 'sender',
+        rol: rol,
         message: text,
       });
       setText('');
       const newData = [...messages];
       setData(newData);
+      setMessageCounter(messageCounter + 1);
     }
   }
 
@@ -52,7 +79,7 @@ export const ChatTextInput = ({ data, setData }: ChatTextInputPrompts) => {
       <View style={styles.sendButtonContainer}>
         <TouchableOpacity
           style={{ alignSelf: 'center' }}
-          onPress={() => sendMessage(text)}
+          onPress={() => sendMessage(text, 'sender')}
         >
           <MaterialCommunityIcons name={'send'} size={40} />
         </TouchableOpacity>

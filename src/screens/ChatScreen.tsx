@@ -21,7 +21,7 @@ export const ChatScreen = () => {
           keyExtractor={(item) => item.id}
         />
       </View>
-      <ChatTextInput data={data} setData={setData} />
+      <ChatTextInput setData={setData} />
     </View>
   );
 };
