@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { View, StyleSheet, FlatList } from 'react-native';
 import { TextInput } from 'react-native-paper';
+import { Button } from 'react-native-elements';
 import { ChatBubble } from '../components/ChatBubble';
-import { Proposal } from '../components/Proposal';
+import { ChatTextInput } from '../components/ChatTextInput';
 import { messages } from '../data/messages';
 
 function sendMessage(text: string) {
@@ -29,15 +30,7 @@ export const ChatScreen = () => {
           keyExtractor={(item) => item.id}
         />
       </View>
-      <View style={styles.inputContainer}>
-        <TextInput
-          placeholder="Escribe un mensaje"
-          value={text}
-          onChangeText={(text) => setText(text)}
-          multiline
-          numberOfLines={3}
-        />
-      </View>
+      <ChatTextInput />
     </View>
   );
 };
@@ -50,5 +43,7 @@ const styles = StyleSheet.create({
   chatContainer: {
     flex: 1,
   },
-  inputContainer: {},
+  inputContainer: {
+    flexDirection: 'row',
+  },
 });
