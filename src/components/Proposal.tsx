@@ -1,9 +1,7 @@
 import * as React from 'react';
 import { View, Text, StyleSheet, Modal } from 'react-native';
 import { Button } from 'react-native-paper';
-
-// TODO: we should remove the mock when we have a backend
-const price = 4700;
+import { price } from '../data/chat';
 
 type ProposalProps = {
   modalVisible: boolean;
@@ -11,8 +9,6 @@ type ProposalProps = {
 };
 
 export const Proposal = ({ modalVisible, setModalVisible }: ProposalProps) => {
-  //const [modalVisible, setModalVisible] = React.useState(true);
-
   return (
     <View style={styles.container}>
       <Modal

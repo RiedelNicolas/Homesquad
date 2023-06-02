@@ -2,14 +2,16 @@ import * as React from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import { TextInput } from 'react-native-paper';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { messages } from '../data/messages';
 
 // TODO: remove this mock when we have a backend
-const price = 4700;
-const newMessage1 = 'Dale, yo te ayudo.';
-const newMessage2 = `¿Te parecen bien ${price} pesos?`;
-const responseTime = 2000;
-const messageLimit = 2;
+import { messages } from '../data/messages';
+import {
+  delay,
+  newMessage1,
+  newMessage2,
+  responseTime,
+  messageLimit,
+} from '../data/chat';
 
 type MessageType = {
   id: string;
@@ -45,10 +47,6 @@ export const ChatTextInput = ({
     }
     recibeMockedMessage().catch((error) => console.log(error));
   }, [messageCounter]);
-
-  function delay(ms: number) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-  }
 
   // TODO: here ends the mock
 

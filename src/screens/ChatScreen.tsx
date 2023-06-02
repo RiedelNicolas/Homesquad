@@ -4,6 +4,7 @@ import { ChatBubble } from '../components/ChatBubble';
 import { ChatTextInput } from '../components/ChatTextInput';
 import { messages } from '../data/messages';
 import { Proposal } from '../components/Proposal';
+import { messageLimit, responseTime } from '../data/chat';
 
 export const ChatScreen = () => {
   const [data, setData] = React.useState(messages);
@@ -11,8 +12,6 @@ export const ChatScreen = () => {
 
   // TODO: we should remove the mock when we have a backend
   const [messageCounter, setMessageCounter] = React.useState(0);
-  const messageLimit = 2;
-  const responseTime = 2000;
 
   React.useEffect(() => {
     async function showModal() {
