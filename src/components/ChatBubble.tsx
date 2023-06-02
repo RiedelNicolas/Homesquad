@@ -1,10 +1,6 @@
-import React, { useLayoutEffect, useRef } from 'react';
-import { TouchableOpacity, View, StyleSheet, Dimensions } from 'react-native';
+import React from 'react';
+import { View, StyleSheet } from 'react-native';
 import { Text } from 'react-native-paper';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { white } from 'react-native-paper/lib/typescript/src/styles/themes/v2/colors';
-import { commonStyle } from '../utils/style';
-import { useNavigation } from '../utils/navigator';
 
 type ChatBubblePrompts = {
   message: string;

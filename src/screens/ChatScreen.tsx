@@ -1,29 +1,43 @@
 import * as React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
-import { Image } from 'react-native-elements';
+import { TextInput } from 'react-native-paper';
 import { ChatBubble } from '../components/ChatBubble';
 import { commonStyle } from '../utils/style';
-import { LogoImage } from '../assets';
 
 export const ChatScreen = () => {
+  const [text, setText] = React.useState('');
   return (
-    <View>
-      <ChatBubble
-        message={
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
-        }
-        right={true}
-      />
-      <ChatBubble message={'Holis'} right={true} />
-      <ChatBubble message={'Buenardas'} right={false} />
+    <View style={styles.container}>
+      <View style={styles.chatContainer}>
+        <ChatBubble
+          message={
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
+          }
+          right={true}
+        />
+        <ChatBubble message={'Holis'} right={true} />
+        <ChatBubble message={'Buenardas'} right={false} />
+      </View>
+      <View style={styles.inputContainer}>
+        <TextInput
+          placeholder="Escribe un mensaje"
+          value={text}
+          onChangeText={(text) => setText(text)}
+          multiline
+          numberOfLines={3}
+        />
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  screen: {
-    backgroundColor: commonStyle.backgroundColor,
+  container: {
     flex: 1,
-    alignItems: 'center',
+    justifyContent: 'space-between',
   },
+  chatContainer: {
+    flex: 1,
+  },
+  inputContainer: {},
 });
