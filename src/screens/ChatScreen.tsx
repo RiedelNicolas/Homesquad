@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { View, StyleSheet, FlatList } from 'react-native';
+import { View, StyleSheet, FlatList, Text } from 'react-native';
 import { ChatBubble } from '../components/ChatBubble';
 import { ChatTextInput } from '../components/ChatTextInput';
 import { messages } from '../data/messages';
 import { Proposal } from '../components/Proposal';
 import { messageLimit, responseTime } from '../data/chat';
+import { ChatUserInfo } from '../components/ChatUserInfo';
 
 export const ChatScreen = () => {
   const [data, setData] = React.useState(messages);
@@ -29,6 +30,7 @@ export const ChatScreen = () => {
 
   return (
     <View style={styles.container}>
+      <ChatUserInfo />
       <View style={styles.chatContainer}>
         <FlatList
           data={data}
@@ -61,5 +63,12 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     flexDirection: 'row',
+  },
+  professionalNameContainer: {
+    backgroundColor: 'red',
+  },
+  professionalName: {
+    fontSize: 40,
+    paddingLeft: 10,
   },
 });
