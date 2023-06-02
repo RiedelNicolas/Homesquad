@@ -8,7 +8,14 @@ import { LogoImage } from '../assets';
 export const ChatScreen = () => {
   return (
     <View>
-      <ChatBubble />
+      <ChatBubble
+        message={
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
+        }
+        right={true}
+      />
+      <ChatBubble message={'Holis'} right={true} />
+      <ChatBubble message={'Buenardas'} right={false} />
     </View>
   );
 };

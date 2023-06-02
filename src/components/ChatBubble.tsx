@@ -6,13 +6,24 @@ import { white } from 'react-native-paper/lib/typescript/src/styles/themes/v2/co
 import { commonStyle } from '../utils/style';
 import { useNavigation } from '../utils/navigator';
 
-export const ChatBubble = () => {
-  const message = 'Holis';
-  //const message = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ';
+type ChatBubblePrompts = {
+  message: string;
+  right: boolean;
+};
 
+export const ChatBubble = ({ message, right }: ChatBubblePrompts) => {
   return (
-    <View style={styles.chatContainer}>
-      <Text style={styles.chatText}>{message}</Text>
+    <View
+      style={[
+        styles.bubbleUbication,
+        right
+          ? { justifyContent: 'flex-end' }
+          : { justifyContent: 'flex-start' },
+      ]}
+    >
+      <View style={styles.chatContainer}>
+        <Text style={styles.chatText}>{message}</Text>
+      </View>
     </View>
   );
 };
@@ -21,11 +32,19 @@ const styles = StyleSheet.create({
   chatContainer: {
     backgroundColor: '#0f172a',
     color: 'white',
-    maxWidth: '40%',
+    maxWidth: '70%',
     borderRadius: 15,
     paddingHorizontal: 10,
     paddingVertical: 5,
     alignSelf: 'flex-start',
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+  },
+  bubbleUbication: {
+    paddingHorizontal: 10,
+    paddingVertical: 10,
+    flexDirection: 'row',
+    alignItems: 'flex-start',
   },
   chatText: {
     color: 'white',
