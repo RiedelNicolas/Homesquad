@@ -9,6 +9,7 @@ const price = 4700;
 const newMessage1 = 'Dale, yo te ayudo.';
 const newMessage2 = `¿Te parecen bien ${price} pesos?`;
 const responseTime = 2000;
+const messageLimit = 2;
 
 type MessageType = {
   id: string;
@@ -16,19 +17,26 @@ type MessageType = {
   message: string;
 };
 
+// TODO: remove this messageCounter and setMessageCounter when we have a backend
 type ChatTextInputPrompts = {
   setData: React.Dispatch<React.SetStateAction<MessageType[]>>;
+  messageCounter: number;
+  setMessageCounter: React.Dispatch<React.SetStateAction<number>>;
 };
 
-export const ChatTextInput = ({ setData }: ChatTextInputPrompts) => {
+export const ChatTextInput = ({
+  setData,
+  messageCounter,
+  setMessageCounter,
+}: ChatTextInputPrompts) => {
   const [text, setText] = React.useState('');
 
   // TODO: we should remove the mock when we have a backend
-  const [messageCounter, setMessageCounter] = React.useState(0);
+  //const [messageCounter, setMessageCounter] = React.useState(0);
 
   React.useEffect(() => {
     async function recibeMockedMessage() {
-      if (messageCounter === 2) {
+      if (messageCounter === messageLimit) {
         await delay(responseTime);
         sendMessage(newMessage1, 'receiver');
         await delay(responseTime);

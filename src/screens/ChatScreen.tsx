@@ -3,9 +3,30 @@ import { View, StyleSheet, FlatList } from 'react-native';
 import { ChatBubble } from '../components/ChatBubble';
 import { ChatTextInput } from '../components/ChatTextInput';
 import { messages } from '../data/messages';
+import { Proposal } from '../components/Proposal';
 
 export const ChatScreen = () => {
   const [data, setData] = React.useState(messages);
+  const [modalVisible, setModalVisible] = React.useState(false);
+
+  // TODO: we should remove the mock when we have a backend
+  const [messageCounter, setMessageCounter] = React.useState(0);
+  const messageLimit = 2;
+  const responseTime = 2000;
+
+  React.useEffect(() => {
+    async function showModal() {
+      if (messageCounter === messageLimit) {
+        await delay(responseTime * 3);
+        setModalVisible(true);
+      }
+    }
+    showModal().catch((error) => console.log(error));
+  }, [messageCounter]);
+
+  function delay(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
 
   return (
     <View style={styles.container}>
@@ -21,7 +42,12 @@ export const ChatScreen = () => {
           keyExtractor={(item) => item.id}
         />
       </View>
-      <ChatTextInput setData={setData} />
+      <Proposal modalVisible={modalVisible} setModalVisible={setModalVisible} />
+      <ChatTextInput
+        setData={setData}
+        messageCounter={messageCounter} // TODO: remove this mock when we have a backend
+        setMessageCounter={setMessageCounter} // TODO: remove this mock when we have a backend
+      />
     </View>
   );
 };
