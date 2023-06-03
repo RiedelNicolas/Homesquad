@@ -45,7 +45,7 @@ const workersData: Array<WorkerDetails & { id: number }> = [
   },
   {
     name: 'Facundo Luna',
-    location: 'Tero Violado, Santa Fe',
+    location: 'Rosario, Santa Fe',
     deliveryTime: '240 min',
     distance: '450 km',
     image: Architect4Image,
@@ -88,8 +88,6 @@ export const WorkersScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Header label="Architects nearby" />
-
       <Searchbar
         style={styles.searchBar}
         placeholder="Busqueda"

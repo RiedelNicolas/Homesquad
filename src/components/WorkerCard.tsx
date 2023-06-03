@@ -7,7 +7,7 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
-import StarRating from 'react-native-star-rating-widget';
+import { AirbnbRating } from 'react-native-ratings';
 import { useNavigation } from '../utils/navigator';
 import { IconLabel } from './IconLabel';
 
@@ -19,7 +19,7 @@ export type WorkerDetails = {
   deliveryTime: string;
   distance: string;
   image: React.ComponentProps<typeof Image>['source'];
-  rating: React.ComponentProps<typeof StarRating>['rating'];
+  rating: React.ComponentProps<typeof AirbnbRating>['defaultRating'];
   reviewsAmount: number | string;
 };
 
@@ -63,11 +63,16 @@ export const WorkerCard = ({ details }: WorkerCardProps) => {
           </View>
 
           <View style={styles.stars}>
+            <AirbnbRating
+              showRating={false}
+              size={25}
+              isDisabled
+              defaultRating={rating}
+            />
             <View>
-              <StarRating rating={rating} onChange={() => null} />
-            </View>
-            <View>
-              <Text style={{ fontSize: 15 }}>{`(${reviewsAmount})`}</Text>
+              <Text
+                style={{ fontSize: 15, marginLeft: '10%' }}
+              >{`(${reviewsAmount})`}</Text>
             </View>
           </View>
         </View>
@@ -126,6 +131,7 @@ const styles = StyleSheet.create({
   },
   stars: {
     flexDirection: 'row',
+    marginLeft: '2%',
     height: 200,
     flex: 1,
     alignItems: 'center',
