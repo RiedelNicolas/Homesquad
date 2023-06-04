@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { Avatar, Card, Text, IconButton } from 'react-native-paper';
-import { View, StyleSheet, ScrollView } from 'react-native';
+import { View, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { AirbnbRating } from 'react-native-ratings';
+import { useNavigation } from '../utils/navigator';
 import { GasistaImage, UserImage } from '../assets';
 
 const reviews = [
@@ -78,6 +79,7 @@ type ProfessionalProps = {
 };
 
 const Professional = (props: ProfessionalProps) => {
+  const navigation = useNavigation();
   const avgRating =
     reviews.filter((x) => x.rating).reduce((acc, x) => acc + x.rating, 0) /
     reviews.length;
@@ -101,8 +103,25 @@ const Professional = (props: ProfessionalProps) => {
             )}
             onPress={() => console.log('Email button pressed')}
           />
+
           <Text>{props.email}</Text>
         </View>
+
+        <View style={styles.contactInfo}>
+          <TouchableOpacity style={styles.messageButton}>
+            <IconButton
+              icon={({ size, color }) => (
+                <MaterialCommunityIcons
+                  name="message-text-outline"
+                  size={size}
+                  color={color}
+                />
+              )}
+              onPress={() => navigation.navigate('ChatScreen')}
+            />
+          </TouchableOpacity>
+        </View>
+
         <View style={styles.contactInfo}>
           <AirbnbRating
             showRating={false}
@@ -186,5 +205,9 @@ const styles = StyleSheet.create({
   contactInfo: {
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  messageButton: {
+    backgroundColor: '#9DB2BF',
+    borderRadius: 50,
   },
 });
