@@ -4,7 +4,7 @@ import { registerRootComponent } from 'expo';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { CategoriesScreen } from './screens/CategoriesScreen';
-import { ProfileScreen } from './screens/ProfesionalProfile';
+import { ProfileScreen } from './screens/ProfileScreen';
 import { WorkersScreen } from './screens/WorkersScreen';
 import { ChatScreen } from './screens/ChatScreen';
 import { RootStackParamList } from './utils/navigator';

@@ -142,7 +142,12 @@ const Professional = (props: ProfessionalProps) => {
                   color={color}
                 />
               )}
-              onPress={() => navigation.navigate('ChatScreen')}
+              onPress={() =>
+                navigation.navigate('ChatScreen', {
+                  name: props.name,
+                  image: props.image,
+                })
+              }
             />
           </TouchableOpacity>
         </View>

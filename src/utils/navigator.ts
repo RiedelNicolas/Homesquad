@@ -2,13 +2,14 @@ import {
   useNavigation as useNativeNavigation,
   NavigationProp,
 } from '@react-navigation/native';
-import { ProfileScreenProps } from '../screens/ProfesionalProfile';
+import { ProfileScreenProps } from '../screens/ProfileScreen';
+import { ChatScreenProps } from '../screens/ChatScreen';
 
 export type RootStackParamList = {
   ProfileScreen: ProfileScreenProps;
   CategoriesScreen: undefined;
   WorkersScreen: undefined;
-  ChatScreen: undefined;
+  ChatScreen: ChatScreenProps;
 };
 
 export const useNavigation = () => {

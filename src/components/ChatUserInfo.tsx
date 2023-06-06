@@ -1,17 +1,21 @@
 import * as React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Avatar, Card } from 'react-native-paper';
-import { UserImage } from '../assets';
 import { commonStyle } from '../utils/style';
 
-export const ChatUserInfo = () => {
+export type ChatUserInfoProps = {
+  name: string;
+  image: React.ComponentProps<typeof Avatar.Image>['source'];
+};
+
+export const ChatUserInfo = ({ name, image }: ChatUserInfoProps) => {
   return (
     <View>
       <Card style={styles.professionalCard}>
         <Card.Title
-          title={'wuw'}
+          title={name}
           titleStyle={styles.professionalName}
-          left={() => <Avatar.Image size={50} source={UserImage} />}
+          left={() => <Avatar.Image size={50} source={image} />}
         />
       </Card>
     </View>
@@ -25,7 +29,8 @@ const styles = StyleSheet.create({
     alignContent: 'center',
   },
   professionalName: {
-    fontSize: 30,
+    paddingTop: 10,
+    fontSize: 25,
     textAlignVertical: 'center',
   },
   professionalCard: {

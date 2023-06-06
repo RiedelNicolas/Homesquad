@@ -38,7 +38,7 @@ export const ChatTextInput = ({
   //const [messageCounter, setMessageCounter] = React.useState(0);
 
   React.useEffect(() => {
-    async function recibeMockedMessage() {
+    async function receiveMockedMessage() {
       if (messageCounter === messageLimit) {
         await delay(responseTime);
         sendMessage(newMessage1, 'receiver');
@@ -46,7 +46,7 @@ export const ChatTextInput = ({
         sendMessage(newMessage2, 'receiver');
       }
     }
-    recibeMockedMessage().catch((error) => console.log(error));
+    receiveMockedMessage().catch((error) => console.log(error));
   }, [messageCounter]);
 
   // TODO: here ends the mock
