@@ -6,6 +6,7 @@ import { messages } from '../data/messages';
 import { Proposal } from '../components/Proposal';
 import { messageLimit, responseTime } from '../data/chat';
 import { ChatUserInfo } from '../components/ChatUserInfo';
+import { commonStyle } from '../utils/style';
 
 export const ChatScreen = () => {
   const [data, setData] = React.useState(messages);
@@ -65,7 +66,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   professionalNameContainer: {
-    backgroundColor: 'red',
+    backgroundColor: commonStyle.backgroundColor,
   },
   professionalName: {
     fontSize: 40,

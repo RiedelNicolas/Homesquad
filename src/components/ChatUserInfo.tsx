@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { Avatar, Card } from 'react-native-paper';
-import { GasistaImage, UserImage } from '../assets';
+import { UserImage } from '../assets';
+import { commonStyle } from '../utils/style';
 
 export const ChatUserInfo = () => {
   return (
@@ -28,7 +29,7 @@ const styles = StyleSheet.create({
     textAlignVertical: 'center',
   },
   professionalCard: {
-    backgroundColor: 'red',
+    backgroundColor: commonStyle.backgroundColor,
     borderRadius: 0,
   },
 });

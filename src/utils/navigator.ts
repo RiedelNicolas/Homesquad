@@ -2,9 +2,10 @@ import {
   useNavigation as useNativeNavigation,
   NavigationProp,
 } from '@react-navigation/native';
+import { ProfileScreenProps } from '../screens/ProfesionalProfile';
 
 export type RootStackParamList = {
-  ProfileScreen: undefined;
+  ProfileScreen: ProfileScreenProps;
   CategoriesScreen: undefined;
   WorkersScreen: undefined;
   ChatScreen: undefined;

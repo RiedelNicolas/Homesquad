@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, StatusBar, FlatList } from 'react-native';
 import { Searchbar } from 'react-native-paper';
-import { Header } from '../components/Header';
 import { WorkerCard, WorkerDetails } from '../components/WorkerCard';
 
 import {
@@ -20,7 +19,7 @@ const workersData: Array<WorkerDetails & { id: number }> = [
     distance: '3.7 km',
     image: Architect1Image,
     rating: 5,
-    reviewsAmount: 30,
+    reviewsAmount: 7,
     id: 1,
   },
   {
@@ -30,7 +29,7 @@ const workersData: Array<WorkerDetails & { id: number }> = [
     distance: '4.3 km',
     image: Architect2Image,
     rating: 4.5,
-    reviewsAmount: 13,
+    reviewsAmount: 4,
     id: 2,
   },
   {
@@ -40,7 +39,7 @@ const workersData: Array<WorkerDetails & { id: number }> = [
     distance: '3 km',
     image: Architect3Image,
     rating: 4,
-    reviewsAmount: 14,
+    reviewsAmount: 12,
     id: 3,
   },
   {
@@ -50,7 +49,7 @@ const workersData: Array<WorkerDetails & { id: number }> = [
     distance: '450 km',
     image: Architect4Image,
     rating: 5,
-    reviewsAmount: 52,
+    reviewsAmount: 9,
     id: 4,
   },
   {
@@ -60,7 +59,7 @@ const workersData: Array<WorkerDetails & { id: number }> = [
     distance: '3.1 km',
     image: Architect5Image,
     rating: 3.5,
-    reviewsAmount: 17,
+    reviewsAmount: 3,
     id: 5,
   },
 ];

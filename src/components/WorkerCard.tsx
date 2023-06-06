@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { AirbnbRating } from 'react-native-ratings';
 import { useNavigation } from '../utils/navigator';
+import { commonStyle } from '../utils/style';
 import { IconLabel } from './IconLabel';
 
 const iconColor = '#6c5ce7';
@@ -20,7 +21,7 @@ export type WorkerDetails = {
   distance: string;
   image: React.ComponentProps<typeof Image>['source'];
   rating: React.ComponentProps<typeof AirbnbRating>['defaultRating'];
-  reviewsAmount: number | string;
+  reviewsAmount: number;
 };
 
 export type WorkerCardProps = {
@@ -30,7 +31,7 @@ export type WorkerCardProps = {
 export const WorkerCard = ({ details }: WorkerCardProps) => {
   const navigation = useNavigation();
   const onPress = () => {
-    navigation.navigate('ProfileScreen');
+    navigation.navigate('ProfileScreen', { details });
   };
 
   const {
@@ -92,7 +93,7 @@ const styles = StyleSheet.create({
   },
   cardContainer: {
     width: deviceWidth - offset,
-    backgroundColor: '#DDE6ED',
+    backgroundColor: commonStyle.cardColor,
     height: 250,
     borderRadius: radius,
 

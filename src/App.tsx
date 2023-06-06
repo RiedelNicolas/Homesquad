@@ -15,7 +15,10 @@ function App() {
   return (
     <SafeAreaProvider>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName={'CategoriesScreen'}>
+        <Stack.Navigator
+          initialRouteName={'CategoriesScreen'}
+          screenOptions={{ headerShown: false }}
+        >
           <Stack.Screen name="CategoriesScreen" component={CategoriesScreen} />
           <Stack.Screen name="WorkersScreen" component={WorkersScreen} />
           <Stack.Screen name="ProfileScreen" component={ProfileScreen} />

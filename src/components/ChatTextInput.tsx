@@ -12,6 +12,7 @@ import {
   responseTime,
   messageLimit,
 } from '../data/chat';
+import { commonStyle } from '../utils/style';
 
 type MessageType = {
   id: string;
@@ -97,7 +98,7 @@ export const ChatTextInput = ({
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    backgroundColor: 'red',
+    backgroundColor: commonStyle.backgroundColor,
     maxHeight: 70,
   },
   textInput: {
