@@ -1,14 +1,13 @@
 import * as React from 'react';
-import { View, StyleSheet, FlatList, Text, Image } from 'react-native';
+import { View, StyleSheet, FlatList, Image } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { ChatBubble } from '../components/ChatBubble';
-import { ChatTextInput } from '../components/ChatTextInput';
-import { messages as messagesList } from '../data/messages';
-import { Proposal } from '../components/Proposal';
-import { messageLimit, responseTime } from '../data/chat';
+import { ChatTextInput, MessageType } from '../components/ChatTextInput';
 import { ChatUserInfo } from '../components/ChatUserInfo';
 import { commonStyle } from '../utils/style';
 import { RootStackParamList } from '../utils/navigator';
+import { delay, responseTime } from '../data/chat';
+import { messages as professionalMessages } from '../data/messages';
 
 export type ChatScreenProps = {
   name: string;
@@ -20,24 +19,27 @@ export const ChatScreen = ({
 }: NativeStackScreenProps<RootStackParamList, 'ChatScreen'>) => {
   const { name, image } = route.params;
 
-  const [messages, setMessages] = React.useState(messagesList);
-  const [modalVisible, setModalVisible] = React.useState(false);
+  const [messages, setMessages] = React.useState([] as MessageType[]);
 
   // TODO: we should remove the mock when we have a backend
   const [messageCounter, setMessageCounter] = React.useState(0);
 
-  React.useEffect(() => {
-    async function showModal() {
-      if (messageCounter === messageLimit) {
-        await delay(responseTime * 3);
-        setModalVisible(true);
-      }
+  function handleNewMessage(message: string, rol: string) {
+    setMessages((messages) => [
+      ...messages,
+      { id: (messages.length + 1).toString(), rol, message },
+    ]);
+    if (rol === 'sender') {
+      delay(responseTime)
+        .then(() => {
+          handleNewMessage(
+            professionalMessages[messageCounter].message,
+            'receiver'
+          );
+          setMessageCounter(messageCounter + 1);
+        })
+        .catch((err) => console.log(err));
     }
-    showModal().catch((error) => console.log(error));
-  }, [messageCounter]);
-
-  function delay(ms: number) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
   return (
@@ -47,20 +49,12 @@ export const ChatScreen = ({
         <FlatList
           data={messages}
           renderItem={({ item }) => (
-            <ChatBubble
-              message={item.message}
-              right={item.rol === 'sender' ? true : false}
-            />
+            <ChatBubble message={item.message} right={item.rol === 'sender'} />
           )}
           keyExtractor={(item) => item.id}
         />
       </View>
-      <Proposal modalVisible={modalVisible} setModalVisible={setModalVisible} />
-      <ChatTextInput
-        setData={setMessages}
-        messageCounter={messageCounter} // TODO: remove this mock when we have a backend
-        setMessageCounter={setMessageCounter} // TODO: remove this mock when we have a backend
-      />
+      <ChatTextInput handleNewMessage={handleNewMessage} />
     </View>
   );
 };

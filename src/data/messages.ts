@@ -1,24 +1,24 @@
 export const messages = [
-  {
-    id: '1',
-    rol: 'sender',
-    message: 'Hola, necesito un gasista para mi casa',
-  },
+  // {
+  //   id: '1',
+  //   rol: 'sender',
+  //   message: 'Hola, necesito un gasista para mi casa',
+  // },
   {
     id: '2',
     rol: 'receiver',
     message: 'Hola, te puedo ayudar',
   },
-  {
-    id: '3',
-    rol: 'sender',
-    message: 'Me encantaría, ¿cuánto cobras?',
-  },
   // {
-  //   id: '4',
-  //   rol: 'receiver',
-  //   message: '1000 pesos',
+  //   id: '3',
+  //   rol: 'sender',
+  //   message: 'Me encantaría, ¿cuánto cobras?',
   // },
+  {
+    id: '4',
+    rol: 'receiver',
+    message: '12000 pesos',
+  },
   // {
   //   id: '5',
   //   rol: 'receiver',

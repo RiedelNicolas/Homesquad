@@ -3,65 +3,25 @@ import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import { TextInput } from 'react-native-paper';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-// TODO: remove this mock when we have a backend
-import { messages } from '../data/messages';
-import {
-  delay,
-  newMessage1,
-  newMessage2,
-  responseTime,
-  messageLimit,
-} from '../data/chat';
 import { commonStyle } from '../utils/style';
 
-type MessageType = {
+export type MessageType = {
   id: string;
   rol: string;
   message: string;
 };
 
-// TODO: remove this messageCounter and setMessageCounter when we have a backend
 type ChatTextInputPrompts = {
-  setData: React.Dispatch<React.SetStateAction<MessageType[]>>;
-  messageCounter: number;
-  setMessageCounter: React.Dispatch<React.SetStateAction<number>>;
+  handleNewMessage: (message: string, rol: string) => void;
 };
 
-export const ChatTextInput = ({
-  setData,
-  messageCounter,
-  setMessageCounter,
-}: ChatTextInputPrompts) => {
+export const ChatTextInput = ({ handleNewMessage }: ChatTextInputPrompts) => {
   const [text, setText] = React.useState('');
 
-  // TODO: we should remove the mock when we have a backend
-  //const [messageCounter, setMessageCounter] = React.useState(0);
-
-  React.useEffect(() => {
-    async function receiveMockedMessage() {
-      if (messageCounter === messageLimit) {
-        await delay(responseTime);
-        sendMessage(newMessage1, 'receiver');
-        await delay(responseTime);
-        sendMessage(newMessage2, 'receiver');
-      }
-    }
-    receiveMockedMessage().catch((error) => console.log(error));
-  }, [messageCounter]);
-
-  // TODO: here ends the mock
-
-  function sendMessage(text: string, rol: string) {
+  function sendMessage(text: string) {
     if (text.trim().length > 0) {
-      messages.push({
-        id: (messages.length + 1).toString(),
-        rol: rol,
-        message: text,
-      });
+      handleNewMessage(text, 'sender');
       setText('');
-      const newData = [...messages];
-      setData(newData);
-      setMessageCounter(messageCounter + 1);
     }
   }
 
@@ -86,7 +46,7 @@ export const ChatTextInput = ({
       <View style={styles.sendButtonContainer}>
         <TouchableOpacity
           style={{ alignSelf: 'center' }}
-          onPress={() => sendMessage(text, 'sender')}
+          onPress={() => sendMessage(text)}
         >
           <MaterialCommunityIcons name={'send'} size={40} />
         </TouchableOpacity>
