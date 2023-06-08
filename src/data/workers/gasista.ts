@@ -29,7 +29,8 @@ export const gasistaData: Array<WorkerDetailsWithId> = [
     rating: 4.5,
     reviewsAmount: 4,
     id: 2,
-    description: 'Soy tu futura mano derecha para todo lo que necesites.',
+    description:
+      '¡Hola!, soy Carlitos, me apasiona el mundo del Gas, y me encanta ayudar a las personas a resolver sus problemas. Si necesitas un gasista matriculado, no dudes en contactarme.',
   },
   {
     name: 'Martín Morales',
@@ -40,7 +41,8 @@ export const gasistaData: Array<WorkerDetailsWithId> = [
     rating: 4,
     reviewsAmount: 12,
     id: 3,
-    description: 'Soy tu futura mano derecha para todo lo que necesites.',
+    description:
+      '¡Hola!, soy Martín, mi creencia es que el cliente es lo primero, y me esfuerzo por brindar un servicio de calidad. Si necesitas un gasista matriculado, no dudes en contactarme.',
   },
   {
     name: 'Facundo Luna',
@@ -51,7 +53,8 @@ export const gasistaData: Array<WorkerDetailsWithId> = [
     rating: 5,
     reviewsAmount: 9,
     id: 4,
-    description: 'Soy tu futura mano derecha para todo lo que necesites.',
+    description:
+      '¡Hola!, soy Facundo, a veces las cosas se rompen, y cuando eso sucede, estoy aquí para ayudarte. Si necesitas un gasista matriculado, no dudes en contactarme.',
   },
   {
     name: 'Ignacio Castro',
@@ -62,6 +65,7 @@ export const gasistaData: Array<WorkerDetailsWithId> = [
     rating: 3.5,
     reviewsAmount: 3,
     id: 5,
-    description: 'Soy tu futura mano derecha para todo lo que necesites.',
+    description:
+      '¡Hola!, soy Ignacio, alguna vez te preguntaste ¿qué pasaría si no tuvieras gas? Yo sí, y por eso me dedico a ayudar a las personas a resolver sus problemas. Si necesitas un gasista matriculado, no dudes en contactarme.',
   },
 ];

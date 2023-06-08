@@ -17,7 +17,8 @@ export const limpiezaData: Array<WorkerDetailsWithId> = [
     rating: 5,
     reviewsAmount: 7,
     id: 1,
-    description: 'Soy tu futura mano derecha para todo lo que necesites.',
+    description:
+      '¡Hola! Soy Juan, un profesional de la limpieza. A lo largo de los años he aprendido a dejar todo impecable. Si necesitas ayuda con la tuya, ¡no dudes en contactarme!',
   },
   {
     name: 'Carlitos Sanchez',
@@ -28,7 +29,8 @@ export const limpiezaData: Array<WorkerDetailsWithId> = [
     rating: 4.5,
     reviewsAmount: 4,
     id: 2,
-    description: 'Soy tu futura mano derecha para todo lo que necesites.',
+    description:
+      '¡Hola! Soy Carlitos, el asesino de la suciedad. Cuando el polvo aparece, yo lo hago desaparecer. Si necesitas ayuda con la tuya, ¡no dudes en contactarme!',
   },
   {
     name: 'Martín Morales',
@@ -39,7 +41,8 @@ export const limpiezaData: Array<WorkerDetailsWithId> = [
     rating: 4,
     reviewsAmount: 12,
     id: 3,
-    description: 'Soy tu futura mano derecha para todo lo que necesites.',
+    description:
+      '¡Hola! Soy Martin, me dicen el "Rey de la limpieza" porque me encanta dejar todo impecable. Si necesitas ayuda con la tuya, ¡no dudes en contactarme!',
   },
   {
     name: 'Facundo Luna',
@@ -50,7 +53,8 @@ export const limpiezaData: Array<WorkerDetailsWithId> = [
     rating: 5,
     reviewsAmount: 9,
     id: 4,
-    description: 'Soy tu futura mano derecha para todo lo que necesites.',
+    description:
+      '¡Hola!, Cuantas veces te paso que no tenes tiempo para limpiar tu casa, y cuando llegas del trabajo, no tenes ganas de hacerlo. Bueno, yo te puedo ayudar con eso. Si necesitas ayuda con la tuya, ¡no dudes en contactarme!',
   },
   {
     name: 'Ignacio Castro',
@@ -61,6 +65,7 @@ export const limpiezaData: Array<WorkerDetailsWithId> = [
     rating: 3.5,
     reviewsAmount: 3,
     id: 5,
-    description: 'Soy tu futura mano derecha para todo lo que necesites.',
+    description:
+      'La limpieza es mi pasión. A veces me dicen que soy un poco obsesivo, pero yo creo que es mejor así. Si necesitas ayuda con la tuya, ¡no dudes en contactarme!',
   },
 ];
