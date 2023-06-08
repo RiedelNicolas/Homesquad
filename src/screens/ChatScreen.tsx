@@ -2,12 +2,20 @@ import * as React from 'react';
 import { View, StyleSheet, FlatList, Image } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { ChatBubble } from '../components/ChatBubble';
-import { ChatTextInput, MessageType } from '../components/ChatTextInput';
+import { ChatTextInput } from '../components/ChatTextInput';
 import { ChatUserInfo } from '../components/ChatUserInfo';
 import { commonStyle } from '../utils/style';
 import { RootStackParamList } from '../utils/navigator';
 import { delay, responseTime } from '../data/chat';
 import { messages as professionalMessages } from '../data/messages';
+import { OfferBubble } from '../components/OfferBubble';
+
+type MessageType = {
+  id: string;
+  rol: string;
+  message: string;
+  isOffer: boolean;
+};
 
 export type ChatScreenProps = {
   name: string;
@@ -24,17 +32,18 @@ export const ChatScreen = ({
   // TODO: we should remove the mock when we have a backend
   const [messageCounter, setMessageCounter] = React.useState(0);
 
-  function handleNewMessage(message: string, rol: string) {
+  function handleNewMessage(message: string, rol: string, isOffer = false) {
     setMessages((messages) => [
       ...messages,
-      { id: (messages.length + 1).toString(), rol, message },
+      { id: (messages.length + 1).toString(), rol, message, isOffer },
     ]);
     if (rol === 'sender') {
       delay(responseTime)
         .then(() => {
           handleNewMessage(
             professionalMessages[messageCounter].message,
-            'receiver'
+            'receiver',
+            professionalMessages[messageCounter].isOffer
           );
           setMessageCounter(messageCounter + 1);
         })
@@ -48,9 +57,16 @@ export const ChatScreen = ({
       <View style={styles.chatContainer}>
         <FlatList
           data={messages}
-          renderItem={({ item }) => (
-            <ChatBubble message={item.message} right={item.rol === 'sender'} />
-          )}
+          renderItem={({ item }) =>
+            item.isOffer ? (
+              <OfferBubble price={200} />
+            ) : (
+              <ChatBubble
+                message={item.message}
+                right={item.rol === 'sender'}
+              />
+            )
+          }
           keyExtractor={(item) => item.id}
         />
       </View>

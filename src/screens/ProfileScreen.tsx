@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Avatar, Card, Text, IconButton } from 'react-native-paper';
+import { Avatar, Card, Text, IconButton, Button } from 'react-native-paper';
 import {
   View,
   StyleSheet,
@@ -115,6 +115,20 @@ const Professional = (props: ProfessionalProps) => {
       <Card.Content style={styles.professionalCard}>
         <Avatar.Image size={150} source={props.image} />
         <Text variant="titleLarge">{props.name}</Text>
+
+        <View style={styles.basicInfo}>
+          <AirbnbRating
+            showRating={false}
+            size={30}
+            isDisabled
+            defaultRating={props.rating}
+          />
+          <Text variant="bodyMedium">({props.reviewsAmount})</Text>
+        </View>
+        <Text style={styles.professionalDescription} variant="bodyMedium">
+          {props.description}
+        </Text>
+
         <View style={styles.contactInfo}>
           <IconButton
             icon={({ size, color }) => (
@@ -132,36 +146,22 @@ const Professional = (props: ProfessionalProps) => {
           <Text>{props.email}</Text>
         </View>
 
-        <View style={styles.contactInfo}>
-          <TouchableOpacity style={styles.messageButton}>
-            <IconButton
-              icon={({ size, color }) => (
-                <MaterialCommunityIcons
-                  name="message-text-outline"
-                  size={size}
-                  color={color}
-                />
-              )}
-              onPress={() =>
-                navigation.navigate('ChatScreen', {
-                  name: props.name,
-                  image: props.image,
-                })
-              }
-            />
-          </TouchableOpacity>
-        </View>
-
-        <View style={styles.contactInfo}>
-          <AirbnbRating
-            showRating={false}
-            size={30}
-            isDisabled
-            defaultRating={props.rating}
+        <Button
+          style={styles.contactButton}
+          onPress={() =>
+            navigation.navigate('ChatScreen', {
+              name: props.name,
+              image: props.image,
+            })
+          }
+        >
+          <MaterialCommunityIcons
+            name="message-text-outline"
+            size={20}
+            color={commonStyle.textColor}
           />
-          <Text variant="bodyMedium">({props.reviewsAmount})</Text>
-        </View>
-        <Text variant="bodyMedium">{props.description}</Text>
+          <Text>Contacta al profesional</Text>
+        </Button>
       </Card.Content>
     </Card>
   );
@@ -246,13 +246,30 @@ const styles = StyleSheet.create({
     backgroundColor: commonStyle.backgroundColor,
     paddingTop: 20,
   },
+  professionalDescription: {
+    backgroundColor: commonStyle.shadeColor,
+    borderRadius: 10,
+    padding: 10,
+  },
   reviewCard: {
     margin: 10,
-    backgroundColor: commonStyle.cardColor,
+    backgroundColor: commonStyle.secondaryColor,
   },
   contactInfo: {
     flexDirection: 'row',
     alignItems: 'center',
+    marginVertical: 5,
+  },
+  contactButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: '50%',
+    backgroundColor: commonStyle.primaryColor,
+  },
+  basicInfo: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginVertical: 15,
   },
   messageButton: {
     backgroundColor: commonStyle.cardColor,

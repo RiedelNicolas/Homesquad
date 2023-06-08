@@ -1,13 +1,14 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Text } from 'react-native-paper';
+import { commonStyle } from '../utils/style';
 
-type ChatBubblePrompts = {
+type ChatBubbleProps = {
   message: string;
   right: boolean;
 };
 
-export const ChatBubble = ({ message, right }: ChatBubblePrompts) => {
+export const ChatBubble = ({ message, right }: ChatBubbleProps) => {
   return (
     <View
       style={[
@@ -26,7 +27,7 @@ export const ChatBubble = ({ message, right }: ChatBubblePrompts) => {
 
 const styles = StyleSheet.create({
   chatContainer: {
-    backgroundColor: '#0f172a',
+    backgroundColor: commonStyle.secondaryColor,
     color: 'white',
     maxWidth: '70%',
     borderRadius: 15,

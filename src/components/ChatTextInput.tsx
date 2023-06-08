@@ -5,12 +5,6 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import { commonStyle } from '../utils/style';
 
-export type MessageType = {
-  id: string;
-  rol: string;
-  message: string;
-};
-
 type ChatTextInputPrompts = {
   handleNewMessage: (message: string, rol: string) => void;
 };

@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   categoryIcon: {
-    backgroundColor: '#0f172a',
+    backgroundColor: commonStyle.secondaryColor,
     width: 80,
     height: categorySize,
     borderRadius: categorySize / 2,
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   categoryText: {
-    color: '#0f172a',
+    color: commonStyle.textColor,
     fontSize: 18,
     alignSelf: 'center',
     textAlign: 'center',

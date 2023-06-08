@@ -12,8 +12,6 @@ import { useNavigation } from '../utils/navigator';
 import { commonStyle } from '../utils/style';
 import { IconLabel } from './IconLabel';
 
-const iconColor = '#6c5ce7';
-
 export type WorkerDetails = {
   name: string;
   location: string;
@@ -51,15 +49,11 @@ export const WorkerCard = ({ details }: WorkerCardProps) => {
           <Image style={styles.imageStyle} source={image} />
           <View style={styles.infoStyle}>
             <Text style={styles.titleStyle}>{name}</Text>
-            <Text style={styles.categoryStyle}>{location}</Text>
+            <Text style={styles.locationStyle}>{location}</Text>
 
             <View style={styles.iconLabelStyle}>
-              <IconLabel
-                name="ios-time"
-                label={deliveryTime}
-                color={iconColor}
-              />
-              <IconLabel name="ios-pin" label={distance} color={iconColor} />
+              <IconLabel name="ios-time" label={deliveryTime} color={'black'} />
+              <IconLabel name="ios-pin" label={distance} color={'black'} />
             </View>
           </View>
 
@@ -89,11 +83,11 @@ const styles = StyleSheet.create({
   container: {
     width: deviceWidth - 20,
     alignItems: 'center',
-    marginTop: 25,
+    marginVertical: 20,
   },
   cardContainer: {
     width: deviceWidth - offset,
-    backgroundColor: commonStyle.cardColor,
+    backgroundColor: commonStyle.secondaryColor,
     height: 250,
     borderRadius: radius,
 
@@ -118,9 +112,11 @@ const styles = StyleSheet.create({
   titleStyle: {
     fontSize: 20,
     fontWeight: '800',
+    color: commonStyle.textColor,
   },
-  categoryStyle: {
-    fontWeight: '200',
+  locationStyle: {
+    fontWeight: '500',
+    color: commonStyle.textColor,
   },
   infoStyle: {
     marginHorizontal: 10,

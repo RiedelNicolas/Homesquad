@@ -10,6 +10,7 @@ import {
   Architect4Image,
   Architect5Image,
 } from '../assets';
+import { commonStyle } from '../utils/style';
 
 const workersData: Array<WorkerDetails & { id: number }> = [
   {
@@ -114,11 +115,13 @@ export const WorkersScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#9DB2BF',
+    backgroundColor: commonStyle.backgroundColor,
     alignItems: 'center',
   },
   searchBar: {
-    borderBottomEndRadius: 20,
-    borderBottomStartRadius: 20,
+    marginHorizontal: 15,
+    marginTop: 15,
+    borderRadius: 20,
+    backgroundColor: commonStyle.shadeColor,
   },
 });

@@ -8,6 +8,7 @@ export const messages = [
     id: '2',
     rol: 'receiver',
     message: 'Hola, te puedo ayudar',
+    isOffer: false,
   },
   // {
   //   id: '3',
@@ -18,6 +19,7 @@ export const messages = [
     id: '4',
     rol: 'receiver',
     message: '12000 pesos',
+    isOffer: true,
   },
   // {
   //   id: '5',
