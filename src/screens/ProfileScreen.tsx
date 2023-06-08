@@ -135,7 +135,7 @@ const Professional = ({
                 location: '',
                 rating: workerDetails.rating,
                 reviewsAmount: workerDetails.reviewsAmount,
-                description: 'asd',
+                description: workerDetails.description,
               },
             })
           }
