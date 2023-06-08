@@ -123,7 +123,7 @@ const Professional = ({
           {description}
         </Text>
 
-        <View style={styles.contactInfo}>
+        {/* <View style={styles.contactInfo}>
           <IconButton
             icon={({ size, color }) => (
               <MaterialCommunityIcons name="phone" size={size} color={color} />
@@ -140,7 +140,7 @@ const Professional = ({
           <Text>
             {workerDetails.name.replace(' ', '.').toLowerCase() + '@gmail.com'}
           </Text>
-        </View>
+        </View> */}
 
         <Button
           style={styles.contactButton}
@@ -255,10 +255,10 @@ const styles = StyleSheet.create({
     marginVertical: 5,
   },
   contactButton: {
+    marginTop: 20,
     flexDirection: 'row',
     alignItems: 'center',
-    width: '50%',
-    backgroundColor: commonStyle.primaryColor,
+    backgroundColor: commonStyle.secondaryColor,
   },
   basicInfo: {
     flexDirection: 'row',
