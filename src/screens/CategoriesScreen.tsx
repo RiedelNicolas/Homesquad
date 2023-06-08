@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, StatusBar } from 'react-native';
 import { Image } from 'react-native-elements';
 import { CategoriesList } from '../components/CategoriesList';
 import { commonStyle } from '../utils/style';
@@ -8,6 +8,7 @@ import { LogoImage } from '../assets';
 export const CategoriesScreen = () => {
   return (
     <View style={styles.screen}>
+      <StatusBar barStyle="light-content" />
       <Image style={styles.imageStyle} source={LogoImage} />
       <CategoriesList />
     </View>

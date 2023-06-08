@@ -33,6 +33,18 @@ export const WorkersScreen = ({
 
   return (
     <View style={styles.container}>
+      <StatusBar barStyle="light-content" />
+
+      <FlatList
+        style={styles.workersList}
+        data={workers}
+        renderItem={({ item }) => {
+          return <WorkerCard details={item} isHired={false} />;
+        }}
+        keyExtractor={(worker) => worker.id.toString()}
+        showsVerticalScrollIndicator={false}
+      />
+
       <Searchbar
         style={styles.searchBar}
         placeholder="Busqueda"
@@ -41,17 +53,6 @@ export const WorkersScreen = ({
         value={search}
         mode="view"
         showDivider={false}
-      />
-
-      <StatusBar barStyle="dark-content" />
-
-      <FlatList
-        data={workers}
-        renderItem={({ item }) => {
-          return <WorkerCard details={item} isHired={false} />;
-        }}
-        keyExtractor={(worker) => worker.id.toString()}
-        showsVerticalScrollIndicator={false}
       />
     </View>
   );
@@ -63,10 +64,18 @@ const styles = StyleSheet.create({
     backgroundColor: commonStyle.backgroundColor,
     alignItems: 'center',
   },
+  workersList: {
+    paddingTop: 80,
+  },
   searchBar: {
-    marginHorizontal: 15,
-    marginTop: 15,
-    borderRadius: 20,
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    elevation: 4, // Add elevation to make the search bar hover
     backgroundColor: commonStyle.shadeColor,
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20,
+    marginHorizontal: 20,
   },
 });
