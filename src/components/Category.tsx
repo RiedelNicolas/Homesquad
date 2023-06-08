@@ -4,6 +4,7 @@ import { Text } from 'react-native-paper';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { commonStyle } from '../utils/style';
 import { RootStackParamList, useNavigation } from '../utils/navigator';
+import { WorkersData } from '../data/workers';
 
 export type CategoryProps = {
   name: string;
@@ -13,7 +14,7 @@ export type CategoryProps = {
 export const Category = ({ name, icon }: CategoryProps) => {
   const navigation = useNavigation<RootStackParamList>();
   const onPress = () => {
-    navigation.navigate('WorkersScreen');
+    navigation.navigate('WorkersScreen', WorkersData[name]);
   };
 
   return (

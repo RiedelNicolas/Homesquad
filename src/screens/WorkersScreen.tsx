@@ -1,72 +1,16 @@
 import React, { useState } from 'react';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { StyleSheet, View, StatusBar, FlatList } from 'react-native';
 import { Searchbar } from 'react-native-paper';
 import { WorkerCard } from '../components/WorkerCard';
-
-import {
-  Architect1Image,
-  Architect2Image,
-  Architect3Image,
-  Architect4Image,
-  Architect5Image,
-} from '../assets';
 import { commonStyle } from '../utils/style';
 import { WorkerDetails } from '../data/worker-details';
+import { RootStackParamList } from '../utils/navigator';
 
-const workersData: Array<WorkerDetails & { id: number }> = [
-  {
-    name: 'Juan Fernandez',
-    location: 'San Telmo, CABA',
-    deliveryTime: '35 min',
-    distance: '3.7 km',
-    image: Architect1Image,
-    rating: 5,
-    reviewsAmount: 7,
-    id: 1,
-  },
-  {
-    name: 'Carlitos Sanchez',
-    location: 'Haedo, Buenos Aires',
-    deliveryTime: '45 min',
-    distance: '4.3 km',
-    image: Architect2Image,
-    rating: 4.5,
-    reviewsAmount: 4,
-    id: 2,
-  },
-  {
-    name: 'Martín Morales',
-    location: 'Ballester, Buenos Aires',
-    deliveryTime: '25 min',
-    distance: '3 km',
-    image: Architect3Image,
-    rating: 4,
-    reviewsAmount: 12,
-    id: 3,
-  },
-  {
-    name: 'Facundo Luna',
-    location: 'Rosario, Santa Fe',
-    deliveryTime: '240 min',
-    distance: '450 km',
-    image: Architect4Image,
-    rating: 5,
-    reviewsAmount: 9,
-    id: 4,
-  },
-  {
-    name: 'Ignacio Castro',
-    location: 'Vicente Lopez, Buenos Aires',
-    deliveryTime: '25 min',
-    distance: '3.1 km',
-    image: Architect5Image,
-    rating: 3.5,
-    reviewsAmount: 3,
-    id: 5,
-  },
-];
-
-export const WorkersScreen = () => {
+export const WorkersScreen = ({
+  route,
+}: NativeStackScreenProps<RootStackParamList, 'WorkersScreen'>) => {
+  const workersData = route.params;
   const [search, setSearch] = useState('');
   const [workers, setWorkers] = useState([...workersData]);
 
