@@ -124,7 +124,6 @@ const styles = StyleSheet.create({
   cardContainer: {
     width: deviceWidth - offset,
     backgroundColor: commonStyle.secondaryColor,
-    height: 250,
     borderRadius: radius,
 
     shadowColor: '#000',
@@ -165,7 +164,7 @@ const styles = StyleSheet.create({
   stars: {
     flexDirection: 'row',
     marginLeft: '2%',
-    height: 200,
+    marginBottom: 4,
     flex: 1,
     alignItems: 'center',
   },
