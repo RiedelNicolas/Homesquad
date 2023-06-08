@@ -4,9 +4,10 @@ import { Button, Text } from 'react-native-paper';
 
 type OfferBubleProps = {
   price: number;
+  handleWorkerHire: () => void;
 };
 
-export const OfferBubble = ({ price }: OfferBubleProps) => {
+export const OfferBubble = ({ price, handleWorkerHire }: OfferBubleProps) => {
   return (
     <View style={[styles.bubbleUbication, { justifyContent: 'flex-start' }]}>
       <View style={styles.chatContainer}>
@@ -14,9 +15,7 @@ export const OfferBubble = ({ price }: OfferBubleProps) => {
         <Button
           style={styles.acceptButton}
           textColor="white"
-          onPress={() => {
-            console.log('Aceptado');
-          }}
+          onPress={() => handleWorkerHire()}
         >
           Aceptar
         </Button>

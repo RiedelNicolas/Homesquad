@@ -1,18 +1,12 @@
 import * as React from 'react';
 import { Avatar, Card, Text, IconButton, Button } from 'react-native-paper';
-import {
-  View,
-  StyleSheet,
-  ScrollView,
-  TouchableOpacity,
-  Image,
-} from 'react-native';
+import { View, StyleSheet, ScrollView } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { AirbnbRating } from 'react-native-ratings';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList, useNavigation } from '../utils/navigator';
 import { UserImage } from '../assets';
-import { WorkerDetails } from '../components/WorkerCard';
+import { WorkerDetails } from '../data/worker-details';
 import { commonStyle } from '../utils/style';
 
 const reviews = [
@@ -99,34 +93,34 @@ const professional = {
 };
 
 type ProfessionalProps = {
-  name: string;
-  phone: string;
-  email: string;
+  workerDetails: WorkerDetails;
   description: string;
-  image: React.ComponentProps<typeof Image>['source'];
-  rating: number;
-  reviewsAmount: number;
+  phone: string;
 };
 
-const Professional = (props: ProfessionalProps) => {
-  const navigation = useNavigation();
+const Professional = ({
+  workerDetails,
+  description,
+  phone,
+}: ProfessionalProps) => {
+  const navigation = useNavigation<RootStackParamList>();
   return (
     <Card>
       <Card.Content style={styles.professionalCard}>
-        <Avatar.Image size={150} source={props.image} />
-        <Text variant="titleLarge">{props.name}</Text>
+        <Avatar.Image size={150} source={workerDetails.image} />
+        <Text variant="titleLarge">{workerDetails.name}</Text>
 
         <View style={styles.basicInfo}>
           <AirbnbRating
             showRating={false}
             size={30}
             isDisabled
-            defaultRating={props.rating}
+            defaultRating={workerDetails.rating}
           />
-          <Text variant="bodyMedium">({props.reviewsAmount})</Text>
+          <Text variant="bodyMedium">({workerDetails.reviewsAmount})</Text>
         </View>
         <Text style={styles.professionalDescription} variant="bodyMedium">
-          {props.description}
+          {description}
         </Text>
 
         <View style={styles.contactInfo}>
@@ -135,7 +129,7 @@ const Professional = (props: ProfessionalProps) => {
               <MaterialCommunityIcons name="phone" size={size} color={color} />
             )}
           />
-          <Text style={{ marginRight: 10 }}>{props.phone}</Text>
+          <Text style={{ marginRight: 10 }}>{phone}</Text>
 
           <IconButton
             icon={({ size, color }) => (
@@ -143,15 +137,24 @@ const Professional = (props: ProfessionalProps) => {
             )}
           />
 
-          <Text>{props.email}</Text>
+          <Text>
+            {workerDetails.name.replace(' ', '.').toLowerCase() + '@gmail.com'}
+          </Text>
         </View>
 
         <Button
           style={styles.contactButton}
           onPress={() =>
             navigation.navigate('ChatScreen', {
-              name: props.name,
-              image: props.image,
+              workerDetails: {
+                name: workerDetails.name,
+                distance: '',
+                image: workerDetails.image,
+                deliveryTime: '',
+                location: '',
+                rating: workerDetails.rating,
+                reviewsAmount: workerDetails.reviewsAmount,
+              },
             })
           }
         >
@@ -206,22 +209,18 @@ export type ProfileScreenProps = {
 export const ProfileScreen = ({
   route,
 }: NativeStackScreenProps<RootStackParamList, 'ProfileScreen'>) => {
-  const { name, image, reviewsAmount, rating } = route.params.details;
+  const details = route.params.details;
 
   return (
     <ScrollView style={styles.container}>
       <Professional
-        name={name}
+        workerDetails={details}
         phone={professional.phone}
-        email={name.replace(' ', '.').toLowerCase() + '@gmail.com'}
         description={professional.description}
-        image={image}
-        rating={rating}
-        reviewsAmount={reviewsAmount}
       />
       {reviews
         .sort(() => Math.random() - 0.5)
-        .slice(0, reviewsAmount)
+        .slice(0, details.reviewsAmount)
         .map((review, idx) => {
           return (
             <Review

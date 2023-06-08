@@ -8,26 +8,20 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { AirbnbRating } from 'react-native-ratings';
-import { useNavigation } from '../utils/navigator';
+import { IconButton } from 'react-native-paper';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { RootStackParamList, useNavigation } from '../utils/navigator';
 import { commonStyle } from '../utils/style';
+import { WorkerDetails } from '../data/worker-details';
 import { IconLabel } from './IconLabel';
-
-export type WorkerDetails = {
-  name: string;
-  location: string;
-  deliveryTime: string;
-  distance: string;
-  image: React.ComponentProps<typeof Image>['source'];
-  rating: React.ComponentProps<typeof AirbnbRating>['defaultRating'];
-  reviewsAmount: number;
-};
 
 export type WorkerCardProps = {
   details: WorkerDetails;
+  isHired: boolean;
 };
 
-export const WorkerCard = ({ details }: WorkerCardProps) => {
-  const navigation = useNavigation();
+export const WorkerCard = ({ details, isHired }: WorkerCardProps) => {
+  const navigation = useNavigation<RootStackParamList>();
   const onPress = () => {
     navigation.navigate('ProfileScreen', { details });
   };
@@ -49,27 +43,68 @@ export const WorkerCard = ({ details }: WorkerCardProps) => {
           <Image style={styles.imageStyle} source={image} />
           <View style={styles.infoStyle}>
             <Text style={styles.titleStyle}>{name}</Text>
-            <Text style={styles.locationStyle}>{location}</Text>
+            {!isHired ? (
+              <>
+                <Text style={styles.locationStyle}>{location}</Text>
+                <View style={styles.iconLabelStyle}>
+                  <IconLabel
+                    name="ios-time"
+                    label={deliveryTime}
+                    color={'black'}
+                  />
+                  <IconLabel name="ios-pin" label={distance} color={'black'} />
+                </View>
+              </>
+            ) : (
+              <View style={styles.contactInfo}>
+                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                  <IconButton
+                    icon={({ size, color }) => (
+                      <MaterialCommunityIcons
+                        name="phone"
+                        size={size}
+                        color={color}
+                      />
+                    )}
+                  />
+                  <Text style={{ marginRight: 10 }}>{'(11) 2344-5566'}</Text>
+                </View>
 
-            <View style={styles.iconLabelStyle}>
-              <IconLabel name="ios-time" label={deliveryTime} color={'black'} />
-              <IconLabel name="ios-pin" label={distance} color={'black'} />
-            </View>
+                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                  <IconButton
+                    icon={({ size, color }) => (
+                      <MaterialCommunityIcons
+                        name="email"
+                        size={size}
+                        color={color}
+                      />
+                    )}
+                  />
+
+                  <Text>
+                    {details.name.replace(' ', '.').toLowerCase() +
+                      '@gmail.com'}
+                  </Text>
+                </View>
+              </View>
+            )}
           </View>
 
-          <View style={styles.stars}>
-            <AirbnbRating
-              showRating={false}
-              size={25}
-              isDisabled
-              defaultRating={rating}
-            />
-            <View>
-              <Text
-                style={{ fontSize: 15, marginLeft: '10%' }}
-              >{`(${reviewsAmount})`}</Text>
+          {!isHired && (
+            <View style={styles.stars}>
+              <AirbnbRating
+                showRating={false}
+                size={25}
+                isDisabled
+                defaultRating={rating}
+              />
+              <View>
+                <Text
+                  style={{ fontSize: 15, marginLeft: '10%' }}
+                >{`(${reviewsAmount})`}</Text>
+              </View>
             </View>
-          </View>
+          )}
         </View>
       </TouchableOpacity>
     </View>
@@ -132,5 +167,10 @@ const styles = StyleSheet.create({
     height: 200,
     flex: 1,
     alignItems: 'center',
+  },
+  contactInfo: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    height: 10,
   },
 });

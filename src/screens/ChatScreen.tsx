@@ -5,10 +5,15 @@ import { ChatBubble } from '../components/ChatBubble';
 import { ChatTextInput } from '../components/ChatTextInput';
 import { ChatUserInfo } from '../components/ChatUserInfo';
 import { commonStyle } from '../utils/style';
-import { RootStackParamList } from '../utils/navigator';
+import { RootStackParamList, useNavigation } from '../utils/navigator';
 import { delay, responseTime } from '../data/chat';
 import { messages as professionalMessages } from '../data/messages';
 import { OfferBubble } from '../components/OfferBubble';
+import {
+  HiredWorkersContext,
+  HiredWorkersContextType,
+} from '../contexts/hired-workers.context';
+import { WorkerDetails } from '../data/worker-details';
 
 type MessageType = {
   id: string;
@@ -18,16 +23,18 @@ type MessageType = {
 };
 
 export type ChatScreenProps = {
-  name: string;
-  image: React.ComponentProps<typeof Image>['source'];
+  workerDetails: WorkerDetails;
 };
 
 export const ChatScreen = ({
   route,
 }: NativeStackScreenProps<RootStackParamList, 'ChatScreen'>) => {
-  const { name, image } = route.params;
+  const { workerDetails } = route.params;
 
+  const navigation = useNavigation<RootStackParamList>();
   const [messages, setMessages] = React.useState([] as MessageType[]);
+  const [_, setHiredWorkers] =
+    React.useContext<HiredWorkersContextType>(HiredWorkersContext);
 
   // TODO: we should remove the mock when we have a backend
   const [messageCounter, setMessageCounter] = React.useState(0);
@@ -51,15 +58,20 @@ export const ChatScreen = ({
     }
   }
 
+  function handleWorkerHire() {
+    setHiredWorkers((hiredWorkers) => [...hiredWorkers, workerDetails]);
+    navigation.navigate('HomeScreen', { screen: 'HiredWorkersScreen' });
+  }
+
   return (
     <View style={styles.container}>
-      <ChatUserInfo name={name} image={image} />
+      <ChatUserInfo name={workerDetails.name} image={workerDetails.image} />
       <View style={styles.chatContainer}>
         <FlatList
           data={messages}
           renderItem={({ item }) =>
             item.isOffer ? (
-              <OfferBubble price={200} />
+              <OfferBubble price={200} handleWorkerHire={handleWorkerHire} />
             ) : (
               <ChatBubble
                 message={item.message}

@@ -3,7 +3,7 @@ import { TouchableOpacity, View, StyleSheet, Dimensions } from 'react-native';
 import { Text } from 'react-native-paper';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { commonStyle } from '../utils/style';
-import { useNavigation } from '../utils/navigator';
+import { RootStackParamList, useNavigation } from '../utils/navigator';
 
 export type CategoryProps = {
   name: string;
@@ -11,7 +11,7 @@ export type CategoryProps = {
 };
 
 export const Category = ({ name, icon }: CategoryProps) => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<RootStackParamList>();
   const onPress = () => {
     navigation.navigate('WorkersScreen');
   };

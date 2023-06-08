@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, StatusBar, FlatList } from 'react-native';
 import { Searchbar } from 'react-native-paper';
-import { WorkerCard, WorkerDetails } from '../components/WorkerCard';
+import { WorkerCard } from '../components/WorkerCard';
 
 import {
   Architect1Image,
@@ -11,6 +11,7 @@ import {
   Architect5Image,
 } from '../assets';
 import { commonStyle } from '../utils/style';
+import { WorkerDetails } from '../data/worker-details';
 
 const workersData: Array<WorkerDetails & { id: number }> = [
   {
@@ -103,7 +104,7 @@ export const WorkersScreen = () => {
       <FlatList
         data={workers}
         renderItem={({ item }) => {
-          return <WorkerCard details={item} />;
+          return <WorkerCard details={item} isHired={false} />;
         }}
         keyExtractor={(worker) => worker.id.toString()}
         showsVerticalScrollIndicator={false}
