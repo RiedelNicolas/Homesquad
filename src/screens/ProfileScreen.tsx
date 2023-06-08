@@ -158,11 +158,6 @@ const Professional = ({
             })
           }
         >
-          <MaterialCommunityIcons
-            name="message-text-outline"
-            size={20}
-            color={commonStyle.textColor}
-          />
           <Text>Contacta al profesional</Text>
         </Button>
       </Card.Content>
