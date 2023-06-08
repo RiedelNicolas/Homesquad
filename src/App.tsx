@@ -13,6 +13,7 @@ import { RootStackParamList } from './utils/navigator';
 import { HiredWorkersScreen } from './screens/HiredWorkersScreen';
 import { HiredWorkersContext } from './contexts/hired-workers.context';
 import { WorkerDetails } from './data/worker-details';
+import { commonStyle } from './utils/style';
 
 // Navigators
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -27,15 +28,25 @@ function Home() {
         name="CategoriesScreen"
         component={CategoriesScreen}
         options={{
-          tabBarIcon: () => <MaterialCommunityIcons name={'home'} size={40} />,
+          tabBarIcon: ({ focused }) => (
+            <MaterialCommunityIcons
+              name={'home'}
+              size={40}
+              color={focused ? commonStyle.secondaryColor : 'black'}
+            />
+          ),
         }}
       />
       <Tab.Screen
         name="HiredWorkersScreen"
         component={HiredWorkersScreen}
         options={{
-          tabBarIcon: () => (
-            <MaterialCommunityIcons name={'account-check'} size={40} />
+          tabBarIcon: ({ focused }) => (
+            <MaterialCommunityIcons
+              name={'account-check'}
+              size={40}
+              color={focused ? commonStyle.secondaryColor : 'black'}
+            />
           ),
         }}
       />
