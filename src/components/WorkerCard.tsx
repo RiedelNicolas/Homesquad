@@ -12,7 +12,7 @@ import { IconButton } from 'react-native-paper';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { RootStackParamList, useNavigation } from '../utils/navigator';
 import { commonStyle } from '../utils/style';
-import { WorkerDetails } from '../data/worker-details';
+import { Review, WorkerDetails } from '../data/worker-details';
 import { IconLabel } from './IconLabel';
 
 export type WorkerCardProps = {
@@ -25,16 +25,8 @@ export const WorkerCard = ({ details, isHired }: WorkerCardProps) => {
   const onPress = () => {
     navigation.navigate('ProfileScreen', { details });
   };
-
-  const {
-    name,
-    location,
-    deliveryTime,
-    distance,
-    image,
-    rating,
-    reviewsAmount,
-  } = details;
+  const reviews: Array<Review> = details.reviews ? details.reviews : [];
+  const { name, location, deliveryTime, distance, image } = details;
 
   return (
     <View style={styles.container}>
@@ -90,21 +82,26 @@ export const WorkerCard = ({ details, isHired }: WorkerCardProps) => {
             )}
           </View>
 
-          {!isHired && (
-            <View style={styles.stars}>
-              <AirbnbRating
-                showRating={false}
-                size={25}
-                isDisabled
-                defaultRating={rating}
-              />
-              <View>
-                <Text
-                  style={{ fontSize: 15, marginLeft: '10%' }}
-                >{`(${reviewsAmount})`}</Text>
+          {!isHired &&
+            (reviews.length > 0 ? (
+              <View style={styles.stars}>
+                <AirbnbRating
+                  showRating={false}
+                  size={25}
+                  isDisabled
+                  defaultRating={
+                    reviews
+                      .filter((x) => x.rating)
+                      .reduce((acc, x) => acc + x.rating, 0) / reviews.length
+                  }
+                />
+                <View>
+                  <Text
+                    style={{ fontSize: 15, marginLeft: '10%' }}
+                  >{`(${reviews.length})`}</Text>
+                </View>
               </View>
-            </View>
-          )}
+            ) : null)}
         </View>
       </TouchableOpacity>
     </View>

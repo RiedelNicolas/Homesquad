@@ -14,8 +14,6 @@ export const jardineriaData: WorkerDetailsWithId = [
     deliveryTime: '35 min',
     distance: '3.7 km',
     image: Jardineria1Image,
-    rating: 5,
-    reviewsAmount: 7,
     id: 1,
   },
   {
@@ -24,8 +22,6 @@ export const jardineriaData: WorkerDetailsWithId = [
     deliveryTime: '45 min',
     distance: '4.3 km',
     image: Jardineria2Image,
-    rating: 4.5,
-    reviewsAmount: 4,
     id: 2,
   },
   {
@@ -34,8 +30,6 @@ export const jardineriaData: WorkerDetailsWithId = [
     deliveryTime: '25 min',
     distance: '3 km',
     image: Jardineria3Image,
-    rating: 4,
-    reviewsAmount: 12,
     id: 3,
   },
   {
@@ -44,8 +38,6 @@ export const jardineriaData: WorkerDetailsWithId = [
     deliveryTime: '240 min',
     distance: '450 km',
     image: Jardineria4Image,
-    rating: 5,
-    reviewsAmount: 9,
     id: 4,
   },
   {
@@ -54,8 +46,6 @@ export const jardineriaData: WorkerDetailsWithId = [
     deliveryTime: '25 min',
     distance: '3.1 km',
     image: Jardineria5Image,
-    rating: 3.5,
-    reviewsAmount: 3,
     id: 5,
   },
 ];

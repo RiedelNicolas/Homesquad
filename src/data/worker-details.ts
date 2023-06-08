@@ -1,7 +1,13 @@
 import { Image } from 'react-native';
-import { AirbnbRating } from 'react-native-elements';
 
 export type WorkerDetailsWithId = Array<WorkerDetails & { id: number }>;
+
+export type Review = {
+  user: string;
+  title: string;
+  rating: number;
+  body: string;
+};
 
 export type WorkerDetails = {
   name: string;
@@ -9,6 +15,5 @@ export type WorkerDetails = {
   deliveryTime: string;
   distance: string;
   image: React.ComponentProps<typeof Image>['source'];
-  rating: React.ComponentProps<typeof AirbnbRating>['defaultRating'];
-  reviewsAmount: number;
+  reviews?: Array<Review>;
 };
