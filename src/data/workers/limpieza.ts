@@ -17,6 +17,7 @@ export const limpiezaData: Array<WorkerDetailsWithId> = [
     rating: 4.2,
     reviewsAmount: 28,
     id: 1,
+    description: 'Soy tu futura mano derecha para todo lo que necesites.',
   },
   {
     name: 'Fernanda Herrera',
@@ -27,6 +28,7 @@ export const limpiezaData: Array<WorkerDetailsWithId> = [
     rating: 4.7,
     reviewsAmount: 35,
     id: 2,
+    description: 'Soy tu futura mano derecha para todo lo que necesites.',
   },
   {
     name: 'Carolina Paredes',
@@ -37,6 +39,7 @@ export const limpiezaData: Array<WorkerDetailsWithId> = [
     rating: 4.5,
     reviewsAmount: 14,
     id: 3,
+    description: 'Soy tu futura mano derecha para todo lo que necesites.',
   },
   {
     name: 'Marcela Suarez',
@@ -47,6 +50,7 @@ export const limpiezaData: Array<WorkerDetailsWithId> = [
     rating: 3.7,
     reviewsAmount: 21,
     id: 4,
+    description: 'Soy tu futura mano derecha para todo lo que necesites.',
   },
   {
     name: 'Javier Rios',
@@ -57,5 +61,6 @@ export const limpiezaData: Array<WorkerDetailsWithId> = [
     rating: 4.8,
     reviewsAmount: 18,
     id: 5,
+    description: 'Soy tu futura mano derecha para todo lo que necesites.',
   },
 ];

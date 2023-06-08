@@ -17,6 +17,7 @@ export const jardineriaData: Array<WorkerDetailsWithId> = [
     rating: 4,
     reviewsAmount: 18,
     id: 1,
+    description: 'Soy tu futura mano derecha para todo lo que necesites.',
   },
   {
     name: 'Juan Pablo Ortega',
@@ -27,6 +28,7 @@ export const jardineriaData: Array<WorkerDetailsWithId> = [
     rating: 4.5,
     reviewsAmount: 2,
     id: 2,
+    description: 'Soy tu futura mano derecha para todo lo que necesites.',
   },
   {
     name: 'Federico Romero',
@@ -37,6 +39,7 @@ export const jardineriaData: Array<WorkerDetailsWithId> = [
     rating: 4,
     reviewsAmount: 12,
     id: 3,
+    description: 'Soy tu futura mano derecha para todo lo que necesites.',
   },
   {
     name: 'Matias Gonzalez',
@@ -47,6 +50,7 @@ export const jardineriaData: Array<WorkerDetailsWithId> = [
     rating: 5,
     reviewsAmount: 9,
     id: 4,
+    description: 'Soy tu futura mano derecha para todo lo que necesites.',
   },
   {
     name: 'Agustina Peralta',
@@ -57,5 +61,6 @@ export const jardineriaData: Array<WorkerDetailsWithId> = [
     rating: 3.5,
     reviewsAmount: 3,
     id: 5,
+    description: 'Soy tu futura mano derecha para todo lo que necesites.',
   },
 ];

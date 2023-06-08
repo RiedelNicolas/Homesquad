@@ -120,27 +120,8 @@ const Professional = ({
           <Text variant="bodyMedium">({workerDetails.reviewsAmount})</Text>
         </View>
         <Text style={styles.professionalDescription} variant="bodyMedium">
-          {description}
+          {workerDetails.description}
         </Text>
-
-        <View style={styles.contactInfo}>
-          <IconButton
-            icon={({ size, color }) => (
-              <MaterialCommunityIcons name="phone" size={size} color={color} />
-            )}
-          />
-          <Text style={{ marginRight: 10 }}>{phone}</Text>
-
-          <IconButton
-            icon={({ size, color }) => (
-              <MaterialCommunityIcons name="email" size={size} color={color} />
-            )}
-          />
-
-          <Text>
-            {workerDetails.name.replace(' ', '.').toLowerCase() + '@gmail.com'}
-          </Text>
-        </View>
 
         <Button
           style={styles.contactButton}
@@ -154,11 +135,13 @@ const Professional = ({
                 location: '',
                 rating: workerDetails.rating,
                 reviewsAmount: workerDetails.reviewsAmount,
+                description: 'asd',
               },
             })
           }
         >
-          <Text>Contacta al profesional</Text>
+          <MaterialCommunityIcons name="chat" size={20} color={'black'} />
+          <Text style={styles.contactText}> Contactar al profesional</Text>
         </Button>
       </Card.Content>
     </Card>
@@ -244,6 +227,7 @@ const styles = StyleSheet.create({
     backgroundColor: commonStyle.shadeColor,
     borderRadius: 10,
     padding: 10,
+    fontSize: 18,
   },
   reviewCard: {
     margin: 10,
@@ -255,10 +239,14 @@ const styles = StyleSheet.create({
     marginVertical: 5,
   },
   contactButton: {
+    marginTop: 20,
     flexDirection: 'row',
     alignItems: 'center',
-    width: '50%',
-    backgroundColor: commonStyle.primaryColor,
+    backgroundColor: commonStyle.secondaryColor,
+  },
+  contactText: {
+    fontSize: 20,
+    fontWeight: '300',
   },
   basicInfo: {
     flexDirection: 'row',

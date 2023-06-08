@@ -17,6 +17,7 @@ export const carpinteriaData: Array<WorkerDetailsWithId> = [
     rating: 4.5,
     reviewsAmount: 9,
     id: 1,
+    description: 'Soy tu futura mano derecha para todo lo que necesites.',
   },
   {
     name: 'Carlos Perez',
@@ -27,6 +28,7 @@ export const carpinteriaData: Array<WorkerDetailsWithId> = [
     rating: 4,
     reviewsAmount: 6,
     id: 2,
+    description: 'Soy tu futura mano derecha para todo lo que necesites.',
   },
   {
     name: 'Mario Gomez',
@@ -37,6 +39,7 @@ export const carpinteriaData: Array<WorkerDetailsWithId> = [
     rating: 4.5,
     reviewsAmount: 14,
     id: 3,
+    description: 'Soy tu futura mano derecha para todo lo que necesites.',
   },
   {
     name: 'Luis Fernandez',
@@ -47,6 +50,7 @@ export const carpinteriaData: Array<WorkerDetailsWithId> = [
     rating: 5,
     reviewsAmount: 9,
     id: 4,
+    description: 'Soy tu futura mano derecha para todo lo que necesites.',
   },
   {
     name: 'Javier Lopez',
@@ -57,5 +61,6 @@ export const carpinteriaData: Array<WorkerDetailsWithId> = [
     rating: 3,
     reviewsAmount: 5,
     id: 5,
+    description: 'Soy tu futura mano derecha para todo lo que necesites.',
   },
 ];

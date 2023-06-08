@@ -17,6 +17,8 @@ export const gasistaData: Array<WorkerDetailsWithId> = [
     rating: 5,
     reviewsAmount: 7,
     id: 1,
+    description:
+      '¡Hola! Soy Juan, un gasista matriculado con más de 10 años de experiencia. Estoy aquí para ofrecerte servicios de instalación, mantenimiento y reparación de gas. Mi objetivo es brindarte soluciones seguras y eficientes. Confía en mí para mantener tu hogar o negocio en perfectas condiciones.',
   },
   {
     name: 'Carlitos Sanchez',
@@ -27,6 +29,7 @@ export const gasistaData: Array<WorkerDetailsWithId> = [
     rating: 4.5,
     reviewsAmount: 4,
     id: 2,
+    description: 'Soy tu futura mano derecha para todo lo que necesites.',
   },
   {
     name: 'Martín Morales',
@@ -37,6 +40,7 @@ export const gasistaData: Array<WorkerDetailsWithId> = [
     rating: 4,
     reviewsAmount: 12,
     id: 3,
+    description: 'Soy tu futura mano derecha para todo lo que necesites.',
   },
   {
     name: 'Facundo Luna',
@@ -47,6 +51,7 @@ export const gasistaData: Array<WorkerDetailsWithId> = [
     rating: 5,
     reviewsAmount: 9,
     id: 4,
+    description: 'Soy tu futura mano derecha para todo lo que necesites.',
   },
   {
     name: 'Ignacio Castro',
@@ -57,5 +62,6 @@ export const gasistaData: Array<WorkerDetailsWithId> = [
     rating: 3.5,
     reviewsAmount: 3,
     id: 5,
+    description: 'Soy tu futura mano derecha para todo lo que necesites.',
   },
 ];

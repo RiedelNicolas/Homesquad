@@ -5,7 +5,7 @@ import {
   StyleSheet,
   Dimensions,
   Image,
-  TouchableOpacity,
+  TouchableWithoutFeedback,
 } from 'react-native';
 import { AirbnbRating } from 'react-native-ratings';
 import { IconButton } from 'react-native-paper';
@@ -34,11 +34,12 @@ export const WorkerCard = ({ details, isHired }: WorkerCardProps) => {
     image,
     rating,
     reviewsAmount,
+    description,
   } = details;
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={onPress}>
+      <TouchableWithoutFeedback onPress={onPress}>
         <View style={styles.cardContainer}>
           <Image style={styles.imageStyle} source={image} />
           <View style={styles.infoStyle}>
@@ -106,7 +107,7 @@ export const WorkerCard = ({ details, isHired }: WorkerCardProps) => {
             </View>
           )}
         </View>
-      </TouchableOpacity>
+      </TouchableWithoutFeedback>
     </View>
   );
 };
@@ -171,6 +172,5 @@ const styles = StyleSheet.create({
   contactInfo: {
     flexDirection: 'column',
     alignItems: 'center',
-    height: 10,
   },
 });
