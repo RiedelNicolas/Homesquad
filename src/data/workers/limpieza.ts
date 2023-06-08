@@ -1,0 +1,61 @@
+import { WorkerDetails } from '../worker-details';
+import {
+  Limpieza1Image,
+  Limpieza2Image,
+  Limpieza3Image,
+  Limpieza4Image,
+  Limpieza5Image,
+} from '../../assets';
+
+export const limpiezaData: Array<WorkerDetails & { id: number }> = [
+  {
+    name: 'Juan Fernandez',
+    location: 'San Telmo, CABA',
+    deliveryTime: '35 min',
+    distance: '3.7 km',
+    image: Limpieza1Image,
+    rating: 5,
+    reviewsAmount: 7,
+    id: 1,
+  },
+  {
+    name: 'Carlitos Sanchez',
+    location: 'Haedo, Buenos Aires',
+    deliveryTime: '45 min',
+    distance: '4.3 km',
+    image: Limpieza2Image,
+    rating: 4.5,
+    reviewsAmount: 4,
+    id: 2,
+  },
+  {
+    name: 'Martín Morales',
+    location: 'Ballester, Buenos Aires',
+    deliveryTime: '25 min',
+    distance: '3 km',
+    image: Limpieza3Image,
+    rating: 4,
+    reviewsAmount: 12,
+    id: 3,
+  },
+  {
+    name: 'Facundo Luna',
+    location: 'Rosario, Santa Fe',
+    deliveryTime: '240 min',
+    distance: '450 km',
+    image: Limpieza4Image,
+    rating: 5,
+    reviewsAmount: 9,
+    id: 4,
+  },
+  {
+    name: 'Ignacio Castro',
+    location: 'Vicente Lopez, Buenos Aires',
+    deliveryTime: '25 min',
+    distance: '3.1 km',
+    image: Limpieza5Image,
+    rating: 3.5,
+    reviewsAmount: 3,
+    id: 5,
+  },
+];

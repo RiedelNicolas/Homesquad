@@ -48,6 +48,28 @@ export const Electricista4Image =
 export const Electricista5Image =
   require('./bin/electricista/electricista_5.jpg') as ImageSourcePropType;
 
+export const Jardineria1Image =
+  require('./bin/jardineria/jardineria_1.jpg') as ImageSourcePropType;
+export const Jardineria2Image =
+  require('./bin/jardineria/jardineria_2.jpg') as ImageSourcePropType;
+export const Jardineria3Image =
+  require('./bin/jardineria/jardineria_3.jpg') as ImageSourcePropType;
+export const Jardineria4Image =
+  require('./bin/jardineria/jardineria_4.jpg') as ImageSourcePropType;
+export const Jardineria5Image =
+  require('./bin/jardineria/jardineria_5.jpg') as ImageSourcePropType;
+
+export const Limpieza1Image =
+  require('./bin/limpieza/limpieza_1.jpg') as ImageSourcePropType;
+export const Limpieza2Image =
+  require('./bin/limpieza/limpieza_2.webp') as ImageSourcePropType;
+export const Limpieza3Image =
+  require('./bin/limpieza/limpieza_3.png') as ImageSourcePropType;
+export const Limpieza4Image =
+  require('./bin/limpieza/limpieza_4.jpg') as ImageSourcePropType;
+export const Limpieza5Image =
+  require('./bin/limpieza/limpieza_5.jpg') as ImageSourcePropType;
+
 export const GasistaImage =
   require('./bin/gasista.jpeg') as ImageSourcePropType;
 export const UserImage = require('./bin/user.webp') as ImageSourcePropType;

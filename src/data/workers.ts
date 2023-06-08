@@ -3,6 +3,8 @@ import { carpinteriaData } from './workers/carpinteria';
 import { electricistaData } from './workers/electricista';
 import { fumigacionData } from './workers/fumigacion';
 import { gasistaData } from './workers/gasista';
+import { jardineriaData } from './workers/jardineria';
+import { limpiezaData } from './workers/limpieza';
 
 export const WorkersData: {
   [key: string]: Array<WorkerDetails & { id: number }>;
@@ -12,8 +14,8 @@ export const WorkersData: {
   Electricista: electricistaData,
   Pintor: gasistaData,
   Plomería: gasistaData,
-  Limpieza: gasistaData,
-  Jardinería: gasistaData,
+  Limpieza: limpiezaData,
+  Jardinería: jardineriaData,
   Fumigación: fumigacionData,
   'Técnico de aire': gasistaData,
   Carpintería: carpinteriaData,
