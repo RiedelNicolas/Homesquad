@@ -43,6 +43,7 @@ export const WorkersScreen = ({
         }}
         keyExtractor={(worker) => worker.id.toString()}
         showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: 80 }}
       />
 
       <Searchbar
