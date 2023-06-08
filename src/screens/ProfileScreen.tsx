@@ -120,7 +120,7 @@ const Professional = ({
           <Text variant="bodyMedium">({workerDetails.reviewsAmount})</Text>
         </View>
         <Text style={styles.professionalDescription} variant="bodyMedium">
-          {description}
+          {workerDetails.description}
         </Text>
 
         <Button
@@ -135,6 +135,7 @@ const Professional = ({
                 location: '',
                 rating: workerDetails.rating,
                 reviewsAmount: workerDetails.reviewsAmount,
+                description: 'asd',
               },
             })
           }

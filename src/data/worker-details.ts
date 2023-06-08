@@ -11,4 +11,5 @@ export type WorkerDetails = {
   image: React.ComponentProps<typeof Image>['source'];
   rating: React.ComponentProps<typeof AirbnbRating>['defaultRating'];
   reviewsAmount: number;
+  description: string;
 };

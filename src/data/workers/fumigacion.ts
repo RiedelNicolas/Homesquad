@@ -17,6 +17,7 @@ export const fumigacionData: Array<WorkerDetailsWithId> = [
     rating: 5,
     reviewsAmount: 7,
     id: 1,
+    description: 'Soy tu futura mano derecha para todo lo que necesites.',
   },
   {
     name: 'Carlitos Sanchez',
@@ -27,6 +28,7 @@ export const fumigacionData: Array<WorkerDetailsWithId> = [
     rating: 4.5,
     reviewsAmount: 4,
     id: 2,
+    description: 'Soy tu futura mano derecha para todo lo que necesites.',
   },
   {
     name: 'Martín Morales',
@@ -37,6 +39,7 @@ export const fumigacionData: Array<WorkerDetailsWithId> = [
     rating: 4,
     reviewsAmount: 12,
     id: 3,
+    description: 'Soy tu futura mano derecha para todo lo que necesites.',
   },
   {
     name: 'Facundo Luna',
@@ -47,6 +50,7 @@ export const fumigacionData: Array<WorkerDetailsWithId> = [
     rating: 5,
     reviewsAmount: 9,
     id: 4,
+    description: 'Soy tu futura mano derecha para todo lo que necesites.',
   },
   {
     name: 'Ignacio Castro',
@@ -57,5 +61,6 @@ export const fumigacionData: Array<WorkerDetailsWithId> = [
     rating: 3.5,
     reviewsAmount: 3,
     id: 5,
+    description: 'Soy tu futura mano derecha para todo lo que necesites.',
   },
 ];
