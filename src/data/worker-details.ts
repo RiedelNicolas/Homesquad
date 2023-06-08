@@ -1,6 +1,8 @@
 import { Image } from 'react-native';
 import { AirbnbRating } from 'react-native-elements';
 
+export type WorkerDetailsWithId = Array<WorkerDetails & { id: number }>;
+
 export type WorkerDetails = {
   name: string;
   location: string;

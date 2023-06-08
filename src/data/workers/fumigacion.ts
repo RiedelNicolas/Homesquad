@@ -1,4 +1,4 @@
-import { WorkerDetails } from '../worker-details';
+import { WorkerDetailsWithId } from '../worker-details';
 import {
   Fumigacion1Image,
   Fumigacion2Image,
@@ -7,7 +7,7 @@ import {
   Fumigacion5Image,
 } from '../../assets';
 
-export const fumigacionData: Array<WorkerDetails & { id: number }> = [
+export const fumigacionData: WorkerDetailsWithId = [
   {
     name: 'Juan Fernandez',
     location: 'San Telmo, CABA',

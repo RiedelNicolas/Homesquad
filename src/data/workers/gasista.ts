@@ -1,4 +1,4 @@
-import { WorkerDetails } from '../worker-details';
+import { WorkerDetailsWithId } from '../worker-details';
 import {
   Gasista1Image,
   Gasista2Image,
@@ -7,7 +7,7 @@ import {
   Gasista5Image,
 } from '../../assets';
 
-export const gasistaData: Array<WorkerDetails & { id: number }> = [
+export const gasistaData: WorkerDetailsWithId = [
   {
     name: 'Juan Fernandez',
     location: 'San Telmo, CABA',
