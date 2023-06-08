@@ -3,7 +3,7 @@ import { View, StyleSheet } from 'react-native';
 import { Button, Text } from 'react-native-paper';
 
 type OfferBubleProps = {
-  price: number;
+  price: string;
   handleWorkerHire: () => void;
 };
 

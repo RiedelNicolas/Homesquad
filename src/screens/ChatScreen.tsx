@@ -31,6 +31,8 @@ export const ChatScreen = ({
 }: NativeStackScreenProps<RootStackParamList, 'ChatScreen'>) => {
   const { workerDetails } = route.params;
 
+  const chatMessagesRef = React.useRef<FlatList<MessageType>>(null);
+
   const navigation = useNavigation<RootStackParamList>();
   const [messages, setMessages] = React.useState([] as MessageType[]);
   const [_, setHiredWorkers] =
@@ -38,6 +40,12 @@ export const ChatScreen = ({
 
   // TODO: we should remove the mock when we have a backend
   const [messageCounter, setMessageCounter] = React.useState(0);
+
+  React.useEffect(() => {
+    if (chatMessagesRef.current && messages.length > 0) {
+      chatMessagesRef.current.scrollToEnd({ animated: true });
+    }
+  }, [messages]);
 
   function handleNewMessage(message: string, rol: string, isOffer = false) {
     setMessages((messages) => [
@@ -68,10 +76,14 @@ export const ChatScreen = ({
       <ChatUserInfo name={workerDetails.name} image={workerDetails.image} />
       <View style={styles.chatContainer}>
         <FlatList
+          ref={chatMessagesRef}
           data={messages}
           renderItem={({ item }) =>
             item.isOffer ? (
-              <OfferBubble price={200} handleWorkerHire={handleWorkerHire} />
+              <OfferBubble
+                price={item.message}
+                handleWorkerHire={handleWorkerHire}
+              />
             ) : (
               <ChatBubble
                 message={item.message}

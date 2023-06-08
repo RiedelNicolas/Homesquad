@@ -1,9 +1,7 @@
 import React, { useContext } from 'react';
 import { FlatList, StyleSheet, View, Text } from 'react-native';
-import { Button } from 'react-native-paper';
 import { HiredWorkersContext } from '../contexts/hired-workers.context';
 import { WorkerCard } from '../components/WorkerCard';
-import { commonStyle } from '../utils/style';
 
 export const HiredWorkersScreen = () => {
   const [workers, _] = useContext(HiredWorkersContext);
@@ -11,10 +9,9 @@ export const HiredWorkersScreen = () => {
   return (
     <View style={styles.container}>
       {workers.length == 0 ? (
-        <View>
+        <View style={styles.centeredContainer}>
           <Text style={styles.noHired}>
-            {' '}
-            Todavia no contrataste ningun profesional{' '}
+            No tienes profesionales contratados
           </Text>
         </View>
       ) : (
@@ -32,11 +29,17 @@ export const HiredWorkersScreen = () => {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  centeredContainer: {
+    flex: 1,
+    justifyContent: 'center',
     alignItems: 'center',
   },
   noHired: {
-    paddingTop: 50,
-    fontWeight: '800',
+    textAlign: 'center',
     fontSize: 20,
+    fontWeight: '500',
   },
 });
