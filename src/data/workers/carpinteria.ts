@@ -17,7 +17,8 @@ export const carpinteriaData: Array<WorkerDetailsWithId> = [
     rating: 4.5,
     reviewsAmount: 9,
     id: 1,
-    description: 'Soy tu futura mano derecha para todo lo que necesites.',
+    description:
+      '¡Hola! Soy Pedro, y me encanta trabajar con madera. A veces me dicen que soy un poco obsesivo con los detalles, pero es que me gusta que todo quede perfecto. Si necesitas ayuda con la tuya, ¡no dudes en contactarme!',
   },
   {
     name: 'Carlos Perez',
@@ -28,7 +29,8 @@ export const carpinteriaData: Array<WorkerDetailsWithId> = [
     rating: 4,
     reviewsAmount: 6,
     id: 2,
-    description: 'Soy tu futura mano derecha para todo lo que necesites.',
+    description:
+      '!Hola! Soy Carlos y considero que la madera es un material noble, por lo que debe ser tratado con respeto. Si necesitas ayuda con la tuya, ¡no dudes en contactarme!',
   },
   {
     name: 'Mario Gomez',
@@ -39,7 +41,8 @@ export const carpinteriaData: Array<WorkerDetailsWithId> = [
     rating: 4.5,
     reviewsAmount: 14,
     id: 3,
-    description: 'Soy tu futura mano derecha para todo lo que necesites.',
+    description:
+      '¡Hola! Soy Mario, el salvador de los muebles viejos. Restauro muebles antiguos y los dejo como nuevos. Si necesitas ayuda con la tuya, ¡no dudes en contactarme!',
   },
   {
     name: 'Luis Fernandez',
@@ -50,7 +53,8 @@ export const carpinteriaData: Array<WorkerDetailsWithId> = [
     rating: 5,
     reviewsAmount: 9,
     id: 4,
-    description: 'Soy tu futura mano derecha para todo lo que necesites.',
+    description:
+      '¡Hola! Soy Luis. Pensás en madera, pensás en mí. Si necesitas ayuda con la tuya, ¡no dudes en contactarme!',
   },
   {
     name: 'Javier Lopez',
@@ -61,6 +65,7 @@ export const carpinteriaData: Array<WorkerDetailsWithId> = [
     rating: 3,
     reviewsAmount: 5,
     id: 5,
-    description: 'Soy tu futura mano derecha para todo lo que necesites.',
+    description:
+      'A veces me preguntan si me gusta trabajar con madera, y yo les respondo: "Me encanta". Soy Javier, y me encanta trabajar con madera. Si necesitas ayuda con la tuya, ¡no dudes en contactarme!',
   },
 ];
