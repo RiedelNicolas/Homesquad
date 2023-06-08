@@ -7,7 +7,7 @@ import {
   Electricista5Image,
 } from '../../assets';
 
-export const electricistaData: WorkerDetailsWithId = [
+export const electricistaData: Array<WorkerDetailsWithId> = [
   {
     name: 'Juan Fernandez',
     location: 'San Telmo, CABA',

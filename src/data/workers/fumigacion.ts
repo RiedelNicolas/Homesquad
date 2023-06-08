@@ -7,7 +7,7 @@ import {
   Fumigacion5Image,
 } from '../../assets';
 
-export const fumigacionData: WorkerDetailsWithId = [
+export const fumigacionData: Array<WorkerDetailsWithId> = [
   {
     name: 'Juan Fernandez',
     location: 'San Telmo, CABA',

@@ -7,7 +7,7 @@ import {
   Jardineria5Image,
 } from '../../assets';
 
-export const jardineriaData: WorkerDetailsWithId = [
+export const jardineriaData: Array<WorkerDetailsWithId> = [
   {
     name: 'Juan Fernandez',
     location: 'San Telmo, CABA',

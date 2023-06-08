@@ -7,7 +7,7 @@ import {
   Limpieza5Image,
 } from '../../assets';
 
-export const limpiezaData: WorkerDetailsWithId = [
+export const limpiezaData: Array<WorkerDetailsWithId> = [
   {
     name: 'Juan Fernandez',
     location: 'San Telmo, CABA',

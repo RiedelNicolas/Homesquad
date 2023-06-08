@@ -7,7 +7,7 @@ import { jardineriaData } from './workers/jardineria';
 import { limpiezaData } from './workers/limpieza';
 
 export const WorkersData: {
-  [key: string]: WorkerDetailsWithId;
+  [key: string]: Array<WorkerDetailsWithId>;
 } = {
   Gasista: gasistaData,
   'Paseador de perros': gasistaData,

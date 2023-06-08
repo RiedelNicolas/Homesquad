@@ -7,7 +7,7 @@ import {
   Carpintero5Image,
 } from '../../assets';
 
-export const carpinteriaData: WorkerDetailsWithId = [
+export const carpinteriaData: Array<WorkerDetailsWithId> = [
   {
     name: 'Juan Fernandez',
     location: 'San Telmo, CABA',
