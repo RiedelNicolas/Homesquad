@@ -11,6 +11,7 @@ export type RootStackParamList = {
   ProfileScreen: ProfileScreenProps;
   WorkersScreen: Array<WorkerDetailsWithId>;
   ChatScreen: ChatScreenProps;
+  CustomerScreen: undefined;
 };
 
 export type TabParamList = {
