@@ -8,8 +8,11 @@ import { RootStackParamList, useNavigation } from '../utils/navigator';
 
 export const Home = () => {
   const navigation = useNavigation<RootStackParamList>();
-  const onPress = () => {
+  const onCustomerPress = () => {
     navigation.navigate('CustomerScreen');
+  };
+  const onProfessionalPress = () => {
+    navigation.navigate('ProfessionalScreen');
   };
 
   return (
@@ -21,10 +24,18 @@ export const Home = () => {
       </View>
       <View style={styles.contentContainer}>
         <Text variant="headlineSmall">¿Qué tarea deseas realizar?</Text>
-        <Button mode="contained" style={styles.button} onPress={onPress}>
+        <Button
+          mode="contained"
+          style={styles.button}
+          onPress={onCustomerPress}
+        >
           Quiero contratar un profesional
         </Button>
-        <Button mode="contained" style={styles.button}>
+        <Button
+          mode="contained"
+          style={styles.button}
+          onPress={onProfessionalPress}
+        >
           Quiero conseguir clientes
         </Button>
       </View>

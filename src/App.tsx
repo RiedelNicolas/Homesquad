@@ -11,6 +11,7 @@ import { HiredWorkersContext } from './contexts/hired-workers.context';
 import { WorkerDetails } from './data/worker-details';
 import { Home } from './screens/HomeScreen';
 import { CustomerScreen } from './screens/CustomerScreen';
+import { ProfessionalScreen } from './screens/ProfessionalScreen';
 
 // Navigators
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -31,6 +32,10 @@ function App() {
             <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
             <Stack.Screen name="ChatScreen" component={ChatScreen} />
             <Stack.Screen name="CustomerScreen" component={CustomerScreen} />
+            <Stack.Screen
+              name="ProfessionalScreen"
+              component={ProfessionalScreen}
+            />
           </Stack.Navigator>
         </NavigationContainer>
       </HiredWorkersContext.Provider>
