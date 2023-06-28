@@ -84,25 +84,11 @@ const reviews = [
   },
 ];
 
-const professional = {
-  name: 'Juan Gasista',
-  phone: '(11) 2344-5566',
-  email: 'juan.servicios@gmail.com',
-  description:
-    '¡Hola! Soy Juan, un gasista matriculado con más de 10 años de experiencia. Estoy aquí para ofrecerte servicios de instalación, mantenimiento y reparación de gas. Mi objetivo es brindarte soluciones seguras y eficientes. Confía en mí para mantener tu hogar o negocio en perfectas condiciones.',
-};
-
-type ProfessionalProps = {
+interface ProfessionalProps {
   workerDetails: WorkerDetails;
-  description: string;
-  phone: string;
-};
+}
 
-const Professional = ({
-  workerDetails,
-  description,
-  phone,
-}: ProfessionalProps) => {
+const Professional = ({ workerDetails }: ProfessionalProps) => {
   const navigation = useNavigation<RootStackParamList>();
   return (
     <Card>
@@ -188,14 +174,9 @@ export const ProfileScreen = ({
   route,
 }: NativeStackScreenProps<RootStackParamList, 'ProfileScreen'>) => {
   const details = route.params.details;
-
   return (
     <ScrollView style={styles.container}>
-      <Professional
-        workerDetails={details}
-        phone={professional.phone}
-        description={professional.description}
-      />
+      <Professional workerDetails={details} />
       {reviews
         .sort(() => Math.random() - 0.5)
         .slice(0, details.reviewsAmount)
