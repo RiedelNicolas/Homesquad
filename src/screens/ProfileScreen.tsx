@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Avatar, Card, Text, IconButton, Button } from 'react-native-paper';
+import { Avatar, Card, Text, Button } from 'react-native-paper';
 import { View, StyleSheet, ScrollView } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { AirbnbRating } from 'react-native-ratings';
