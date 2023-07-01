@@ -29,7 +29,7 @@ export const ProfessionalScreen = () => {
       <Tab.Screen
         name="ProfileScreen"
         component={ProfileScreen}
-        initialParams={{ details: workerDetails }}
+        initialParams={{ details: workerDetails, editable: true }}
         options={{
           tabBarIcon: ({ focused }) => (
             <MaterialCommunityIcons

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Avatar, Card, Text, IconButton, Button } from 'react-native-paper';
+import { Avatar, Card, Text, Button } from 'react-native-paper';
 import { View, StyleSheet, ScrollView } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { AirbnbRating } from 'react-native-ratings';
@@ -86,16 +86,21 @@ const reviews = [
 
 interface ProfessionalProps {
   workerDetails: WorkerDetails;
+  editable: boolean;
 }
 
-const Professional = ({ workerDetails }: ProfessionalProps) => {
+const Professional = ({ workerDetails, editable }: ProfessionalProps) => {
   const navigation = useNavigation<RootStackParamList>();
   return (
     <Card>
       <Card.Content style={styles.professionalCard}>
         <Avatar.Image size={150} source={workerDetails.image} />
-        <Text variant="titleLarge">{workerDetails.name}</Text>
-
+        {editable ? (
+          <Button style={styles.contactButton}>
+            <MaterialCommunityIcons name="pencil" size={20} color={'black'} />
+            <Text style={styles.contactText}> Editar perfil</Text>
+          </Button>
+        ) : null}
         <View style={styles.basicInfo}>
           <AirbnbRating
             showRating={false}
@@ -108,27 +113,28 @@ const Professional = ({ workerDetails }: ProfessionalProps) => {
         <Text style={styles.professionalDescription} variant="bodyMedium">
           {workerDetails.description}
         </Text>
-
-        <Button
-          style={styles.contactButton}
-          onPress={() =>
-            navigation.navigate('ChatScreen', {
-              workerDetails: {
-                name: workerDetails.name,
-                distance: '',
-                image: workerDetails.image,
-                deliveryTime: '',
-                location: '',
-                rating: workerDetails.rating,
-                reviewsAmount: workerDetails.reviewsAmount,
-                description: workerDetails.description,
-              },
-            })
-          }
-        >
-          <MaterialCommunityIcons name="chat" size={20} color={'black'} />
-          <Text style={styles.contactText}> Contactar al profesional</Text>
-        </Button>
+        {editable ? null : (
+          <Button
+            style={styles.contactButton}
+            onPress={() =>
+              navigation.navigate('ChatScreen', {
+                workerDetails: {
+                  name: workerDetails.name,
+                  distance: '',
+                  image: workerDetails.image,
+                  deliveryTime: '',
+                  location: '',
+                  rating: workerDetails.rating,
+                  reviewsAmount: workerDetails.reviewsAmount,
+                  description: workerDetails.description,
+                },
+              })
+            }
+          >
+            <MaterialCommunityIcons name="chat" size={20} color={'black'} />
+            <Text style={styles.contactText}> Contactar al profesional</Text>
+          </Button>
+        )}
       </Card.Content>
     </Card>
   );
@@ -168,15 +174,17 @@ const Review = (props: ReviewProps) => {
 
 export type ProfileScreenProps = {
   details: WorkerDetails;
+  editable: boolean;
 };
 
 export const ProfileScreen = ({
   route,
 }: NativeStackScreenProps<RootStackParamList, 'ProfileScreen'>) => {
   const details = route.params.details;
+  const editable = route.params.editable;
   return (
     <ScrollView style={styles.container}>
-      <Professional workerDetails={details} />
+      <Professional workerDetails={details} editable={editable} />
       {reviews
         .sort(() => Math.random() - 0.5)
         .slice(0, details.reviewsAmount)
