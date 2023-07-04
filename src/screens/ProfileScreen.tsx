@@ -89,11 +89,13 @@ interface ProfessionalProps {
   editable: boolean;
 }
 
-const onPressEmploymentsButton = () => {
-  console.log('Mis prestaciones button pressed');
-};
-
 const renderEmploymentsButton = () => {
+  const navigation = useNavigation<RootStackParamList>();
+
+  const onPressEmploymentsButton = () => {
+    navigation.navigate('EmploymentsScreen', { title: 'Mis prestaciones' });
+  };
+
   return (
     <Button style={styles.contactButton} onPress={onPressEmploymentsButton}>
       <MaterialCommunityIcons name="pencil" size={20} color={'black'} />
