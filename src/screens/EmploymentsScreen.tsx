@@ -12,64 +12,192 @@ export type EmploymentsScreenProps = {
 // type Employments = Array<{day: string, employments: Array<{time: string, title: string, description: string}>}>
 type DayEmployments = {
   day: string;
-  employments: Array<{ time: string; title: string; description: string }>;
+  employments: Employments;
 };
-// type Employments = Array<{time: string, title: string, description: string}>
+type Employments = Array<{
+  time: string;
+  title: string;
+  description: string;
+  icon: React.ReactElement;
+}>;
 
 const getEmployments = () => [
   {
-    day: 'Miércoles 17/08/23',
+    day: 'Martes 18/07/23',
+    employments: [
+      {
+        time: '09:30',
+        title: 'Leandro Lencinas',
+        description: 'Av. San Juan 987, Mendoza',
+        icon: <Text>L</Text>,
+      },
+    ],
+  },
+  {
+    day: 'Miércoles 19/07/23',
+    employments: [
+      {
+        time: '14:00',
+        title: 'Facundo Barboza',
+        description: 'Calle Belgrano 567, Mendoza',
+        icon: <Text>F</Text>,
+      },
+    ],
+  },
+  {
+    day: 'Jueves 20/07/23',
+    employments: [
+      {
+        time: '10:30',
+        title: 'Juan Andrada',
+        description: 'Calle San Martín 654, Mendoza',
+        icon: <Text>J</Text>,
+      },
+    ],
+  },
+  {
+    day: 'Viernes 21/07/23',
+    employments: [
+      {
+        time: '11:30',
+        title: 'Victorio Ramis',
+        description: 'Av. España 789, Mendoza',
+        icon: <Text>V</Text>,
+      },
+      {
+        time: '18:30',
+        title: 'Luciano Pizarro',
+        description: 'Calle Belgrano 987, Mendoza',
+        icon: <Text>L</Text>,
+      },
+    ],
+  },
+  {
+    day: 'Lunes 24/07/23',
+    employments: [
+      {
+        time: '10:00',
+        title: 'Juan Andrada',
+        description: 'Calle 25 de Mayo 345, Mendoza',
+        icon: <Text>J</Text>,
+      },
+      {
+        time: '15:00',
+        title: 'Victorio Ramis',
+        description: 'Av. San Martín 123, Mendoza',
+        icon: <Text>V</Text>,
+      },
+    ],
+  },
+  {
+    day: 'Miércoles 26/07/23',
     employments: [
       {
         time: '11:00',
         title: 'Ezequiel Zbogar',
         description: 'Dr. Luis Beláustegui 543, C1416 CXA, Buenos Aires',
+        icon: <Text>E</Text>,
       },
     ],
   },
   {
-    day: 'Jueves 17/08/23 (Hoy)',
+    day: 'Jueves 27/07/23 (Hoy)',
     employments: [
       {
         time: '09:00',
         title: 'Nicolas Riedel',
         description: 'Av. Sta. Fe 3253, 1091 CABA',
+        icon: <Text>N</Text>,
       },
       {
-        time: '14:00',
+        time: '13:00',
         title: 'Diego Balestieri',
-        description: 'Rocamora 4584, C1184 ABL, Buenos Aires',
+        description: 'Av. La Plata 96, C1184AAN CABA',
+        icon: <Text>D</Text>,
       },
       {
         time: '18:00',
         title: 'Nicole Raveszani',
-        description: 'Av. La Plata 96, C1184AAN CABA',
+        description: 'Rocamora 4584, C1184 ABL, Buenos Aires',
+        icon: <Text>N</Text>,
+      },
+    ],
+  },
+  {
+    day: 'Viernes 28/07/23 (Mañana)',
+    employments: [
+      {
+        time: '09:00',
+        title: 'Sebastián Capelli',
+        description: 'Av. Sarmiento s/n, C1425 CABA',
+        icon: <Text>S</Text>,
+      },
+      {
+        time: '14:00',
+        title: 'Ivan Soriano',
+        description: 'Av. Costanera Rafael Obligado s/n, C1425 CABA',
+        icon: <Text>I</Text>,
       },
     ],
   },
 ];
 
-const renderDayTimeline = (dayEmployments: DayEmployments, index: number) => {
+const renderTimeline = (employments: Employments) => {
   return (
-    <View id={index.toString()}>
-      <Text> {dayEmployments.day} </Text>
-      <Timeline
-        data={dayEmployments.employments}
-        showTime={true}
-        lineColor="red"
-        timeStyle={{
-          textAlign: 'center',
-          backgroundColor: '#ff9797',
-          color: 'white',
-          padding: 5,
-          borderRadius: 13,
-        }}
-        descriptionStyle={{ color: 'gray' }}
-        isUsingFlatlist={false}
-        lineWidth={2}
-        separator={true}
-      />
+    <Timeline
+      style={styles.timeline}
+      timeStyle={styles.time}
+      descriptionStyle={styles.description}
+      titleStyle={styles.title}
+      data={employments}
+      lineColor={commonStyle.secondaryColor}
+      lineWidth={5}
+      circleColor={commonStyle.secondaryColor}
+      circleSize={30}
+      innerCircle={'icon'}
+      isUsingFlatlist={false}
+      separator={true}
+    />
+  );
+};
+
+const dateIsToday = (date: string) => {
+  return date.includes('Hoy');
+};
+
+const renderDayTimeline = (dayEmployments: DayEmployments, index: number) => {
+  const isToday = dateIsToday(dayEmployments.day);
+  return (
+    <View key={index}>
+      <Text style={isToday ? styles.today : styles.day}>
+        {dayEmployments.day}
+      </Text>
+      {renderTimeline(dayEmployments.employments)}
     </View>
+  );
+};
+
+const renderHeader = () => {
+  return (
+    <View style={styles.headerContainer}>
+      <Text style={styles.headerText}>Mis prestaciones</Text>
+
+      {/* TODO: boton "ver historial de facturación" */}
+    </View>
+  );
+};
+
+const renderTimelineSection = () => {
+  const employments = getEmployments();
+  // const scrollViewRef = React.useRef(null);
+  return (
+    <ScrollView
+      style={styles.scrollViewContainer}
+      // ref={scrollViewRef}
+      // onContentSizeChange={() => scrollViewRef.current.scrollToEnd({ animated: true })}
+    >
+      {employments.map((day, index) => renderDayTimeline(day, index))}
+    </ScrollView>
   );
 };
 export const EmploymentsScreen = () =>
@@ -77,16 +205,69 @@ export const EmploymentsScreen = () =>
   //   route,
   // }: NativeStackScreenProps<RootStackParamList, 'EmploymentsScreen'>
   {
-    const employments = getEmployments();
     return (
-      <ScrollView style={styles.container}>
-        {employments.map((day, index) => renderDayTimeline(day, index))}
-      </ScrollView>
+      <View style={{ flex: 1 }}>
+        {renderHeader()}
+        {renderTimelineSection()}
+      </View>
     );
   };
 
 const styles = StyleSheet.create({
-  container: {
+  headerContainer: {
+    flex: 0.15,
     backgroundColor: commonStyle.backgroundColor,
+  },
+
+  headerText: {
+    fontSize: 35,
+    fontWeight: 'bold',
+    alignSelf: 'center',
+    marginTop: 10,
+  },
+
+  scrollViewContainer: {
+    backgroundColor: commonStyle.backgroundColor,
+    flex: 0.85,
+  },
+
+  day: {
+    fontSize: 24,
+    color: commonStyle.primaryColor,
+    alignSelf: 'flex-start',
+    paddingLeft: 10,
+    marginTop: 20,
+  },
+
+  today: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: commonStyle.secondaryColor,
+    alignSelf: 'flex-start',
+    paddingLeft: 10,
+    marginTop: 20,
+  },
+
+  timeline: {
+    flex: 1,
+    marginTop: 12,
+    paddingLeft: 10,
+    paddingRight: 30,
+  },
+
+  time: {
+    textAlign: 'center',
+    marginTop: 5,
+    color: 'black',
+    borderRadius: 13,
+  },
+
+  description: {
+    color: 'gray',
+  },
+
+  title: {
+    color: 'black',
+    marginTop: -5,
   },
 });
