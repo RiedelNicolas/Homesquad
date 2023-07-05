@@ -5,10 +5,12 @@ import {
 import { ProfileScreenProps } from '../screens/ProfileScreen';
 import { ChatScreenProps } from '../screens/ChatScreen';
 import { WorkerDetailsWithId } from '../data/worker-details';
+import { AddressScreenProps } from '../screens/AddressScreen';
 
 export type RootStackParamList = {
   HomeScreen: undefined;
   ProfileScreen: ProfileScreenProps;
+  AddressScreen: AddressScreenProps;
   WorkersScreen: Array<WorkerDetailsWithId>;
   ChatScreen: ChatScreenProps;
   CustomerScreen: undefined;
