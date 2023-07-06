@@ -210,17 +210,20 @@ const renderHeader = () => {
 
 const renderTimelineSection = () => {
   const employments = getEmployments();
-  // const scrollViewRef = React.useRef(null);
+  const scrollViewRef = React.useRef<ScrollView>(null);
   return (
     <ScrollView
       style={styles.scrollViewContainer}
-      // ref={scrollViewRef}
-      // onContentSizeChange={() => scrollViewRef.current.scrollToEnd({ animated: true })}
+      ref={scrollViewRef}
+      onContentSizeChange={() =>
+        scrollViewRef.current?.scrollToEnd({ animated: true })
+      }
     >
       {employments.map((day, index) => renderDayTimeline(day, index))}
     </ScrollView>
   );
 };
+
 export const EmploymentsScreen = () =>
   // {
   //   route,
