@@ -89,30 +89,78 @@ interface ProfessionalProps {
   editable: boolean;
 }
 
+const renderEmploymentsButton = () => {
+  const navigation = useNavigation<RootStackParamList>();
+
+  const onPressEmploymentsButton = () => {
+    navigation.navigate('EmploymentsScreen', { title: 'Mis prestaciones' });
+  };
+
+  return (
+    <Button style={styles.contactButton} onPress={onPressEmploymentsButton}>
+      <MaterialCommunityIcons
+        name="clipboard-text-clock"
+        size={20}
+        color={'black'}
+      />
+      <Text style={styles.contactText}> Mis prestaciones</Text>
+    </Button>
+  );
+};
+
+const renderEditButton = () => {
+  return (
+    <Button style={styles.contactButton}>
+      <MaterialCommunityIcons name="pencil" size={20} color={'black'} />
+      <Text style={styles.contactText}> Editar perfil</Text>
+    </Button>
+  );
+};
+
+const renderOwnerButtons = () => {
+  return (
+    <View style={styles.ownerButtons}>
+      {renderEditButton()}
+      {renderEmploymentsButton()}
+    </View>
+  );
+};
+
+const renderStars = (workerDetails: WorkerDetails) => {
+  return (
+    <View style={styles.basicInfo}>
+      <AirbnbRating
+        showRating={false}
+        size={30}
+        isDisabled
+        defaultRating={workerDetails.rating}
+      />
+      <Text variant="bodyMedium">({workerDetails.reviewsAmount})</Text>
+    </View>
+  );
+};
+
+const renderProfessionalDescription = (workerDetails: WorkerDetails) => {
+  return (
+    <View style={styles.professionalDescription}>
+      <Text variant="bodyMedium">{workerDetails.description}</Text>
+    </View>
+  );
+};
+
 const Professional = ({ workerDetails, editable }: ProfessionalProps) => {
   const navigation = useNavigation<RootStackParamList>();
   return (
     <Card>
       <Card.Content style={styles.professionalCard}>
         <Avatar.Image size={150} source={workerDetails.image} />
-        {editable ? (
-          <Button style={styles.contactButton}>
-            <MaterialCommunityIcons name="pencil" size={20} color={'black'} />
-            <Text style={styles.contactText}> Editar perfil</Text>
-          </Button>
-        ) : null}
-        <View style={styles.basicInfo}>
-          <AirbnbRating
-            showRating={false}
-            size={30}
-            isDisabled
-            defaultRating={workerDetails.rating}
-          />
-          <Text variant="bodyMedium">({workerDetails.reviewsAmount})</Text>
-        </View>
-        <Text style={styles.professionalDescription} variant="bodyMedium">
-          {workerDetails.description}
-        </Text>
+
+        {renderStars(workerDetails)}
+
+        {editable && renderOwnerButtons()}
+
+        {renderProfessionalDescription(workerDetails)}
+
         {editable ? null : (
           <Button
             style={styles.contactButton}
@@ -217,6 +265,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 10,
     fontSize: 18,
+    marginTop: 20,
   },
   reviewCard: {
     margin: 10,
@@ -234,7 +283,7 @@ const styles = StyleSheet.create({
     backgroundColor: commonStyle.secondaryColor,
   },
   contactText: {
-    fontSize: 20,
+    fontSize: 16,
     fontWeight: '300',
   },
   basicInfo: {
@@ -245,5 +294,11 @@ const styles = StyleSheet.create({
   messageButton: {
     backgroundColor: commonStyle.cardColor,
     borderRadius: 50,
+  },
+
+  ownerButtons: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
   },
 });
