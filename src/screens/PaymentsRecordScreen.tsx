@@ -1,157 +1,102 @@
 import * as React from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
-import { Text, Button } from 'react-native-paper';
+import { Text } from 'react-native-paper';
 
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Timeline from 'react-native-timeline-flatlist';
-import { RootStackParamList, useNavigation } from '../utils/navigator';
 import { commonStyle } from '../utils/style';
 
-export type EmploymentsScreenProps = {
-  title: string;
-};
-
-// type Employments = Array<{day: string, employments: Array<{time: string, title: string, description: string}>}>
-type DayEmployments = {
+type DayPayments = {
   day: string;
-  employments: Employments;
+  payments: Payments;
 };
-type Employments = Array<{
-  time: string;
+type Payments = Array<{
   title: string;
   description: string;
   icon: React.ReactElement;
 }>;
 
-const getEmployments = () => [
+const getPayments = () => [
   {
     day: 'Martes 18/07/23',
-    employments: [
+    payments: [
       {
-        time: '09:30',
         title: 'Leandro Lencinas',
-        description: 'Av. San Juan 987, Mendoza',
+        description: '$5,000.00',
         icon: <Text>L</Text>,
       },
     ],
   },
   {
     day: 'Miércoles 19/07/23',
-    employments: [
+    payments: [
       {
-        time: '14:00',
         title: 'Facundo Barboza',
-        description: 'Calle Belgrano 567, Mendoza',
+        description: '$7,500.00',
         icon: <Text>F</Text>,
       },
     ],
   },
   {
     day: 'Jueves 20/07/23',
-    employments: [
+    payments: [
       {
-        time: '10:30',
         title: 'Juan Andrada',
-        description: 'Calle San Martín 654, Mendoza',
+        description: '$9,800.00',
         icon: <Text>J</Text>,
       },
     ],
   },
   {
     day: 'Viernes 21/07/23',
-    employments: [
+    payments: [
       {
-        time: '11:30',
         title: 'Victorio Ramis',
-        description: 'Av. España 789, Mendoza',
+        description: '$3,200.00',
         icon: <Text>V</Text>,
       },
       {
-        time: '18:30',
         title: 'Luciano Pizarro',
-        description: 'Calle Belgrano 987, Mendoza',
+        description: '$6,700.00',
         icon: <Text>L</Text>,
       },
     ],
   },
   {
     day: 'Lunes 24/07/23',
-    employments: [
+    payments: [
       {
-        time: '10:00',
         title: 'Juan Andrada',
-        description: 'Calle 25 de Mayo 345, Mendoza',
+        description: '$8,500.00',
         icon: <Text>J</Text>,
       },
       {
-        time: '15:00',
         title: 'Victorio Ramis',
-        description: 'Av. San Martín 123, Mendoza',
+        description: '$2,300.00',
         icon: <Text>V</Text>,
       },
     ],
   },
   {
     day: 'Miércoles 26/07/23',
-    employments: [
+    payments: [
       {
-        time: '11:00',
         title: 'Ezequiel Zbogar',
-        description: 'Dr. Luis Beláustegui 543, C1416 CXA, Buenos Aires',
+        description: '$10,000.00',
         icon: <Text>E</Text>,
-      },
-    ],
-  },
-  {
-    day: 'Jueves 27/07/23 (Hoy)',
-    employments: [
-      {
-        time: '09:00',
-        title: 'Nicolas Riedel',
-        description: 'Av. Sta. Fe 3253, 1091 CABA',
-        icon: <Text>N</Text>,
-      },
-      {
-        time: '13:00',
-        title: 'Diego Balestieri',
-        description: 'Av. La Plata 96, C1184AAN CABA',
-        icon: <Text>D</Text>,
-      },
-      {
-        time: '18:00',
-        title: 'Nicole Raveszani',
-        description: 'Rocamora 4584, C1184 ABL, Buenos Aires',
-        icon: <Text>N</Text>,
-      },
-    ],
-  },
-  {
-    day: 'Viernes 28/07/23 (Mañana)',
-    employments: [
-      {
-        time: '09:00',
-        title: 'Sebastián Capelli',
-        description: 'Av. Sarmiento s/n, C1425 CABA',
-        icon: <Text>S</Text>,
-      },
-      {
-        time: '14:00',
-        title: 'Ivan Soriano',
-        description: 'Av. Costanera Rafael Obligado s/n, C1425 CABA',
-        icon: <Text>I</Text>,
       },
     ],
   },
 ];
 
-const renderTimeline = (employments: Employments) => {
+const renderTimeline = (payments: Payments) => {
   return (
     <Timeline
       style={styles.timeline}
       timeStyle={styles.time}
       descriptionStyle={styles.description}
       titleStyle={styles.title}
-      data={employments}
+      data={payments}
       lineColor={commonStyle.secondaryColor}
       lineWidth={5}
       circleColor={commonStyle.secondaryColor}
@@ -159,39 +104,28 @@ const renderTimeline = (employments: Employments) => {
       innerCircle={'icon'}
       isUsingFlatlist={false}
       separator={true}
+      showTime={false}
     />
   );
 };
 
-const dateIsToday = (date: string) => {
-  return date.includes('Hoy');
-};
-
-const renderDayTimeline = (dayEmployments: DayEmployments, index: number) => {
-  const isToday = dateIsToday(dayEmployments.day);
+const renderDayTimeline = (dayPayments: DayPayments, index: number) => {
   return (
     <View key={index}>
-      <Text style={isToday ? styles.today : styles.day}>
-        {dayEmployments.day}
-      </Text>
-      {renderTimeline(dayEmployments.employments)}
+      <Text style={styles.day}>{dayPayments.day}</Text>
+      {renderTimeline(dayPayments.payments)}
     </View>
   );
 };
 
-const renderPaymentRecordButton = () => {
-  const navigation = useNavigation<RootStackParamList>();
-
-  const onPressPaymentRecordButton = () => {
-    navigation.navigate('PaymentsRecordScreen', { title: 'Registro de pagos' });
-  };
-
+const renderIconWithText = (
+  iconName: React.ComponentProps<typeof MaterialCommunityIcons>['name'],
+  text: string
+) => {
   return (
-    <View style={styles.paymentButtonContainer}>
-      <MaterialCommunityIcons name="cash-register" size={30} color={'black'} />
-      <Button style={styles.paymentButton} onPress={onPressPaymentRecordButton}>
-        <Text style={styles.paymentText}>Ver pagos</Text>
-      </Button>
+    <View style={{ flexDirection: 'row', marginTop: 10 }}>
+      <MaterialCommunityIcons name={iconName} size={24} color="black" />
+      <Text style={{ fontSize: 18, marginLeft: 10 }}>{text}</Text>
     </View>
   );
 };
@@ -199,8 +133,9 @@ const renderPaymentRecordButton = () => {
 const renderHeader = () => {
   return (
     <View style={styles.headerContainer}>
-      <Text style={styles.headerText}>Mis prestaciones</Text>
-      {renderPaymentRecordButton()}
+      <Text style={styles.headerText}>Historial de pagos</Text>
+      {renderIconWithText('calculator', 'Cantidad de pagos: 6')}
+      {renderIconWithText('cash', 'Total facturado: $53,500.00')}
       <View
         style={{ height: 1, backgroundColor: 'grey', marginTop: 10 }}
       ></View>
@@ -209,7 +144,7 @@ const renderHeader = () => {
 };
 
 const renderTimelineSection = () => {
-  const employments = getEmployments();
+  const payments = getPayments();
   // const scrollViewRef = React.useRef(null);
   return (
     <ScrollView
@@ -217,11 +152,16 @@ const renderTimelineSection = () => {
       // ref={scrollViewRef}
       // onContentSizeChange={() => scrollViewRef.current.scrollToEnd({ animated: true })}
     >
-      {employments.map((day, index) => renderDayTimeline(day, index))}
+      {payments.map((day, index) => renderDayTimeline(day, index))}
     </ScrollView>
   );
 };
-export const EmploymentsScreen = () =>
+
+export type PaymentsRecordScreenProps = {
+  title: string;
+};
+
+export const PaymentsRecordScreen = () =>
   // {
   //   route,
   // }: NativeStackScreenProps<RootStackParamList, 'EmploymentsScreen'>
@@ -236,7 +176,7 @@ export const EmploymentsScreen = () =>
 
 const styles = StyleSheet.create({
   headerContainer: {
-    flex: 0.15,
+    flex: 0.2,
     backgroundColor: commonStyle.backgroundColor,
   },
 
@@ -245,11 +185,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     alignSelf: 'center',
     marginTop: 10,
+    flexGrow: 1,
   },
 
   scrollViewContainer: {
     backgroundColor: commonStyle.backgroundColor,
-    flex: 0.85,
+    flex: 0.8,
   },
 
   day: {
