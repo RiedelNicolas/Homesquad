@@ -4,6 +4,8 @@
 
 - ./deploy-server.sh
 
+Pueden ver la db en [https://homesquad-json-server.fly.dev/](https://homesquad-json-server.fly.dev/)
+
 ### Para correr la app en development :
 
 - yarn install
