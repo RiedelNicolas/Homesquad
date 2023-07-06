@@ -1,5 +1,5 @@
 export const messages = [
-  {
+  /*   {
     id: '1',
     rol: 'receiver',
     message: 'Hola! En que te puedo ayudar?',
@@ -17,7 +17,7 @@ export const messages = [
     rol: 'receiver',
     message: 'Lo mejor que puedo ofrecerte es 10000 pesos.',
     isOffer: false,
-  },
+  }, */
   {
     id: '4',
     rol: 'receiver',
