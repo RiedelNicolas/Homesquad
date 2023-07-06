@@ -116,23 +116,18 @@ const Professional = ({ workerDetails, editable }: ProfessionalProps) => {
         {editable ? null : (
           <Button
             style={styles.contactButton}
-            // onPress={() =>
-            //   navigation.navigate('ChatScreen', {
-            //     workerDetails: {
-            //       name: workerDetails.name,
-            //       distance: '',
-            //       image: workerDetails.image,
-            //       deliveryTime: '',
-            //       location: '',
-            //       rating: workerDetails.rating,
-            //       reviewsAmount: workerDetails.reviewsAmount,
-            //       description: workerDetails.description,
-            //     },
-            //   })
-            // }
             onPress={() =>
-              navigation.navigate('AddressScreen', {
-                details: workerDetails,
+              navigation.navigate('ChatScreen', {
+                workerDetails: {
+                  name: workerDetails.name,
+                  distance: '',
+                  image: workerDetails.image,
+                  deliveryTime: '',
+                  location: '',
+                  rating: workerDetails.rating,
+                  reviewsAmount: workerDetails.reviewsAmount,
+                  description: workerDetails.description,
+                },
               })
             }
           >
