@@ -4,7 +4,7 @@ import { View, StyleSheet } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Picker } from '@react-native-picker/picker';
-import { RootStackParamList } from '../utils/navigator';
+import { RootStackParamList, useNavigation } from '../utils/navigator';
 import { WorkerDetails } from '../data/worker-details';
 import { commonStyle } from '../utils/style';
 
@@ -12,12 +12,6 @@ export type AddressScreenProps = {
   details: WorkerDetails;
 };
 
-//TODO: Estas vienen de json server o hardcodeamos?
-// const initialAddresses = [
-//   { label: 'Home', value: 'Matienzo' },
-//   { label: 'Work', value: 'Julian Alvarez' },
-//   { label: 'Uni', value: 'Paseo Colon' },
-// ];
 const initialAddresses = ['Matienzo', 'Paseo Colon', 'Julian Alvarez'];
 
 export const AddressScreen = ({
@@ -28,8 +22,29 @@ export const AddressScreen = ({
   const [addresses, setAddresses] = React.useState(initialAddresses);
   const [newAddress, setNewAddress] = React.useState('');
   const onNewAddressPress = () => {
-    setAddresses([...addresses, newAddress]);
-    setNewAddress('');
+    if (newAddress) {
+      setAddresses([...addresses, newAddress]);
+      setNewAddress('');
+    }
+  };
+
+  const navigation = useNavigation<RootStackParamList>();
+  const onCancelPress = () => {
+    navigation.navigate('ProfileScreen', { details, editable: false });
+  };
+  const onContinuePress = () => {
+    navigation.navigate('ChatScreen', {
+      workerDetails: {
+        name: details.name,
+        distance: '',
+        image: details.image,
+        deliveryTime: '',
+        location: selectedAddress, //esta el la direccion seleccionada con el picker
+        rating: details.rating,
+        reviewsAmount: details.reviewsAmount,
+        description: details.description,
+      },
+    });
   };
 
   return (
@@ -82,7 +97,11 @@ export const AddressScreen = ({
           <MaterialCommunityIcons name="plus" size={20} color={'black'} />
         </Button>
       </View>
-      {/* TODO: Agregar botones de Continuar y Cancelar */}
+      {/* TODO: Dejar mas lindos estos botones */}
+      <View style={styles.endButtons}>
+        <Button onPress={onCancelPress}>Cancelar</Button>
+        <Button onPress={onContinuePress}>Continuar</Button>
+      </View>
     </View>
   );
 };
@@ -90,6 +109,11 @@ export const AddressScreen = ({
 const styles = StyleSheet.create({
   container: {
     backgroundColor: commonStyle.backgroundColor,
+  },
+  endButtons: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    paddingTop: 325,
   },
   professionalCard: {
     alignItems: 'center',
