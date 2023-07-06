@@ -123,7 +123,7 @@ const renderIconWithText = (
   text: string
 ) => {
   return (
-    <View style={{ flexDirection: 'row', marginTop: 10 }}>
+    <View style={{ flexDirection: 'row', marginTop: 10, marginLeft: 10 }}>
       <MaterialCommunityIcons name={iconName} size={24} color="black" />
       <Text style={{ fontSize: 18, marginLeft: 10 }}>{text}</Text>
     </View>
@@ -134,8 +134,8 @@ const renderHeader = () => {
   return (
     <View style={styles.headerContainer}>
       <Text style={styles.headerText}>Historial de pagos</Text>
-      {renderIconWithText('calculator', 'Cantidad de pagos: 6')}
-      {renderIconWithText('cash', 'Total facturado: $53,500.00')}
+      {renderIconWithText('counter', 'Cantidad: 8')}
+      {renderIconWithText('cash', 'Total facturado: $52,000.00')}
       <View
         style={{ height: 1, backgroundColor: 'grey', marginTop: 10 }}
       ></View>
@@ -145,13 +145,8 @@ const renderHeader = () => {
 
 const renderTimelineSection = () => {
   const payments = getPayments();
-  // const scrollViewRef = React.useRef(null);
   return (
-    <ScrollView
-      style={styles.scrollViewContainer}
-      // ref={scrollViewRef}
-      // onContentSizeChange={() => scrollViewRef.current.scrollToEnd({ animated: true })}
-    >
+    <ScrollView style={styles.scrollViewContainer}>
       {payments.map((day, index) => renderDayTimeline(day, index))}
     </ScrollView>
   );
