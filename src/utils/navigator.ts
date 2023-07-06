@@ -13,6 +13,7 @@ export type RootStackParamList = {
   ChatScreen: ChatScreenProps;
   CustomerScreen: undefined;
   ProfessionalScreen: undefined;
+  ProposalScreen: undefined;
 };
 
 export type TabParamList = {

@@ -1,0 +1,51 @@
+import * as React from 'react';
+import { View, Text, StyleSheet, ImageSourcePropType } from 'react-native';
+import { Avatar } from 'react-native-paper';
+import { MaterialIcons } from '@expo/vector-icons';
+import { AnaImage } from '../assets';
+
+const name = 'Joe Mama';
+const direction = '221b Baker Street';
+
+export const ProposalClientInfor = () => {
+  return (
+    <View style={styles.generalContainer}>
+      <View style={styles.infoContainer}>
+        <View style={styles.imageContainer}>
+          <Avatar.Image size={100} source={AnaImage} />
+        </View>
+        <Text style={styles.text}>Nueva propuesta para {name}</Text>
+      </View>
+      <View style={styles.infoContainer}>
+        <MaterialIcons name={'location-on'} size={30} />
+        <Text style={styles.directionText}>{direction}</Text>
+      </View>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  generalContainer: {
+    paddingVertical: 30,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  infoContainer: {
+    flexDirection: 'row',
+    paddingHorizontal: 20,
+  },
+  text: {
+    flex: 1,
+    fontSize: 25,
+    textAlignVertical: 'center',
+    flexWrap: 'wrap',
+    paddingLeft: 5,
+  },
+  imageContainer: {
+    paddingRight: 5,
+  },
+  directionText: {
+    fontSize: 20,
+    textAlignVertical: 'center',
+  },
+});
