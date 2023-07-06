@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, ImageSourcePropType } from 'react-native';
 import { Avatar } from 'react-native-paper';
 import { MaterialIcons } from '@expo/vector-icons';
 import { AnaImage } from '../assets';
+import { commonStyle } from '../utils/style';
 
 const name = 'Joe Mama';
 const direction = '221b Baker Street';
@@ -17,7 +18,7 @@ export const ProposalClientInfor = () => {
         <Text style={styles.text}>Nueva propuesta para {name}</Text>
       </View>
       <View style={styles.infoContainer}>
-        <MaterialIcons name={'location-on'} size={30} />
+        <MaterialIcons name={'location-on'} size={30} color={'white'} />
         <Text style={styles.directionText}>{direction}</Text>
       </View>
     </View>
@@ -26,9 +27,11 @@ export const ProposalClientInfor = () => {
 
 const styles = StyleSheet.create({
   generalContainer: {
-    paddingVertical: 30,
+    paddingTop: 40,
+    paddingBottom: 20,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: commonStyle.secondaryColor,
   },
   infoContainer: {
     flexDirection: 'row',
@@ -40,6 +43,7 @@ const styles = StyleSheet.create({
     textAlignVertical: 'center',
     flexWrap: 'wrap',
     paddingLeft: 5,
+    color: 'white',
   },
   imageContainer: {
     paddingRight: 5,
@@ -47,5 +51,6 @@ const styles = StyleSheet.create({
   directionText: {
     fontSize: 20,
     textAlignVertical: 'center',
+    color: 'white',
   },
 });
