@@ -98,7 +98,11 @@ const renderEmploymentsButton = () => {
 
   return (
     <Button style={styles.contactButton} onPress={onPressEmploymentsButton}>
-      <MaterialCommunityIcons name="pencil" size={20} color={'black'} />
+      <MaterialCommunityIcons
+        name="clipboard-text-clock"
+        size={20}
+        color={'black'}
+      />
       <Text style={styles.contactText}> Mis prestaciones</Text>
     </Button>
   );

@@ -201,9 +201,7 @@ const renderHeader = () => {
     <View style={styles.headerContainer}>
       <Text style={styles.headerText}>Mis prestaciones</Text>
       {renderPaymentRecordButton()}
-      <View
-        style={{ height: 1, backgroundColor: 'grey', marginTop: 10 }}
-      ></View>
+      <View style={{ height: 1, backgroundColor: 'grey' }}></View>
     </View>
   );
 };
@@ -300,6 +298,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginLeft: 10,
+    flexGrow: 1,
   },
 
   paymentButton: {
