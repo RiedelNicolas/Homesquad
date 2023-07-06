@@ -23,7 +23,7 @@ export type WorkerCardProps = {
 export const WorkerCard = ({ details, isHired }: WorkerCardProps) => {
   const navigation = useNavigation<RootStackParamList>();
   const onPress = () => {
-    navigation.navigate('ProfileScreen', { details });
+    navigation.navigate('ProfileScreen', { details, editable: false });
   };
 
   const {
