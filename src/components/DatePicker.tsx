@@ -32,7 +32,7 @@ export const DatePicker = ({ date, setDate }: DatePickerProps) => {
   };
 
   return (
-    <View>
+    <View style={styles.container}>
       <Text style={styles.dateText}>
         {date.toLocaleDateString()}{' '}
         {date.getHours().toString().padStart(2, '0')}:
@@ -60,6 +60,9 @@ export const DatePicker = ({ date, setDate }: DatePickerProps) => {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    paddingTop: 20,
+  },
   button: {
     width: 150,
   },
