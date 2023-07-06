@@ -1,5 +1,9 @@
 # HomeSquad!
 
+### Para deployear la db de json-server (hacer esto cada vez que se hagan cambios en `db.json`):
+
+- ./deploy-server.sh
+
 ### Para correr la app en development :
 
 - yarn install

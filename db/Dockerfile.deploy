@@ -1,0 +1,15 @@
+FROM ubuntu:latest
+
+RUN mkdir -p app/
+
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y curl && curl -L https://fly.io/install.sh | sh
+
+COPY db.json fly.toml ./
+
+COPY Dockerfile.server ./Dockerfile
+
+ENV FLY_API_TOKEN="FlyV1 fm1r_lJPECAAAAAAAAMqcxBAYgw1GTQ56oC78MZFB4HPJwrVodHRwczovL2FwaS5mbHkuaW8vdjGWAJLOAAFmXh8Lk7lodHRwczovL2FwaS5mbHkuaW8vYWFhL3YxxDz4RjyxUYTX4446Yr56EyRZX+pTlcTpJtRtcSCckvwVaBei2spkioQ2QwgDj1Gp0pOGsybukLYims9HYbPERyyDMifXWm28oUaoxF1zucmBtN4zIp+I78eAr39Vx2saJKzN+n9wG/KowbrAccqnrxWe1gk/zOyhvwZIsvl0VxFNnSM71gERDZKUA5GBzgATuNsfBZGCp2J1aWxkZXIfondnHwHEIHIx8B8i204UJsynrcLJmWFKOXmO6rVdQIE6peiWLV5t,fm1a_lJPERyyDMifXWm28oUaoxF1zucmBtN4zIp+I78eAr39Vx2saJKzN+n9wG/KowbrAccqnrxWe1gk/zOyhvwZIsvl0VxFNnSM71gERxBCT7gshMKqzS6Bdx8HCSsPzw7lodHRwczovL2FwaS5mbHkuaW8vYWFhL3YxlgSSzmSnPhvOij9EOQqRzgABSS0MxBCQVET52fuFhcIxWWr/GI23xCBiZqOxb4IS5sUQxmGPwU7Kq52uGLhGKyLtNE4RVpLQoA=="
+
+CMD ["/root/.fly/bin/flyctl", "deploy"]
