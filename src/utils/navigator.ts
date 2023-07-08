@@ -7,6 +7,7 @@ import { ChatScreenProps } from '../screens/ChatScreen';
 import { WorkerDetailsWithId } from '../data/worker-details';
 import { EmploymentsScreenProps } from '../screens/EmploymentsScreen';
 import { PaymentsRecordScreenProps } from '../screens/PaymentsRecordScreen';
+import { PaymentScreenProps } from '../screens/PaymentScreen';
 
 export type RootStackParamList = {
   HomeScreen: undefined;
@@ -17,6 +18,7 @@ export type RootStackParamList = {
   ProfessionalScreen: undefined;
   EmploymentsScreen: EmploymentsScreenProps;
   PaymentsRecordScreen: PaymentsRecordScreenProps;
+  PaymentScreen: PaymentScreenProps;
 };
 
 export type TabParamList = {

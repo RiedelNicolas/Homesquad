@@ -4,7 +4,7 @@ import { Button, Text } from 'react-native-paper';
 
 type OfferBubleProps = {
   price: string;
-  handleWorkerHire: () => void;
+  handleWorkerHire: (number) => void;
 };
 
 export const OfferBubble = ({ price, handleWorkerHire }: OfferBubleProps) => {
@@ -15,7 +15,7 @@ export const OfferBubble = ({ price, handleWorkerHire }: OfferBubleProps) => {
         <Button
           style={styles.acceptButton}
           textColor="white"
-          onPress={() => handleWorkerHire()}
+          onPress={() => handleWorkerHire(price)}
         >
           Aceptar
         </Button>

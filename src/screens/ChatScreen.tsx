@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, StyleSheet, FlatList, Image } from 'react-native';
+import { View, StyleSheet, FlatList } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { ChatBubble } from '../components/ChatBubble';
 import { ChatTextInput } from '../components/ChatTextInput';
@@ -35,7 +35,7 @@ export const ChatScreen = ({
 
   const navigation = useNavigation<RootStackParamList>();
   const [messages, setMessages] = React.useState([] as MessageType[]);
-  const [_, setHiredWorkers] =
+  const [, setHiredWorkers] =
     React.useContext<HiredWorkersContextType>(HiredWorkersContext);
 
   // TODO: we should remove the mock when we have a backend
@@ -66,9 +66,9 @@ export const ChatScreen = ({
     }
   }
 
-  function handleWorkerHire() {
+  function handleWorkerHire(price: number) {
     setHiredWorkers((hiredWorkers) => [...hiredWorkers, workerDetails]);
-    navigation.navigate('HomeScreen', { screen: 'HiredWorkersScreen' });
+    navigation.navigate('PaymentScreen', { price: price });
   }
 
   return (
