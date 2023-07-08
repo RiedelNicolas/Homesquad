@@ -68,7 +68,6 @@ export const ChatScreen = ({
 
   function handleWorkerHire(price: number) {
     setHiredWorkers((hiredWorkers) => [...hiredWorkers, workerDetails]);
-    console.log(price);
     navigation.navigate('PaymentScreen', { price: price });
   }
 

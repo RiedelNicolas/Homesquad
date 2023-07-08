@@ -1,9 +1,16 @@
-import React from 'react';
-import { View, Text, FlatList, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import {
+  View,
+  Text,
+  FlatList,
+  StyleSheet,
+  TouchableOpacity,
+} from 'react-native';
 import { Card, Divider, Button } from 'react-native-paper';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../utils/navigator';
+import { PaymentModal } from '../components/PaymentModal';
 
 type CardType = {
   id: string;
@@ -13,8 +20,8 @@ type CardType = {
 
 // Sample data for the used credit cards
 const usedCreditCards: CardType[] = [
-  { id: '1', cardNumber: '**** **** **** 1234', cardHolder: 'John Doe' },
-  { id: '2', cardNumber: '**** **** **** 5678', cardHolder: 'Jane Smith' },
+  { id: '1', cardNumber: '**** **** **** 1234', cardHolder: 'Ana Perez' },
+  { id: '2', cardNumber: '**** **** **** 5678', cardHolder: 'Ana Perez' },
 ];
 
 export type PaymentScreenProps = {
@@ -25,19 +32,24 @@ export const PaymentScreen = ({
   route,
 }: NativeStackScreenProps<RootStackParamList, 'PaymentScreen'>) => {
   const { price } = route.params;
-  console.log(price);
+
+  const [visible, setVisible] = useState(false);
+  const showModal = () => setVisible(true);
+  const hideModal = () => setVisible(false);
   // Render item for each used credit card
   const renderItem = (item: CardType) => (
-    <View style={styles.creditCardContainer}>
-      <MaterialCommunityIcons
-        name="credit-card"
-        size={24}
-        color="black"
-        style={styles.creditCardIcon}
-      />
-      <Text style={styles.cardNumber}>{item.cardNumber}</Text>
-      <Text style={styles.cardHolder}>{item.cardHolder}</Text>
-    </View>
+    <TouchableOpacity onPress={showModal}>
+      <View style={styles.creditCardContainer}>
+        <MaterialCommunityIcons
+          name="credit-card"
+          size={24}
+          color="black"
+          style={styles.creditCardIcon}
+        />
+        <Text style={styles.cardNumber}>{item.cardNumber}</Text>
+        <Text style={styles.cardHolder}>{item.cardHolder}</Text>
+      </View>
+    </TouchableOpacity>
   );
 
   return (
@@ -60,10 +72,11 @@ export const PaymentScreen = ({
             }}
             style={styles.addButton}
           >
-            Add New Payment Method
+            Agregar Método de Pago
           </Button>
         </View>
       </Card>
+      <PaymentModal visible={visible} hideModal={hideModal} />
     </View>
   );
 };
