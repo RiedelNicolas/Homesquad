@@ -2,6 +2,8 @@ import React from 'react';
 import { View, Text, FlatList, StyleSheet } from 'react-native';
 import { Card, Divider, Button } from 'react-native-paper';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../utils/navigator';
 
 type CardType = {
   id: string;
@@ -15,7 +17,15 @@ const usedCreditCards: CardType[] = [
   { id: '2', cardNumber: '**** **** **** 5678', cardHolder: 'Jane Smith' },
 ];
 
-export const PaymentScreen = () => {
+export type PaymentScreenProps = {
+  price: number;
+};
+
+export const PaymentScreen = ({
+  route,
+}: NativeStackScreenProps<RootStackParamList, 'PaymentScreen'>) => {
+  const { price } = route.params;
+  console.log(price);
   // Render item for each used credit card
   const renderItem = (item: CardType) => (
     <View style={styles.creditCardContainer}>
@@ -35,7 +45,7 @@ export const PaymentScreen = () => {
       <Card style={styles.card}>
         <Card.Title title="Payment" />
         <Card.Content>
-          <Text style={styles.price}>Price: $XX.XX</Text>
+          <Text style={styles.price}>Price: ${price}</Text>
           <FlatList
             data={usedCreditCards}
             keyExtractor={(item: CardType) => item.id}
