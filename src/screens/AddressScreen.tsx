@@ -58,13 +58,7 @@ export const AddressScreen = ({
           Elija la direccion donde se realizara el servicio
         </Text>
 
-        <View
-          style={{
-            flex: 0,
-            borderWidth: 1,
-            borderRadius: 10,
-          }}
-        >
+        <View style={styles.pickerContainer}>
           <Picker
             selectedValue={selectedAddress}
             onValueChange={(itemValue) => setSelectedAddress(itemValue)}
@@ -89,9 +83,8 @@ export const AddressScreen = ({
             onChangeText={(text) => setNewAddress(text)}
             multiline
             mode="outlined"
-            theme={{
-              colors: { primary: 'black' },
-            }}
+            outlineColor="black"
+            outlineStyle={styles.textInputOutline}
           />
           <Button style={styles.newAddressButton} onPress={onNewAddressPress}>
             <MaterialCommunityIcons name="plus" size={20} color={'black'} />
@@ -103,13 +96,13 @@ export const AddressScreen = ({
           style={{ backgroundColor: commonStyle.secondaryColor }}
           onPress={onCancelPress}
         >
-          <Text style={styles.contactText}> Cancelar </Text>
+          <Text style={styles.endButtonsText}> Cancelar </Text>
         </Button>
         <Button
           style={{ backgroundColor: commonStyle.secondaryColor }}
           onPress={onContinuePress}
         >
-          <Text style={styles.contactText}> Continuar </Text>
+          <Text style={styles.endButtonsText}> Continuar </Text>
         </Button>
       </View>
     </View>
@@ -121,6 +114,13 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: commonStyle.backgroundColor,
   },
+  pickerContainer: {
+    flex: 0,
+    borderWidth: 1,
+    borderRadius: 10,
+    width: '95%',
+    alignSelf: 'center',
+  },
   content: {
     flex: 1,
   },
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
     alignItems: 'center',
   },
-  contactText: {
+  endButtonsText: {
     fontSize: 20,
     fontWeight: '300',
   },
@@ -154,14 +154,15 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
   textInput: {
-    width: '80%',
+    width: '75%',
     marginRight: 5,
   },
   textInputContainer: {
     flex: 0,
     flexDirection: 'row',
-    paddingBottom: 15,
-    paddingLeft: 0,
-    borderColor: 'red',
+    alignSelf: 'center',
+  },
+  textInputOutline: {
+    borderRadius: 10,
   },
 });
