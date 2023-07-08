@@ -8,7 +8,7 @@ import { LogoImage } from '../assets';
 import { CategoryType } from '../data/dataTypes';
 
 export const CategoriesScreen = () => {
-  const [categories, setCategories] = useState<CategoryType[]>([]);
+  /* const [categories, setCategories] = useState<CategoryType[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,13 +28,13 @@ export const CategoriesScreen = () => {
     fetchData().catch((error) => {
       console.error(error);
     });
-  }, []);
+  }, []); */
 
   return (
     <View style={styles.screen}>
       <StatusBar barStyle="light-content" />
       <Image style={styles.imageStyle} source={LogoImage} />
-      <CategoriesList categories={categories} />
+      <CategoriesList />
     </View>
   );
 };

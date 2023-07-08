@@ -1,13 +1,9 @@
 import * as React from 'react';
 import { FlatList, View, StyleSheet } from 'react-native';
-import { CategoryType } from '../data/dataTypes';
+import { categories } from '../data/categories';
 import { Category } from './Category';
 
-interface CategoriesListProps {
-  categories: CategoryType[];
-}
-
-export const CategoriesList = ({ categories }: CategoriesListProps) => {
+export const CategoriesList = () => {
   const getCategories = () => {
     const sortedCategories = categories.sort((a, b) =>
       a.category >= b.category ? 1 : -1
