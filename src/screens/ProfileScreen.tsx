@@ -165,17 +165,8 @@ const Professional = ({ workerDetails, editable }: ProfessionalProps) => {
           <Button
             style={styles.contactButton}
             onPress={() =>
-              navigation.navigate('ChatScreen', {
-                workerDetails: {
-                  name: workerDetails.name,
-                  distance: '',
-                  image: workerDetails.image,
-                  deliveryTime: '',
-                  location: '',
-                  rating: workerDetails.rating,
-                  reviewsAmount: workerDetails.reviewsAmount,
-                  description: workerDetails.description,
-                },
+              navigation.navigate('AddressScreen', {
+                details: workerDetails,
               })
             }
           >

@@ -53,7 +53,7 @@ export const AddressScreen = ({
   return (
     <View style={styles.container}>
       <View style={styles.content}>
-        <ChatUserInfo name={details.name} image={details.image} />
+        <ChatUserInfo name={details.name} image={details.image} address={''} />
         <Text style={styles.chooseAddressStyle}>
           Elija la direccion donde se realizara el servicio
         </Text>
@@ -85,6 +85,7 @@ export const AddressScreen = ({
             mode="outlined"
             outlineColor="black"
             outlineStyle={styles.textInputOutline}
+            activeOutlineColor="black"
           />
           <Button style={styles.newAddressButton} onPress={onNewAddressPress}>
             <MaterialCommunityIcons name="plus" size={20} color={'black'} />
