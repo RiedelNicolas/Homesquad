@@ -3,10 +3,12 @@ import { Modal, Button } from 'react-native-paper';
 import { View, Text, StyleSheet, Animated } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import { useNavigation, RootStackParamList } from '../utils/navigator';
+import { commonStyle } from '../utils/style';
 
 export type PaymentModalProps = {
   visible: boolean;
   hideModal: () => void;
+  cardNumber: string;
 };
 
 type CompletedModalProps = {
@@ -16,20 +18,31 @@ type CompletedModalProps = {
 type ConfirmationModalProps = {
   onConfirm: () => void;
   onCancel: () => void;
+  cardNumber: string;
 };
 
-const ConfirmationModal = ({ onConfirm, onCancel }: ConfirmationModalProps) => {
+const ConfirmationModal = ({
+  onConfirm,
+  onCancel,
+  cardNumber,
+}: ConfirmationModalProps) => {
   return (
     <View style={styles.modalContent}>
-      <Text style={styles.title}>Confirmar Pago</Text>
+      <Text style={styles.title}>Confirmar Pago con Tarjeta:</Text>
+      <Text style={styles.message}>{cardNumber}</Text>
       <Text style={styles.message}>
-        ¿Estás seguro que deseas confirmar el pago?
+        ¿Está seguro que desea confirmar el pago?
       </Text>
       <View style={styles.buttonContainer}>
-        <Button mode="outlined" onPress={onCancel} style={styles.button}>
+        <Button
+          mode="outlined"
+          onPress={onCancel}
+          style={styles.cancelButton}
+          textColor={commonStyle.primaryColor}
+        >
           Cancelar
         </Button>
-        <Button mode="contained" onPress={onConfirm} style={styles.button}>
+        <Button mode="contained" onPress={onConfirm} style={styles.payButton}>
           Pagar
         </Button>
       </View>
@@ -87,27 +100,49 @@ const CompletedModal = ({ confirmed }: CompletedModalProps) => {
         </Animated.View>
       </Animated.View>
       <Text style={styles.title}>¡Pago Realizado con Éxito!</Text>
-      <Button onPress={() => navigation.navigate('HomeScreen')}>
-        Volver a Home
+      <Button
+        mode="contained"
+        onPress={() => navigation.navigate('HomeScreen')}
+        style={styles.homeButton}
+      >
+        Volver al Inicio
       </Button>
     </View>
   );
 };
 
-export const PaymentModal = ({ visible, hideModal }: PaymentModalProps) => {
+export const PaymentModal = ({
+  visible,
+  hideModal,
+  cardNumber,
+}: PaymentModalProps) => {
   const [confirmed, setConfirmed] = useState(false);
   const onConfirm = () => setConfirmed(true);
-  const onCancel = () => setConfirmed(false);
+  const onCancel = () => {
+    setConfirmed(false);
+    hideModal();
+  };
+  const navigation = useNavigation<RootStackParamList>();
   return (
     <Modal
       visible={visible}
-      onDismiss={hideModal}
+      onDismiss={() => {
+        if (confirmed) {
+          navigation.navigate('HomeScreen');
+        } else {
+          hideModal();
+        }
+      }}
       contentContainerStyle={styles.contentContainerStyle}
     >
       {confirmed ? (
         <CompletedModal confirmed={confirmed} />
       ) : (
-        <ConfirmationModal onCancel={onCancel} onConfirm={onConfirm} />
+        <ConfirmationModal
+          onCancel={onCancel}
+          onConfirm={onConfirm}
+          cardNumber={cardNumber}
+        />
       )}
     </Modal>
   );
@@ -115,8 +150,9 @@ export const PaymentModal = ({ visible, hideModal }: PaymentModalProps) => {
 
 const styles = StyleSheet.create({
   contentContainerStyle: {
-    backgroundColor: 'white',
+    backgroundColor: 'transparent',
     padding: 20,
+    elevation: 0,
   },
   modalContent: {
     backgroundColor: 'white',
@@ -140,9 +176,19 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
   },
-  button: {
+  payButton: {
     flex: 1,
     marginHorizontal: 10,
+    backgroundColor: commonStyle.secondaryColor,
+  },
+  cancelButton: {
+    flex: 1,
+    marginHorizontal: 10,
+    borderColor: commonStyle.primaryColor,
+  },
+  homeButton: {
+    width: '100%',
+    backgroundColor: commonStyle.secondaryColor,
   },
   checkmarkContainer: {
     alignItems: 'center',

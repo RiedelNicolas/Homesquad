@@ -9,6 +9,7 @@ import {
 import { Card, Divider, Button } from 'react-native-paper';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { commonStyle } from '../utils/style';
 import { RootStackParamList } from '../utils/navigator';
 import { PaymentModal } from '../components/PaymentModal';
 
@@ -32,13 +33,17 @@ export const PaymentScreen = ({
   route,
 }: NativeStackScreenProps<RootStackParamList, 'PaymentScreen'>) => {
   const { price } = route.params;
-
+  const [selectedCard, setSelectedCard] = useState('');
   const [visible, setVisible] = useState(false);
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
-  // Render item for each used credit card
   const renderItem = (item: CardType) => (
-    <TouchableOpacity onPress={showModal}>
+    <TouchableOpacity
+      onPress={() => {
+        showModal();
+        setSelectedCard(item.cardNumber);
+      }}
+    >
       <View style={styles.creditCardContainer}>
         <MaterialCommunityIcons
           name="credit-card"
@@ -71,12 +76,17 @@ export const PaymentScreen = ({
               console.log('Agrego tarjeta');
             }}
             style={styles.addButton}
+            textColor="white"
           >
             Agregar Método de Pago
           </Button>
         </View>
       </Card>
-      <PaymentModal visible={visible} hideModal={hideModal} />
+      <PaymentModal
+        visible={visible}
+        hideModal={hideModal}
+        cardNumber={selectedCard}
+      />
     </View>
   );
 };
@@ -122,5 +132,6 @@ const styles = StyleSheet.create({
   },
   addButton: {
     width: '100%',
+    backgroundColor: commonStyle.secondaryColor,
   },
 });
