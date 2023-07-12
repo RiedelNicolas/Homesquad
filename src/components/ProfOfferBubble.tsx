@@ -6,7 +6,7 @@ interface profOfferBubbleProps {
   price: string;
 }
 
-interface offertMessage {
+export interface offertMessage {
   price: string;
   description: string;
   date: string;

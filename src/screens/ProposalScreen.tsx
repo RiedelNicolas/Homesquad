@@ -15,7 +15,7 @@ export type ProposalScreenProps = {
   setPrice: React.Dispatch<React.SetStateAction<string>>;
   problemDescription: string;
   setProblemDescription: React.Dispatch<React.SetStateAction<string>>;
-  onAccept: (price: string, desciption: string, date: Date) => void;
+  onAccept: (price: string, description: string, date: Date) => void;
 };
 
 export const ProposalScreen = ({

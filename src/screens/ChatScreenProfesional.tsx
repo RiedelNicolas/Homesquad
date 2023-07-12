@@ -38,10 +38,10 @@ export const ChatScreenProfesional = ({
     sendMessage(message, isOffer);
   }
 
-  const handleNewOffer = (price: string, desciption: string, date: Date) => {
+  const handleNewOffer = (price: string, description: string, date: Date) => {
     const message = {
       price: price,
-      desciption: desciption,
+      description: description,
       date: date,
     };
     sendMessage(JSON.stringify(message), true);
@@ -90,7 +90,7 @@ export const ChatScreenProfesional = ({
 interface OfferModalProps {
   visible: boolean;
   hideModal: () => void;
-  onAccept: (price: string, desciption: string, date: Date) => void;
+  onAccept: (price: string, description: string, date: Date) => void;
   clearAllMessages?: () => void;
 }
 

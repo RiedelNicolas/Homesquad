@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Button, Text } from 'react-native-paper';
+import { offertMessage } from './ProfOfferBubble';
 
 type OfferBubleProps = {
   price: string;
@@ -8,14 +9,24 @@ type OfferBubleProps = {
 };
 
 export const OfferBubble = ({ price, handleWorkerHire }: OfferBubleProps) => {
+  const message: offertMessage = JSON.parse(price) as offertMessage;
+  const date = new Date(message.date);
+
   return (
     <View style={[styles.bubbleUbication, { justifyContent: 'flex-start' }]}>
       <View style={styles.chatContainer}>
-        <Text style={styles.chatText}>Precio ofrecido: ${price}</Text>
+        <Text style={styles.chatText}>Oferta:</Text>
+        <Text style={styles.chatText}>Descripción: {message.description}</Text>
+        <Text style={styles.chatText}>Fecha: {date.toLocaleDateString()}</Text>
+        <Text style={styles.chatText}>
+          Hora: {date.getHours().toString().padStart(2, '0')}:
+          {date.getMinutes().toString().padStart(2, '0')}
+        </Text>
+        <Text style={styles.chatText}>Precio: ${message.price}</Text>
         <Button
           style={styles.acceptButton}
           textColor="white"
-          onPress={() => handleWorkerHire(price)}
+          onPress={() => handleWorkerHire(message.price)}
         >
           Aceptar
         </Button>
