@@ -17,6 +17,7 @@ import { RootStackParamList } from '../utils/navigator';
 import { MessageType, useMessages } from '../hooks/useMessages';
 import { UserImage } from '../assets';
 import { ProfOfferBubble } from '../components/ProfOfferBubble';
+import { ProposalScreen } from './ProposalScreen';
 
 export type ChatScreenProfesionalProps = {
   name: string;
@@ -44,7 +45,7 @@ export const ChatScreenProfesional = ({
     sendMessage(message, isOffer);
   }
 
-  const handleNewOffer = (price: string) => {
+  const handleNewOffer = (price: string, desciption: string, date: Date) => {
     sendMessage(price, true);
     setShowModal(false);
   };
@@ -91,7 +92,7 @@ export const ChatScreenProfesional = ({
 interface OfferModalProps {
   visible: boolean;
   hideModal: () => void;
-  onAccept: (price: string) => void;
+  onAccept: (price: string, desciption: string, date: Date) => void;
   clearAllMessages?: () => void;
 }
 
@@ -101,7 +102,9 @@ const OfferModal = ({
   onAccept,
   clearAllMessages,
 }: OfferModalProps) => {
-  const [price, setPrice] = React.useState<string>('');
+  const [date, setDate] = React.useState(new Date());
+  const [price, setPrice] = React.useState('0');
+  const [problemDescription, setProblemDescription] = React.useState('');
 
   return (
     <Portal>
@@ -110,22 +113,15 @@ const OfferModal = ({
         onDismiss={hideModal}
         contentContainerStyle={styles.modalContainer}
       >
-        <Text style={styles.modalText}>Escriba su oferta</Text>
-        <TextInput
-          label="Precio"
-          value={price}
-          onChangeText={setPrice}
-          mode="outlined"
-          style={styles.textInput}
+        <ProposalScreen
+          date={date}
+          setDate={setDate}
+          price={price}
+          setPrice={setPrice}
+          problemDescription={problemDescription}
+          setProblemDescription={setProblemDescription}
+          onAccept={onAccept}
         />
-        <Button
-          onPress={() => {
-            onAccept(price);
-          }}
-          onLongPress={clearAllMessages}
-        >
-          Ofertar
-        </Button>
       </Modal>
     </Portal>
   );
@@ -154,9 +150,7 @@ const styles = StyleSheet.create({
   },
   modalContainer: {
     backgroundColor: 'white',
-    padding: 20,
-    height: 300,
-    justifyContent: 'space-between',
+    paddingVertical: 20,
   },
   textInput: {
     backgroundColor: 'white',

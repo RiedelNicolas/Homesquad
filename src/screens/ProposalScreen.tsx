@@ -8,14 +8,28 @@ import { DatePicker } from '../components/DatePicker';
 import { ProblemDescription } from '../components/ProblemDescription';
 import { commonStyle } from '../utils/style';
 
-export const ProposalScreen = () => {
-  const [date, setDate] = React.useState(new Date());
-  const [price, setPrice] = React.useState('0');
-  const [problemDescription, setProblemDescription] = React.useState('');
+export type ProposalScreenProps = {
+  date: Date;
+  setDate: React.Dispatch<React.SetStateAction<Date>>;
+  price: string;
+  setPrice: React.Dispatch<React.SetStateAction<string>>;
+  problemDescription: string;
+  setProblemDescription: React.Dispatch<React.SetStateAction<string>>;
+  onAccept: (price: string, desciption: string, date: Date) => void;
+};
 
+export const ProposalScreen = ({
+  date,
+  setDate,
+  price,
+  setPrice,
+  problemDescription,
+  setProblemDescription,
+  onAccept,
+}: ProposalScreenProps) => {
   return (
     <View>
-      <ProposalClientInfor />
+      {/* <ProposalClientInfor /> */}
       <Text style={styles.fieldText}>Describa el problema</Text>
       <ProblemDescription
         problemDescription={problemDescription}
@@ -52,6 +66,7 @@ export const ProposalScreen = () => {
           mode="contained"
           style={styles.buttonStyle}
           buttonColor={commonStyle.cardColor}
+          onPress={() => onAccept(price, problemDescription, date)}
         >
           Listo
         </Button>
