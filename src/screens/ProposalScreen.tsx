@@ -5,14 +5,20 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { TextInput } from 'react-native-paper';
 import { ProposalClientInfor } from '../components/ProposalClientInfo';
 import { DatePicker } from '../components/DatePicker';
+import { ProblemDescription } from '../components/ProblemDescription';
 
 export const ProposalScreen = () => {
   const [date, setDate] = React.useState(new Date());
   const [price, setPrice] = React.useState('0');
+  const [problemDescription, setProblemDescription] = React.useState('');
 
   return (
     <View>
       <ProposalClientInfor />
+      <ProblemDescription
+        problemDescription={problemDescription}
+        setProblemDescription={setProblemDescription}
+      />
       <DatePicker date={date} setDate={setDate} />
       <View style={styles.priceInputContainer}>
         <TextInput
