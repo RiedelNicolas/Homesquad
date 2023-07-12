@@ -15,6 +15,7 @@ import { ProfessionalScreen } from './screens/ProfessionalScreen';
 import { EmploymentsScreen } from './screens/EmploymentsScreen';
 import { PaymentsRecordScreen } from './screens/PaymentsRecordScreen';
 import { PaymentScreen } from './screens/PaymentScreen';
+import { ChatScreenProfesional } from './screens/ChatScreenProfesional';
 
 // Navigators
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -46,6 +47,10 @@ function App() {
             <Stack.Screen
               name="PaymentsRecordScreen"
               component={PaymentsRecordScreen}
+            />
+            <Stack.Screen
+              name="chatScreenProfesional"
+              component={ChatScreenProfesional}
             />
             <Stack.Screen name="PaymentScreen" component={PaymentScreen} />
           </Stack.Navigator>
