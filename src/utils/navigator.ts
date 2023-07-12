@@ -21,6 +21,7 @@ export type RootStackParamList = {
   PaymentsRecordScreen: PaymentsRecordScreenProps;
   PaymentScreen: PaymentScreenProps;
   chatScreenProfesional: ChatScreenProfesionalProps;
+  ProposalScreen: undefined;
 };
 
 export type TabParamList = {
