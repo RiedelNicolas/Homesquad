@@ -1,14 +1,7 @@
 import * as React from 'react';
 import { View, StyleSheet, FlatList } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import {
-  Portal,
-  Modal,
-  Text,
-  PaperProvider,
-  Button,
-  TextInput,
-} from 'react-native-paper';
+import { Portal, Modal, PaperProvider } from 'react-native-paper';
 import { ChatBubble } from '../components/ChatBubble';
 import { ChatTextInput } from '../components/ChatTextInput';
 import { ChatUserInfo } from '../components/ChatUserInfo';
@@ -17,6 +10,7 @@ import { RootStackParamList } from '../utils/navigator';
 import { MessageType, useMessages } from '../hooks/useMessages';
 import { UserImage } from '../assets';
 import { ProfOfferBubble } from '../components/ProfOfferBubble';
+import { ProposalScreen } from './ProposalScreen';
 
 export type ChatScreenProfesionalProps = {
   name: string;
@@ -44,8 +38,13 @@ export const ChatScreenProfesional = ({
     sendMessage(message, isOffer);
   }
 
-  const handleNewOffer = (price: string) => {
-    sendMessage(price, true);
+  const handleNewOffer = (price: string, description: string, date: Date) => {
+    const message = {
+      price: price,
+      description: description,
+      date: date,
+    };
+    sendMessage(JSON.stringify(message), true);
     setShowModal(false);
   };
 
@@ -91,7 +90,7 @@ export const ChatScreenProfesional = ({
 interface OfferModalProps {
   visible: boolean;
   hideModal: () => void;
-  onAccept: (price: string) => void;
+  onAccept: (price: string, description: string, date: Date) => void;
   clearAllMessages?: () => void;
 }
 
@@ -101,7 +100,9 @@ const OfferModal = ({
   onAccept,
   clearAllMessages,
 }: OfferModalProps) => {
-  const [price, setPrice] = React.useState<string>('');
+  const [date, setDate] = React.useState(new Date());
+  const [price, setPrice] = React.useState('0');
+  const [problemDescription, setProblemDescription] = React.useState('');
 
   return (
     <Portal>
@@ -110,22 +111,15 @@ const OfferModal = ({
         onDismiss={hideModal}
         contentContainerStyle={styles.modalContainer}
       >
-        <Text style={styles.modalText}>Escriba su oferta</Text>
-        <TextInput
-          label="Precio"
-          value={price}
-          onChangeText={setPrice}
-          mode="outlined"
-          style={styles.textInput}
+        <ProposalScreen
+          date={date}
+          setDate={setDate}
+          price={price}
+          setPrice={setPrice}
+          problemDescription={problemDescription}
+          setProblemDescription={setProblemDescription}
+          onAccept={onAccept}
         />
-        <Button
-          onPress={() => {
-            onAccept(price);
-          }}
-          onLongPress={clearAllMessages}
-        >
-          Ofertar
-        </Button>
       </Modal>
     </Portal>
   );
@@ -154,9 +148,7 @@ const styles = StyleSheet.create({
   },
   modalContainer: {
     backgroundColor: 'white',
-    padding: 20,
-    height: 300,
-    justifyContent: 'space-between',
+    paddingVertical: 20,
   },
   textInput: {
     backgroundColor: 'white',

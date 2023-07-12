@@ -6,11 +6,27 @@ interface profOfferBubbleProps {
   price: string;
 }
 
+export interface offertMessage {
+  price: string;
+  description: string;
+  date: string;
+}
+
 export const ProfOfferBubble = ({ price }: profOfferBubbleProps) => {
+  const message: offertMessage = JSON.parse(price) as offertMessage;
+  const date = new Date(message.date);
+
   return (
     <View style={[styles.bubbleUbication, { justifyContent: 'flex-end' }]}>
       <View style={styles.chatContainer}>
-        <Text style={styles.chatText}>Hiciste una oferta de: ${price}</Text>
+        <Text style={styles.chatText}>Oferta:</Text>
+        <Text style={styles.chatText}>Descripción: {message.description}</Text>
+        <Text style={styles.chatText}>Fecha: {date.toLocaleDateString()}</Text>
+        <Text style={styles.chatText}>
+          Hora: {date.getHours().toString().padStart(2, '0')}:
+          {date.getMinutes().toString().padStart(2, '0')}
+        </Text>
+        <Text style={styles.chatText}>Precio: ${message.price}</Text>
       </View>
     </View>
   );
