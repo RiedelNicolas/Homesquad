@@ -33,19 +33,19 @@ export const DatePicker = ({ date, setDate }: DatePickerProps) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.dateText}>
-        {date.toLocaleDateString()}{' '}
-        {date.getHours().toString().padStart(2, '0')}:
-        {date.getMinutes().toString().padStart(2, '0')}
-      </Text>
       <View style={styles.buttonContainer}>
-        <Button mode="contained" style={styles.button} onPress={showDatepicker}>
-          Elegir fecha
-        </Button>
-        <Button mode="contained" style={styles.button} onPress={showTimepicker}>
-          Elegir hora
-        </Button>
+        <TouchableOpacity onPress={showDatepicker}>
+          <Text style={styles.dateText}>{date.toLocaleDateString()}</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={showTimepicker}>
+          <Text style={styles.dateText}>
+            {date.getHours().toString().padStart(2, '0')}:
+            {date.getMinutes().toString().padStart(2, '0')}
+          </Text>
+        </TouchableOpacity>
       </View>
+
       {show && (
         <DateTimePicker
           testID="dateTimePicker"
@@ -60,21 +60,20 @@ export const DatePicker = ({ date, setDate }: DatePickerProps) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    paddingTop: 20,
-  },
+  container: {},
   button: {
     width: 150,
   },
   buttonContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-around',
-    paddingTop: 20,
+    justifyContent: 'center',
   },
   dateText: {
     fontSize: 30,
     color: '#674fa3',
     textAlign: 'center',
+    shadowColor: 'red',
+    paddingHorizontal: 20,
   },
 });

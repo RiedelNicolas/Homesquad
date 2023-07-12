@@ -32,7 +32,6 @@ const styles = StyleSheet.create({
   priceInputContainer: {
     paddingHorizontal: 20,
     justifyContent: 'center',
-    paddingTop: 20,
     height: 200,
   },
   priceInput: {
