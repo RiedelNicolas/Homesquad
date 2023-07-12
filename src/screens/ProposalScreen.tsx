@@ -16,6 +16,7 @@ export type ProposalScreenProps = {
   problemDescription: string;
   setProblemDescription: React.Dispatch<React.SetStateAction<string>>;
   onAccept: (price: string, description: string, date: Date) => void;
+  onClearAll: () => void;
 };
 
 export const ProposalScreen = ({
@@ -26,6 +27,7 @@ export const ProposalScreen = ({
   problemDescription,
   setProblemDescription,
   onAccept,
+  onClearAll,
 }: ProposalScreenProps) => {
   return (
     <View>
@@ -67,6 +69,7 @@ export const ProposalScreen = ({
           style={styles.buttonStyle}
           buttonColor={commonStyle.cardColor}
           onPress={() => onAccept(price, problemDescription, date)}
+          onLongPress={() => onClearAll()}
         >
           Listo
         </Button>

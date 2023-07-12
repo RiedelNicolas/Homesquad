@@ -119,6 +119,7 @@ const OfferModal = ({
           problemDescription={problemDescription}
           setProblemDescription={setProblemDescription}
           onAccept={onAccept}
+          onClearAll={clearAllMessages}
         />
       </Modal>
     </Portal>
