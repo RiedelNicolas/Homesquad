@@ -1,14 +1,7 @@
 import * as React from 'react';
 import { View, StyleSheet, FlatList } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import {
-  Portal,
-  Modal,
-  Text,
-  PaperProvider,
-  Button,
-  TextInput,
-} from 'react-native-paper';
+import { Portal, Modal, PaperProvider } from 'react-native-paper';
 import { ChatBubble } from '../components/ChatBubble';
 import { ChatTextInput } from '../components/ChatTextInput';
 import { ChatUserInfo } from '../components/ChatUserInfo';
@@ -46,7 +39,12 @@ export const ChatScreenProfesional = ({
   }
 
   const handleNewOffer = (price: string, desciption: string, date: Date) => {
-    sendMessage(price, true);
+    const message = {
+      price: price,
+      desciption: desciption,
+      date: date,
+    };
+    sendMessage(JSON.stringify(message), true);
     setShowModal(false);
   };
 
