@@ -28,6 +28,8 @@ module.exports = {
     "import/no-unresolved": "error",
     "import/no-default-export": "error",
     "import/order": "error",
+    "@typescript-eslint/no-explicit-any": "error",
+    "@typescript-eslint/no-unused-vars": "error",
     "prettier/prettier": [
       'error',
       {

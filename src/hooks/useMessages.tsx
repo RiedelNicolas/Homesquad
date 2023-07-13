@@ -14,8 +14,7 @@ export type MessageType = {
 
 type rol = 'client' | 'profesional';
 
-
-export const useMessages = (rol : rol) => {
+export const useMessages = (rol: rol) => {
 
   const [messages, setMessages] = useState([] as MessageType[]);
 
@@ -23,11 +22,11 @@ export const useMessages = (rol : rol) => {
     try{
       const messageRef = ref(database, 'messages');
       onValue(messageRef, (snapshot) => {
-        const data = snapshot.val() as any;
+        const data = snapshot.val() as Record<string, MessageType> | null;
         if (data) {
           const newMessages = Object.values(data);
-          setMessages(newMessages as MessageType[]);
-        }else{
+          setMessages(newMessages);
+        } else {
           setMessages([]);
         }
       });

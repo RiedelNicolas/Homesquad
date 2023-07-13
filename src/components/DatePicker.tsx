@@ -1,7 +1,6 @@
 import * as React from 'react';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { Button } from 'react-native-paper';
 
 export type DatePickerProps = {
   date: Date;
@@ -12,10 +11,9 @@ export const DatePicker = ({ date, setDate }: DatePickerProps) => {
   const [mode, setMode] = React.useState<'date' | 'time'>('date');
   const [show, setShow] = React.useState(false);
 
-  const onChange = (event: any, selectedDate: Date) => {
-    const currentDate = selectedDate;
+  const onChange = (selectedDate: Date) => {
     setShow(false);
-    setDate(currentDate);
+    setDate(selectedDate);
   };
 
   const showMode = (currentMode: 'date' | 'time') => {
@@ -52,7 +50,7 @@ export const DatePicker = ({ date, setDate }: DatePickerProps) => {
           value={date}
           mode={mode}
           is24Hour={true}
-          onChange={onChange}
+          onChange={(_, selectedDate) => selectedDate && onChange(selectedDate)}
         />
       )}
     </View>
