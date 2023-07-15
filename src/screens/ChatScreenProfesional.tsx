@@ -54,6 +54,7 @@ export const ChatScreenProfesional = ({
         <ChatUserInfo
           name={name}
           image={UserImage}
+          address="" //TODO: Esta address habria que sacarla del json server
           onOfferPress={() => {
             setShowModal(true);
           }}
