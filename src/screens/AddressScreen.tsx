@@ -61,7 +61,7 @@ export const AddressScreen = ({
         <View style={styles.pickerContainer}>
           <Picker
             selectedValue={selectedAddress}
-            onValueChange={(itemValue) => setSelectedAddress(itemValue)}
+            onValueChange={(itemValue: string) => setSelectedAddress(itemValue)}
             mode="dropdown"
             style={{ borderColor: 'black' }}
           >
