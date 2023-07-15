@@ -6,21 +6,13 @@ import { ChatTextInput } from '../components/ChatTextInput';
 import { ChatUserInfo } from '../components/ChatUserInfo';
 import { commonStyle } from '../utils/style';
 import { RootStackParamList, useNavigation } from '../utils/navigator';
-import { delay, responseTime } from '../data/chat';
-import { messages as professionalMessages } from '../data/messages';
 import { OfferBubble } from '../components/OfferBubble';
 import {
   HiredWorkersContext,
   HiredWorkersContextType,
 } from '../contexts/hired-workers.context';
 import { WorkerDetails } from '../data/worker-details';
-
-type MessageType = {
-  id: string;
-  rol: string;
-  message: string;
-  isOffer: boolean;
-};
+import { MessageType, useMessages } from '../hooks/useMessages';
 
 export type ChatScreenProps = {
   workerDetails: WorkerDetails;
@@ -29,17 +21,14 @@ export type ChatScreenProps = {
 export const ChatScreen = ({
   route,
 }: NativeStackScreenProps<RootStackParamList, 'ChatScreen'>) => {
+  const { messages, sendMessage } = useMessages('client');
   const { workerDetails } = route.params;
 
   const chatMessagesRef = React.useRef<FlatList<MessageType>>(null);
 
   const navigation = useNavigation<RootStackParamList>();
-  const [messages, setMessages] = React.useState([] as MessageType[]);
   const [, setHiredWorkers] =
     React.useContext<HiredWorkersContextType>(HiredWorkersContext);
-
-  // TODO: we should remove the mock when we have a backend
-  const [messageCounter, setMessageCounter] = React.useState(0);
 
   React.useEffect(() => {
     if (chatMessagesRef.current && messages.length > 0) {
@@ -48,22 +37,7 @@ export const ChatScreen = ({
   }, [messages]);
 
   function handleNewMessage(message: string, rol: string, isOffer = false) {
-    setMessages((messages) => [
-      ...messages,
-      { id: (messages.length + 1).toString(), rol, message, isOffer },
-    ]);
-    if (rol === 'sender') {
-      delay(responseTime)
-        .then(() => {
-          handleNewMessage(
-            professionalMessages[messageCounter].message,
-            'receiver',
-            professionalMessages[messageCounter].isOffer
-          );
-          setMessageCounter(messageCounter + 1);
-        })
-        .catch((err) => console.log(err));
-    }
+    sendMessage(message, isOffer);
   }
 
   function handleWorkerHire(price: number) {
@@ -91,7 +65,7 @@ export const ChatScreen = ({
             ) : (
               <ChatBubble
                 message={item.message}
-                right={item.rol === 'sender'}
+                right={item.rol === 'client'}
               />
             )
           }

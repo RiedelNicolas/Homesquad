@@ -1,16 +1,33 @@
 import * as React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { Avatar, Card, Text } from 'react-native-paper';
 import { Entypo } from '@expo/vector-icons';
+import { Avatar, Button, Card, Text } from 'react-native-paper';
 import { commonStyle } from '../utils/style';
 
 export type ChatUserInfoProps = {
   name: string;
   image: React.ComponentProps<typeof Avatar.Image>['source'];
   address: string;
+  onOfferPress?: () => void;
 };
 
-export const ChatUserInfo = ({ name, image, address }: ChatUserInfoProps) => {
+export const ChatUserInfo = ({
+  name,
+  image,
+  address,
+  onOfferPress,
+}: ChatUserInfoProps) => {
+  const rightComponent = () => {
+    if (onOfferPress) {
+      return (
+        <Button onPress={onOfferPress}>
+          <Text>Hacer Oferta</Text>
+        </Button>
+      );
+    }
+    return null;
+  };
+
   return (
     <View>
       <Card style={styles.professionalCard}>
@@ -18,6 +35,7 @@ export const ChatUserInfo = ({ name, image, address }: ChatUserInfoProps) => {
           title={name}
           titleStyle={styles.professionalName}
           left={() => <Avatar.Image size={50} source={image} />}
+          right={rightComponent}
         />
         {address ? (
           <View style={styles.address}>

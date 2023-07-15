@@ -16,6 +16,8 @@ import { AddressScreen } from './screens/AddressScreen';
 import { EmploymentsScreen } from './screens/EmploymentsScreen';
 import { PaymentsRecordScreen } from './screens/PaymentsRecordScreen';
 import { PaymentScreen } from './screens/PaymentScreen';
+import { ChatScreenProfesional } from './screens/ChatScreenProfesional';
+import { ProposalScreen } from './screens/ProposalScreen';
 
 // Navigators
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -49,7 +51,12 @@ function App() {
               name="PaymentsRecordScreen"
               component={PaymentsRecordScreen}
             />
+            <Stack.Screen
+              name="chatScreenProfesional"
+              component={ChatScreenProfesional}
+            />
             <Stack.Screen name="PaymentScreen" component={PaymentScreen} />
+            <Stack.Screen name="ProposalScreen" component={ProposalScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       </HiredWorkersContext.Provider>

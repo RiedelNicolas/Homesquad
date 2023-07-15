@@ -3,8 +3,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { commonStyle } from '../utils/style';
 import { Carpintero3Image } from '../assets';
-import { HiredWorkersScreen } from './HiredWorkersScreen';
 import { ProfileScreen } from './ProfileScreen';
+import { ProfessionalChats } from './ProfessionalChats';
 
 const Tab = createBottomTabNavigator();
 
@@ -41,12 +41,12 @@ export const ProfessionalScreen = () => {
         }}
       />
       <Tab.Screen
-        name="HiredWorkersScreen"
-        component={HiredWorkersScreen}
+        name="ProfessionalChats"
+        component={ProfessionalChats}
         options={{
           tabBarIcon: ({ focused }) => (
             <MaterialCommunityIcons
-              name={'account-check'}
+              name={'chat'}
               size={40}
               color={focused ? commonStyle.secondaryColor : 'black'}
             />

@@ -13,7 +13,7 @@ module.exports = {
     project: true,
     tsconfigRootDir: __dirname,
   },
-  ignorePatterns: [".eslintrc.cjs", "babel.config.js"],
+  ignorePatterns: [".eslintrc.cjs", "babel.config.js", "metro.config.js"],
   plugins: ["@typescript-eslint", "prettier"],
   settings: {
     "import/parsers": {
@@ -28,6 +28,8 @@ module.exports = {
     "import/no-unresolved": "error",
     "import/no-default-export": "error",
     "import/order": "error",
+    "@typescript-eslint/no-explicit-any": "error",
+    "@typescript-eslint/no-unused-vars": "error",
     "prettier/prettier": [
       'error',
       {

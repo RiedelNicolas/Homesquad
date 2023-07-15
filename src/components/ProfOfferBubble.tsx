@@ -1,19 +1,23 @@
-import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { Button, Text } from 'react-native-paper';
-import { offertMessage } from './ProfOfferBubble';
 
-type OfferBubleProps = {
+import { Text } from 'react-native-paper';
+
+interface profOfferBubbleProps {
   price: string;
-  handleWorkerHire: (number) => void;
-};
+}
 
-export const OfferBubble = ({ price, handleWorkerHire }: OfferBubleProps) => {
+export interface offertMessage {
+  price: string;
+  description: string;
+  date: string;
+}
+
+export const ProfOfferBubble = ({ price }: profOfferBubbleProps) => {
   const message: offertMessage = JSON.parse(price) as offertMessage;
   const date = new Date(message.date);
 
   return (
-    <View style={[styles.bubbleUbication, { justifyContent: 'flex-start' }]}>
+    <View style={[styles.bubbleUbication, { justifyContent: 'flex-end' }]}>
       <View style={styles.chatContainer}>
         <Text style={styles.chatText}>Oferta:</Text>
         <Text style={styles.chatText}>Descripción: {message.description}</Text>
@@ -23,13 +27,6 @@ export const OfferBubble = ({ price, handleWorkerHire }: OfferBubleProps) => {
           {date.getMinutes().toString().padStart(2, '0')}
         </Text>
         <Text style={styles.chatText}>Precio: ${message.price}</Text>
-        <Button
-          style={styles.acceptButton}
-          textColor="white"
-          onPress={() => handleWorkerHire(message.price)}
-        >
-          Aceptar
-        </Button>
       </View>
     </View>
   );
@@ -37,13 +34,13 @@ export const OfferBubble = ({ price, handleWorkerHire }: OfferBubleProps) => {
 
 const styles = StyleSheet.create({
   chatContainer: {
-    backgroundColor: 'green',
+    backgroundColor: 'blue',
     color: 'white',
     maxWidth: '70%',
     borderRadius: 15,
     paddingHorizontal: 10,
     paddingVertical: 5,
-    alignSelf: 'flex-start',
+    alignSelf: 'flex-end',
     flexDirection: 'column',
     justifyContent: 'flex-end',
   },
