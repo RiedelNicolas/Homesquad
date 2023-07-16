@@ -6,3 +6,8 @@ export interface CategoryType {
   category: string;
   icon: ComponentProps<typeof MaterialCommunityIcons>['name'];
 }
+
+export interface AddressType {
+  key: string;
+  address: string;
+}

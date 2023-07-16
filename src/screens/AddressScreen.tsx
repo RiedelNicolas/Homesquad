@@ -4,31 +4,49 @@ import { View, StyleSheet } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Picker } from '@react-native-picker/picker';
+import { useEffect } from 'react';
 import { RootStackParamList, useNavigation } from '../utils/navigator';
 import { WorkerDetails } from '../data/worker-details';
 import { commonStyle } from '../utils/style';
 import { ChatUserInfo } from '../components/ChatUserInfo';
+import { AddressType } from '../data/dataTypes';
+import { getAddresses } from '../services/json-server.service';
 
 export type AddressScreenProps = {
   details: WorkerDetails;
 };
-
-const initialAddresses = ['Matienzo', 'Paseo Colon', 'Julian Alvarez'];
 
 export const AddressScreen = ({
   route,
 }: NativeStackScreenProps<RootStackParamList, 'AddressScreen'>) => {
   const details = route.params.details;
   const [selectedAddress, setSelectedAddress] = React.useState('');
-  const [addresses, setAddresses] = React.useState(initialAddresses);
+  const [addresses, setAddresses] = React.useState<AddressType[]>([]);
   const [newAddress, setNewAddress] = React.useState('');
   const onNewAddressPress = () => {
     if (newAddress) {
-      setAddresses([...addresses, newAddress]);
+      setAddresses([
+        ...addresses,
+        { key: (addresses.length + 1).toString(), address: newAddress },
+      ]);
       setSelectedAddress(newAddress);
       setNewAddress('');
     }
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const addresses = await getAddresses();
+        setAddresses(addresses);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData().catch((error) => {
+      console.error(error);
+    });
+  }, []);
 
   const navigation = useNavigation<RootStackParamList>();
   const onCancelPress = () => {
@@ -68,8 +86,8 @@ export const AddressScreen = ({
             {addresses.map((address, index) => (
               <Picker.Item
                 key={index}
-                label={address}
-                value={address}
+                label={address.address}
+                value={address.address}
                 style={styles.pickerItemStyle}
               />
             ))}

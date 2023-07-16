@@ -1,6 +1,7 @@
 import axios from 'axios';
-import { CategoryType } from '../data/dataTypes';
+import { AddressType, CategoryType } from '../data/dataTypes';
 import * as DefaultCategories from '../data/categories';
+import * as DefaultAddresses from '../data/addresses';
 const axiosClient = axios.create({
   baseURL: `https://homesquad-json-server.fly.dev`,
   headers: {
@@ -16,5 +17,14 @@ export const getCategories = async () => {
     return categories;
   } catch (error) {
     return DefaultCategories.categories;
+  }
+};
+
+export const getAddresses = async () => {
+  try {
+    const addresses = (await axiosClient.get<AddressType[]>('addresses')).data;
+    return addresses;
+  } catch (error) {
+    return DefaultAddresses.addresses;
   }
 };
