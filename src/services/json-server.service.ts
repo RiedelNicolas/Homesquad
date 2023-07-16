@@ -16,6 +16,7 @@ export const getCategories = async () => {
       .data;
     return categories;
   } catch (error) {
+    console.log(error);
     return DefaultCategories.categories;
   }
 };
@@ -25,6 +26,15 @@ export const getAddresses = async () => {
     const addresses = (await axiosClient.get<AddressType[]>('addresses')).data;
     return addresses;
   } catch (error) {
+    console.log(error);
     return DefaultAddresses.addresses;
+  }
+};
+
+export const addAddress = async (address: AddressType) => {
+  try {
+    await axiosClient.post<AddressType[]>('addresses', address);
+  } catch (error) {
+    console.log(error);
   }
 };

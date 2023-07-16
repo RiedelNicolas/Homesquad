@@ -10,7 +10,7 @@ import { WorkerDetails } from '../data/worker-details';
 import { commonStyle } from '../utils/style';
 import { ChatUserInfo } from '../components/ChatUserInfo';
 import { AddressType } from '../data/dataTypes';
-import { getAddresses } from '../services/json-server.service';
+import { getAddresses, addAddress } from '../services/json-server.service';
 
 export type AddressScreenProps = {
   details: WorkerDetails;
@@ -27,10 +27,16 @@ export const AddressScreen = ({
     if (newAddress) {
       setAddresses([
         ...addresses,
-        { key: (addresses.length + 1).toString(), address: newAddress },
+        { id: addresses.length + 1, address: newAddress },
       ]);
       setSelectedAddress(newAddress);
       setNewAddress('');
+      addAddress({
+        id: addresses.length + 1,
+        address: newAddress,
+      }).catch((error) => {
+        console.log(error);
+      });
     }
   };
 

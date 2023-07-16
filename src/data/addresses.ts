@@ -1,13 +1,12 @@
-export const addresses: Array<{
-  key: string;
-  address: string;
-}> = [
+import { AddressType } from './dataTypes';
+
+export const addresses: Array<AddressType> = [
   {
-    key: '1',
+    id: 1,
     address: 'Av. Paseo Colon 850',
   },
   {
-    key: '2',
+    id: 2,
     address: 'Av. Gral. Las Heras 2214',
   },
 ];

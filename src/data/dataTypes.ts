@@ -8,6 +8,6 @@ export interface CategoryType {
 }
 
 export interface AddressType {
-  key: string;
+  id: number;
   address: string;
 }
