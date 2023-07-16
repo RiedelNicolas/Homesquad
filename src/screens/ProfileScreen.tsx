@@ -154,6 +154,7 @@ const Professional = ({ workerDetails, editable }: ProfessionalProps) => {
     <Card>
       <Card.Content style={styles.professionalCard}>
         <Avatar.Image size={150} source={workerDetails.image} />
+        <Text style={styles.titleStyle}>{workerDetails.name}</Text>
 
         {renderStars(workerDetails)}
 
@@ -251,6 +252,11 @@ const styles = StyleSheet.create({
     backgroundColor: commonStyle.backgroundColor,
     paddingTop: 20,
   },
+  titleStyle: {
+    fontSize: 30,
+    fontWeight: '800',
+    color: commonStyle.textColor,
+  },
   professionalDescription: {
     backgroundColor: commonStyle.shadeColor,
     borderRadius: 10,
@@ -280,7 +286,6 @@ const styles = StyleSheet.create({
   basicInfo: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginVertical: 15,
   },
   messageButton: {
     backgroundColor: commonStyle.cardColor,

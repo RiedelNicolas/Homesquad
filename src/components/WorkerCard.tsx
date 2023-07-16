@@ -34,7 +34,6 @@ export const WorkerCard = ({ details, isHired }: WorkerCardProps) => {
     image,
     rating,
     reviewsAmount,
-    description,
   } = details;
 
   return (
