@@ -1,0 +1,15 @@
+{
+  "expo": {
+    "name": "Home Squad",
+    "slug": "home-squad",
+    "version": "1.0.0",
+    "extra": {
+      "eas": {
+        "projectId": "0c6beeac-4ed1-44ce-a0f1-ce61e02ad4b2"
+      }
+    },
+    "android": {
+      "package": "com.riedelnicolas.homesquad"
+    }
+  }
+}
