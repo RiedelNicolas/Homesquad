@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Keyboard } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
 import { Avatar, Button, Card, Text } from 'react-native-paper';
 import { commonStyle } from '../utils/style';
@@ -19,8 +19,12 @@ export const ChatUserInfo = ({
 }: ChatUserInfoProps) => {
   const rightComponent = () => {
     if (onOfferPress) {
+      const handleClick = () => {
+        Keyboard.dismiss();
+        onOfferPress();
+      };
       return (
-        <Button onPress={onOfferPress}>
+        <Button onPress={handleClick}>
           <Text>Hacer Oferta</Text>
         </Button>
       );
