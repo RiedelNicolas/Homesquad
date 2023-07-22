@@ -20,7 +20,7 @@ const chats = [
   },
   {
     name: 'Juan Perez',
-    lastMessage: 'Hola, como estas?',
+    lastMessage: 'Genial!',
     date: '21/07/2023',
     mocked: true,
   },

@@ -38,5 +38,6 @@ export const styles = StyleSheet.create({
     flex: 1,
     flexWrap: 'wrap',
     justifyContent: 'center',
+    marginBottom: 20,
   },
 });

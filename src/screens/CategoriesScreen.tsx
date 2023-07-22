@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
   imageStyle: {
     width: '27%',
     aspectRatio: 1.1,
-    marginTop: 50,
+    marginTop: 20,
     marginBottom: 20,
   },
 });
