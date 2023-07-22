@@ -1,6 +1,7 @@
 import * as React from 'react';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { commonStyle } from '../utils/style';
 
 export type DatePickerProps = {
   date: Date;
@@ -69,7 +70,7 @@ const styles = StyleSheet.create({
   },
   dateText: {
     fontSize: 30,
-    color: '#674fa3',
+    color: commonStyle.primaryColor,
     textAlign: 'center',
     shadowColor: 'red',
     paddingHorizontal: 20,

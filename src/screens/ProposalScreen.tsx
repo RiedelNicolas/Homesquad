@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
-import { Button, TextInput } from 'react-native-paper';
+import { Button, TextInput, Text } from 'react-native-paper';
 import { DatePicker } from '../components/DatePicker';
 import { ProblemDescription } from '../components/ProblemDescription';
 import { commonStyle } from '../utils/style';
@@ -29,25 +29,22 @@ export const ProposalScreen = ({
 }: ProposalScreenProps) => {
   return (
     <View>
-      {/* <ProposalClientInfor /> */}
-      <Text style={styles.fieldText}>Describa el problema</Text>
+      <Text style={styles.firstFieldText}>Descripción</Text>
       <ProblemDescription
         problemDescription={problemDescription}
         setProblemDescription={setProblemDescription}
       />
-      <Text style={styles.fieldText}>
-        Seleccione la fecha a la que va a realizar el servicio
-      </Text>
+      <Text style={styles.fieldText}>Fecha</Text>
       <DatePicker date={date} setDate={setDate} />
 
-      <Text style={styles.fieldText}>Seleccione el monto a pagar</Text>
+      <Text style={styles.fieldText}>Monto a Pagar</Text>
       <View style={styles.priceInputContainer}>
         <TextInput
           mode={'outlined'}
           value={price}
           onChangeText={(price) => setPrice(price)}
           style={styles.priceInput}
-          textColor="#674fa3"
+          textColor={commonStyle.primaryColor}
           outlineStyle={styles.outlineStyle}
           keyboardType="numeric"
           placeholder="0"
@@ -83,22 +80,26 @@ const styles = StyleSheet.create({
   },
   priceInput: {
     fontSize: 30,
-    color: '#674fa3',
+    color: commonStyle.primaryColor,
   },
   textInput: {
     borderRadius: 10,
   },
   outlineStyle: {
     borderRadius: 20,
-    backgroundColor: '#e8e1ed',
+  },
+  firstFieldText: {
+    marginHorizontal: 20,
+    marginBottom: 5,
+    fontWeight: 'bold',
+    fontSize: 16,
   },
   fieldText: {
-    fontSize: 20,
-    paddingHorizontal: 20,
-    color: commonStyle.cardColor,
+    marginHorizontal: 20,
+    marginTop: 20,
+    marginBottom: 5,
     fontWeight: 'bold',
-    paddingTop: 20,
-    paddingBottom: 5,
+    fontSize: 16,
   },
   buttonStyle: {
     width: 100,

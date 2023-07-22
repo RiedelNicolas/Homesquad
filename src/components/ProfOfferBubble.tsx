@@ -1,6 +1,7 @@
 import { View, StyleSheet } from 'react-native';
 
 import { Text } from 'react-native-paper';
+import { commonStyle } from '../utils/style';
 
 interface profOfferBubbleProps {
   price: string;
@@ -34,7 +35,7 @@ export const ProfOfferBubble = ({ price }: profOfferBubbleProps) => {
 
 const styles = StyleSheet.create({
   chatContainer: {
-    backgroundColor: 'blue',
+    backgroundColor: commonStyle.complementaryColor,
     color: 'white',
     maxWidth: '70%',
     borderRadius: 15,
@@ -53,11 +54,5 @@ const styles = StyleSheet.create({
   chatText: {
     color: 'white',
     fontSize: 18,
-  },
-  acceptButton: {
-    backgroundColor: '#305830',
-    width: '50%',
-    marginVertical: 8,
-    alignSelf: 'center',
   },
 });

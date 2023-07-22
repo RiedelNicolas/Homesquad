@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { TextInput } from 'react-native-paper';
+import { commonStyle } from '../utils/style';
 
 export type ProblemDescriptionProps = {
   problemDescription: string;
@@ -19,10 +20,14 @@ export const ProblemDescription = ({
         onChangeText={(problemDescription) =>
           setProblemDescription(problemDescription)
         }
-        textColor="#674fa3"
         outlineStyle={styles.outlineStyle}
         multiline
-        numberOfLines={10}
+        numberOfLines={3}
+        theme={{
+          colors: {
+            primary: commonStyle.primaryColor,
+          },
+        }}
       />
     </View>
   );
@@ -32,18 +37,12 @@ const styles = StyleSheet.create({
   priceInputContainer: {
     paddingHorizontal: 20,
     justifyContent: 'center',
-    height: 200,
-  },
-  priceInput: {
-    fontSize: 30,
-    color: '#674fa3',
   },
   textInput: {
     borderRadius: 10,
   },
   outlineStyle: {
     borderRadius: 20,
-    backgroundColor: '#e8e1ed',
   },
   content: {},
 });
