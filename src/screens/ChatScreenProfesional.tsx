@@ -10,6 +10,7 @@ import { RootStackParamList } from '../utils/navigator';
 import { MessageType, useMessages } from '../hooks/useMessages';
 import { UserImage } from '../assets';
 import { ProfOfferBubble } from '../components/ProfOfferBubble';
+import { getSelectedAddress } from '../services/json-server.service';
 import { ProposalScreen } from './ProposalScreen';
 
 export type ChatScreenProfesionalProps = {
@@ -23,6 +24,7 @@ export const ChatScreenProfesional = ({
     useMessages('profesional');
 
   const [showModal, setShowModal] = React.useState(false);
+  const [selectedAddress, setSelectedAddress] = React.useState('');
 
   const { name } = route.params;
 
@@ -32,6 +34,18 @@ export const ChatScreenProfesional = ({
     if (chatMessagesRef.current && messages.length > 0) {
       chatMessagesRef.current.scrollToEnd({ animated: true });
     }
+    const fetchData = async () => {
+      try {
+        const address = await getSelectedAddress();
+        console.log('selectedAddress: ', address);
+        setSelectedAddress(address.address);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData().catch((error) => {
+      console.error(error);
+    });
   }, [messages]);
 
   function handleNewMessage(message: string, rol: string, isOffer = false) {
@@ -51,10 +65,11 @@ export const ChatScreenProfesional = ({
   return (
     <PaperProvider>
       <View style={styles.container}>
+        {/* TODO: Fix style of the header when seeing the chat from the professional perspective */}
         <ChatUserInfo
           name={name}
           image={UserImage}
-          address="" //TODO: Esta address habria que sacarla del json server
+          address={selectedAddress}
           onOfferPress={() => {
             setShowModal(true);
           }}

@@ -46,3 +46,15 @@ export const addSelectedAddress = async (address: AddressType) => {
     console.log(error);
   }
 };
+
+export const getSelectedAddress = async (): Promise<AddressType> => {
+  try {
+    console.log('Getting selected address');
+    const address = (await axiosClient.get<AddressType>('selectedAddress'))
+      .data;
+    return address;
+  } catch (error) {
+    console.log(error);
+    return DefaultAddresses.addresses[0];
+  }
+};

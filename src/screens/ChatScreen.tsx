@@ -13,6 +13,7 @@ import {
 } from '../contexts/hired-workers.context';
 import { WorkerDetails } from '../data/worker-details';
 import { MessageType, useMessages } from '../hooks/useMessages';
+import { getSelectedAddress } from '../services/json-server.service';
 
 export type ChatScreenProps = {
   workerDetails: WorkerDetails;
@@ -29,11 +30,24 @@ export const ChatScreen = ({
   const navigation = useNavigation<RootStackParamList>();
   const [, setHiredWorkers] =
     React.useContext<HiredWorkersContextType>(HiredWorkersContext);
+  const [selectedAddress, setSelectedAddress] = React.useState('');
 
   React.useEffect(() => {
     if (chatMessagesRef.current && messages.length > 0) {
       chatMessagesRef.current.scrollToEnd({ animated: true });
     }
+    const fetchData = async () => {
+      try {
+        const address = await getSelectedAddress();
+        console.log('selectedAddress: ', address);
+        setSelectedAddress(address.address);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData().catch((error) => {
+      console.error(error);
+    });
   }, [messages]);
 
   function handleNewMessage(message: string, rol: string, isOffer = false) {
@@ -50,7 +64,7 @@ export const ChatScreen = ({
       <ChatUserInfo
         name={workerDetails.name}
         image={workerDetails.image}
-        address={workerDetails.location}
+        address={selectedAddress}
       />
       <View style={styles.chatContainer}>
         <FlatList
