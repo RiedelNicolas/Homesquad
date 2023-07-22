@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { StyleSheet, View, StatusBar, FlatList } from 'react-native';
 import { Searchbar } from 'react-native-paper';
+import { LinearGradient } from 'expo-linear-gradient';
 import { WorkerCard } from '../components/WorkerCard';
 import { commonStyle } from '../utils/style';
 import { WorkerDetails } from '../data/worker-details';
@@ -45,16 +46,20 @@ export const WorkersScreen = ({
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: 80 }}
       />
-
-      <Searchbar
-        style={styles.searchBar}
-        placeholder="Busqueda"
-        onChangeText={searchFilterFunction}
-        onClearIconPress={onClearSearch}
-        value={search}
-        mode="view"
-        showDivider={false}
-      />
+      <LinearGradient
+        style={styles.searchBarContainer}
+        colors={['rgba(248, 248, 258, 1)', 'transparent']}
+      >
+        <Searchbar
+          style={styles.searchBar}
+          placeholder="Busqueda"
+          onChangeText={searchFilterFunction}
+          onClearIconPress={onClearSearch}
+          value={search}
+          mode="view"
+          showDivider={false}
+        />
+      </LinearGradient>
     </View>
   );
 };
@@ -66,17 +71,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   workersList: {
-    paddingTop: 80,
+    paddingTop: 100,
   },
   searchBar: {
+    elevation: 4, // Add elevation to make the search bar hover
+    backgroundColor: commonStyle.shadeColor,
+    borderRadius: 20,
+    marginHorizontal: 20,
+    marginVertical: 20,
+  },
+  searchBarContainer: {
     position: 'absolute',
     top: 0,
     left: 0,
     right: 0,
-    elevation: 4, // Add elevation to make the search bar hover
-    backgroundColor: commonStyle.shadeColor,
-    borderBottomLeftRadius: 20,
-    borderBottomRightRadius: 20,
-    marginHorizontal: 20,
   },
 });
