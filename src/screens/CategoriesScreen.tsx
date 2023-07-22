@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { View, StyleSheet, StatusBar } from 'react-native';
 import { Image } from 'react-native-elements';
-import { ActivityIndicator } from 'react-native-paper';
 import { CategoriesList } from '../components/CategoriesList';
 import { commonStyle } from '../utils/style';
 import { LogoImage } from '../assets';
 import { CategoryType } from '../data/dataTypes';
 import { getCategories } from '../services/json-server.service';
+import { Spinner } from '../components/Spinner';
 
 export const CategoriesScreen = () => {
   const [categories, setCategories] = useState<CategoryType[]>([]);
@@ -26,7 +26,7 @@ export const CategoriesScreen = () => {
   }, []);
 
   return !categories.length ? (
-    <ActivityIndicator animating={true} />
+    <Spinner />
   ) : (
     <View style={styles.screen}>
       <StatusBar barStyle="light-content" />
