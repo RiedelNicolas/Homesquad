@@ -31,8 +31,7 @@ export const ChatTextInput = ({ handleNewMessage }: ChatTextInputPrompts) => {
           mode="outlined"
           theme={{
             colors: {
-              primary: 'green',
-              disabled: 'green',
+              primary: 'gray',
             },
           }}
         />
