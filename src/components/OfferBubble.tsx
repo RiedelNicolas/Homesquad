@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Button, Text } from 'react-native-paper';
+import { commonStyle } from '../utils/style';
 import { offertMessage } from './ProfOfferBubble';
 
 type OfferBubleProps = {
@@ -25,7 +26,7 @@ export const OfferBubble = ({ price, handleWorkerHire }: OfferBubleProps) => {
         <Text style={styles.chatText}>Precio: ${message.price}</Text>
         <Button
           style={styles.acceptButton}
-          textColor="white"
+          textColor="black"
           onPress={() => handleWorkerHire(message.price)}
         >
           Aceptar
@@ -37,7 +38,7 @@ export const OfferBubble = ({ price, handleWorkerHire }: OfferBubleProps) => {
 
 const styles = StyleSheet.create({
   chatContainer: {
-    backgroundColor: 'green',
+    backgroundColor: commonStyle.complementaryColor,
     color: 'white',
     maxWidth: '70%',
     borderRadius: 15,
@@ -58,7 +59,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   acceptButton: {
-    backgroundColor: '#305830',
+    backgroundColor: commonStyle.backgroundColor,
     width: '50%',
     marginVertical: 8,
     alignSelf: 'center',
