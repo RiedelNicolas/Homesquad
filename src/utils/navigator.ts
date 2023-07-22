@@ -5,6 +5,7 @@ import {
 import { ProfileScreenProps } from '../screens/ProfileScreen';
 import { ChatScreenProps } from '../screens/ChatScreen';
 import { WorkerDetailsWithId } from '../data/worker-details';
+import { AddressScreenProps } from '../screens/AddressScreen';
 import { EmploymentsScreenProps } from '../screens/EmploymentsScreen';
 import { PaymentsRecordScreenProps } from '../screens/PaymentsRecordScreen';
 import { PaymentScreenProps } from '../screens/PaymentScreen';
@@ -13,6 +14,7 @@ import { ChatScreenProfesionalProps } from '../screens/ChatScreenProfesional';
 export type RootStackParamList = {
   HomeScreen: undefined;
   ProfileScreen: ProfileScreenProps;
+  AddressScreen: AddressScreenProps;
   WorkersScreen: Array<WorkerDetailsWithId>;
   ChatScreen: ChatScreenProps;
   CustomerScreen: undefined;

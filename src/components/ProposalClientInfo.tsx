@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Text, StyleSheet, ImageSourcePropType } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { Avatar } from 'react-native-paper';
 import { MaterialIcons } from '@expo/vector-icons';
 import { AnaImage } from '../assets';

@@ -154,6 +154,7 @@ const Professional = ({ workerDetails, editable }: ProfessionalProps) => {
     <Card>
       <Card.Content style={styles.professionalCard}>
         <Avatar.Image size={150} source={workerDetails.image} />
+        <Text style={styles.titleStyle}>{workerDetails.name}</Text>
 
         {renderStars(workerDetails)}
 
@@ -165,17 +166,8 @@ const Professional = ({ workerDetails, editable }: ProfessionalProps) => {
           <Button
             style={styles.contactButton}
             onPress={() =>
-              navigation.navigate('ChatScreen', {
-                workerDetails: {
-                  name: workerDetails.name,
-                  distance: '',
-                  image: workerDetails.image,
-                  deliveryTime: '',
-                  location: '',
-                  rating: workerDetails.rating,
-                  reviewsAmount: workerDetails.reviewsAmount,
-                  description: workerDetails.description,
-                },
+              navigation.navigate('AddressScreen', {
+                details: workerDetails,
               })
             }
           >
@@ -260,6 +252,11 @@ const styles = StyleSheet.create({
     backgroundColor: commonStyle.backgroundColor,
     paddingTop: 20,
   },
+  titleStyle: {
+    fontSize: 30,
+    fontWeight: '800',
+    color: commonStyle.textColor,
+  },
   professionalDescription: {
     backgroundColor: commonStyle.shadeColor,
     borderRadius: 10,
@@ -289,7 +286,6 @@ const styles = StyleSheet.create({
   basicInfo: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginVertical: 15,
   },
   messageButton: {
     backgroundColor: commonStyle.cardColor,

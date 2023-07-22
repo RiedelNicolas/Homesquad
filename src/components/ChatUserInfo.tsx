@@ -1,17 +1,20 @@
 import * as React from 'react';
 import { View, StyleSheet } from 'react-native';
+import { Entypo } from '@expo/vector-icons';
 import { Avatar, Button, Card, Text } from 'react-native-paper';
 import { commonStyle } from '../utils/style';
 
 export type ChatUserInfoProps = {
   name: string;
   image: React.ComponentProps<typeof Avatar.Image>['source'];
+  address: string;
   onOfferPress?: () => void;
 };
 
 export const ChatUserInfo = ({
   name,
   image,
+  address,
   onOfferPress,
 }: ChatUserInfoProps) => {
   const rightComponent = () => {
@@ -34,6 +37,14 @@ export const ChatUserInfo = ({
           left={() => <Avatar.Image size={50} source={image} />}
           right={rightComponent}
         />
+        {address ? (
+          <View style={styles.address}>
+            <Entypo name="location-pin" size={24} color="black" />
+            <Text> {address} </Text>
+          </View>
+        ) : (
+          <></>
+        )}
       </Card>
     </View>
   );
@@ -53,5 +64,9 @@ const styles = StyleSheet.create({
   professionalCard: {
     backgroundColor: commonStyle.backgroundColor,
     borderRadius: 0,
+  },
+  address: {
+    flexDirection: 'row',
+    marginLeft: 15,
   },
 });

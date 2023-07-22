@@ -47,7 +47,11 @@ export const ChatScreen = ({
 
   return (
     <View style={styles.container}>
-      <ChatUserInfo name={workerDetails.name} image={workerDetails.image} />
+      <ChatUserInfo
+        name={workerDetails.name}
+        image={workerDetails.image}
+        address={workerDetails.location}
+      />
       <View style={styles.chatContainer}>
         <FlatList
           ref={chatMessagesRef}

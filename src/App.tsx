@@ -12,6 +12,7 @@ import { WorkerDetails } from './data/worker-details';
 import { Home } from './screens/HomeScreen';
 import { CustomerScreen } from './screens/CustomerScreen';
 import { ProfessionalScreen } from './screens/ProfessionalScreen';
+import { AddressScreen } from './screens/AddressScreen';
 import { EmploymentsScreen } from './screens/EmploymentsScreen';
 import { PaymentsRecordScreen } from './screens/PaymentsRecordScreen';
 import { PaymentScreen } from './screens/PaymentScreen';
@@ -35,6 +36,7 @@ function App() {
             <Stack.Screen name="HomeScreen" component={Home} />
             <Stack.Screen name="WorkersScreen" component={WorkersScreen} />
             <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
+            <Stack.Screen name="AddressScreen" component={AddressScreen} />
             <Stack.Screen name="ChatScreen" component={ChatScreen} />
             <Stack.Screen name="CustomerScreen" component={CustomerScreen} />
             <Stack.Screen

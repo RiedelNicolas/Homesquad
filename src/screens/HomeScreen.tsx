@@ -65,6 +65,6 @@ const styles = StyleSheet.create({
   button: {
     marginTop: 30,
     width: 300,
-    height: 50,
+    backgroundColor: commonStyle.secondaryColor,
   },
 });

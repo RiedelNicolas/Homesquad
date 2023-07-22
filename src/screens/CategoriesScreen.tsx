@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { View, StyleSheet, StatusBar } from 'react-native';
 import { Image } from 'react-native-elements';
-import axios from 'axios';
 import { ActivityIndicator } from 'react-native-paper';
 import { CategoriesList } from '../components/CategoriesList';
 import { commonStyle } from '../utils/style';
 import { LogoImage } from '../assets';
 import { CategoryType } from '../data/dataTypes';
+import { getCategories } from '../services/json-server.service';
 
 export const CategoriesScreen = () => {
   const [categories, setCategories] = useState<CategoryType[]>([]);
@@ -14,11 +14,7 @@ export const CategoriesScreen = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const categories = (
-          await axios.get<CategoryType[]>(
-            'https://homesquad-json-server.fly.dev/categories'
-          )
-        ).data;
+        const categories = await getCategories();
         setCategories(categories);
       } catch (error) {
         console.error(error);

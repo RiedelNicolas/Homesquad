@@ -1,9 +1,7 @@
 import * as React from 'react';
-import DateTimePicker from '@react-native-community/datetimepicker';
 import { View, Text, StyleSheet } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Button, TextInput } from 'react-native-paper';
-import { ProposalClientInfor } from '../components/ProposalClientInfo';
 import { DatePicker } from '../components/DatePicker';
 import { ProblemDescription } from '../components/ProblemDescription';
 import { commonStyle } from '../utils/style';

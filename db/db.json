@@ -55,5 +55,19 @@
       "category": "Otros",
       "icon": "plus"
     }
+  ],
+  "addresses": [
+    {
+      "id": 1,
+      "address": "Av. Paseo Colon 850"
+    },
+    {
+      "id": 2,
+      "address": "Av. Gral. Las Heras 2214"
+    },
+    {
+      "id": 3,
+      "address": "Paraguay 2155"
+    }
   ]
 }
