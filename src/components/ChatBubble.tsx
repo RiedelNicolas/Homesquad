@@ -18,7 +18,9 @@ export const ChatBubble = ({ message, right }: ChatBubbleProps) => {
           : { justifyContent: 'flex-start' },
       ]}
     >
-      <View style={styles.chatContainer}>
+      <View
+        style={[styles.chatContainer, right ? {} : { backgroundColor: 'gray' }]}
+      >
         <Text style={styles.chatText}>{message}</Text>
       </View>
     </View>
