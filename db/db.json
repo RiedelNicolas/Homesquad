@@ -69,5 +69,9 @@
       "id": 3,
       "address": "Paraguay 2155"
     }
-  ]
+  ],
+  "selectedAddress": {
+    "id": 1,
+    "address": "Av. Paseo Colon 850"
+  }
 }

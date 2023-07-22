@@ -38,3 +38,11 @@ export const addAddress = async (address: AddressType) => {
     console.log(error);
   }
 };
+
+export const addSelectedAddress = async (address: AddressType) => {
+  try {
+    await axiosClient.post<AddressType[]>('selectedAddress', address);
+  } catch (error) {
+    console.log(error);
+  }
+};

@@ -10,7 +10,11 @@ import { WorkerDetails } from '../data/worker-details';
 import { commonStyle } from '../utils/style';
 import { ChatUserInfo } from '../components/ChatUserInfo';
 import { AddressType } from '../data/dataTypes';
-import { getAddresses, addAddress } from '../services/json-server.service';
+import {
+  getAddresses,
+  addAddress,
+  addSelectedAddress,
+} from '../services/json-server.service';
 
 export type AddressScreenProps = {
   details: WorkerDetails;
@@ -59,7 +63,12 @@ export const AddressScreen = ({
     navigation.navigate('ProfileScreen', { details, editable: false });
   };
   const onContinuePress = () => {
-    // TODO: Mandar direccion seleccionada a json server para que el profesional lo pueda leer desde su lado
+    addSelectedAddress({
+      id: 1,
+      address: selectedAddress,
+    }).catch((error) => {
+      console.log(error);
+    });
     navigation.navigate('ChatScreen', {
       workerDetails: {
         name: details.name,
