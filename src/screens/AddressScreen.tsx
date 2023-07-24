@@ -121,7 +121,11 @@ export const AddressScreen = ({
             activeOutlineColor="black"
           />
           <Button style={styles.newAddressButton} onPress={onNewAddressPress}>
-            <MaterialCommunityIcons name="plus" size={20} color={'black'} />
+            <MaterialCommunityIcons
+              name="plus"
+              size={20}
+              color={commonStyle.backgroundColor}
+            />
           </Button>
         </View>
       </View>
@@ -167,6 +171,7 @@ const styles = StyleSheet.create({
   endButtonsText: {
     fontSize: 20,
     fontWeight: '300',
+    color: commonStyle.backgroundColor,
   },
   newAddressButton: {
     marginTop: 8,
