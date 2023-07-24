@@ -60,9 +60,9 @@ const styles = StyleSheet.create({
   },
   acceptButton: {
     backgroundColor: commonStyle.backgroundColor,
-    width: '50%',
     marginVertical: 8,
     alignSelf: 'center',
+    width: '80%',
   },
   chatOfferTitle: {
     color: 'white',
