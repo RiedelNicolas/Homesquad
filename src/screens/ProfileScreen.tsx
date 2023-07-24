@@ -171,7 +171,11 @@ const Professional = ({ workerDetails, editable }: ProfessionalProps) => {
               })
             }
           >
-            <MaterialCommunityIcons name="chat" size={20} color={'black'} />
+            <MaterialCommunityIcons
+              name="chat"
+              size={20}
+              color={commonStyle.backgroundColor}
+            />
             <Text style={styles.contactText}> Contactar al profesional</Text>
           </Button>
         )}
@@ -282,6 +286,7 @@ const styles = StyleSheet.create({
   contactText: {
     fontSize: 16,
     fontWeight: '300',
+    color: commonStyle.backgroundColor,
   },
   basicInfo: {
     flexDirection: 'row',
