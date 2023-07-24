@@ -65,7 +65,6 @@ export const ChatScreenProfesional = ({
   return (
     <PaperProvider>
       <View style={styles.container}>
-        {/* TODO: Fix style of the header when seeing the chat from the professional perspective */}
         <ChatUserInfo
           name={name}
           image={UserImage}

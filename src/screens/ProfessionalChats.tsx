@@ -57,6 +57,7 @@ const ChatInfo = ({ name, lastMessage, mocked, date }: chat) => {
 
   const handleClick = () => {
     if (mocked) return;
+    // TODO: Cambiaria este nombre por el de la persona que vaya a hacer la demo
     navigation.navigate('chatScreenProfesional', { name: 'Pedro Sanchez' });
   };
   return (

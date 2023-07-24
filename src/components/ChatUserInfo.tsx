@@ -24,8 +24,8 @@ export const ChatUserInfo = ({
         onOfferPress();
       };
       return (
-        <Button onPress={handleClick}>
-          <Text>Hacer Oferta</Text>
+        <Button onPress={handleClick} style={styles.offerButton}>
+          <Text style={{ color: 'white' }}>Hacer Oferta</Text>
         </Button>
       );
     }
@@ -72,5 +72,8 @@ const styles = StyleSheet.create({
   address: {
     flexDirection: 'row',
     marginLeft: 15,
+  },
+  offerButton: {
+    backgroundColor: commonStyle.secondaryColor,
   },
 });
