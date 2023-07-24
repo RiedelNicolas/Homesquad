@@ -101,7 +101,7 @@ const renderEmploymentsButton = () => {
       <MaterialCommunityIcons
         name="clipboard-text-clock"
         size={20}
-        color={'black'}
+        color={commonStyle.backgroundColor}
       />
       <Text style={styles.contactText}> Mis prestaciones</Text>
     </Button>
@@ -111,7 +111,11 @@ const renderEmploymentsButton = () => {
 const renderEditButton = () => {
   return (
     <Button style={styles.contactButton}>
-      <MaterialCommunityIcons name="pencil" size={20} color={'black'} />
+      <MaterialCommunityIcons
+        name="pencil"
+        size={20}
+        color={commonStyle.backgroundColor}
+      />
       <Text style={styles.contactText}> Editar perfil</Text>
     </Button>
   );
