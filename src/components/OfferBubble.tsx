@@ -16,7 +16,7 @@ export const OfferBubble = ({ price, handleWorkerHire }: OfferBubleProps) => {
   return (
     <View style={[styles.bubbleUbication, { justifyContent: 'flex-start' }]}>
       <View style={styles.chatContainer}>
-        <Text style={styles.chatText}>Oferta:</Text>
+        <Text style={styles.chatOfferTitle}>Oferta</Text>
         <Text style={styles.chatText}>Descripción: {message.description}</Text>
         <Text style={styles.chatText}>Fecha: {date.toLocaleDateString()}</Text>
         <Text style={styles.chatText}>
@@ -63,5 +63,11 @@ const styles = StyleSheet.create({
     width: '50%',
     marginVertical: 8,
     alignSelf: 'center',
+  },
+  chatOfferTitle: {
+    color: 'white',
+    fontSize: 18,
+    textAlign: 'center',
+    marginBottom: 5,
   },
 });

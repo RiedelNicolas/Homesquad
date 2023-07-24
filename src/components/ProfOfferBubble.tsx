@@ -20,7 +20,7 @@ export const ProfOfferBubble = ({ price }: profOfferBubbleProps) => {
   return (
     <View style={[styles.bubbleUbication, { justifyContent: 'flex-end' }]}>
       <View style={styles.chatContainer}>
-        <Text style={styles.chatText}>Oferta:</Text>
+        <Text style={styles.chatOfferTitle}>Oferta</Text>
         <Text style={styles.chatText}>Descripción: {message.description}</Text>
         <Text style={styles.chatText}>Fecha: {date.toLocaleDateString()}</Text>
         <Text style={styles.chatText}>
@@ -54,5 +54,11 @@ const styles = StyleSheet.create({
   chatText: {
     color: 'white',
     fontSize: 18,
+  },
+  chatOfferTitle: {
+    color: 'white',
+    fontSize: 18,
+    textAlign: 'center',
+    marginBottom: 5,
   },
 });
