@@ -6,7 +6,7 @@ import { offertMessage } from './ProfOfferBubble';
 
 type OfferBubleProps = {
   price: string;
-  handleWorkerHire: (number) => void;
+  handleWorkerHire: (number: number) => void;
 };
 
 export const OfferBubble = ({ price, handleWorkerHire }: OfferBubleProps) => {
@@ -27,7 +27,7 @@ export const OfferBubble = ({ price, handleWorkerHire }: OfferBubleProps) => {
         <Button
           style={styles.acceptButton}
           textColor="black"
-          onPress={() => handleWorkerHire(message.price)}
+          onPress={() => handleWorkerHire(Number(message.price))}
         >
           Aceptar
         </Button>

@@ -52,7 +52,6 @@ export const PaymentScreen = ({
           style={styles.creditCardIcon}
         />
         <Text style={styles.cardNumber}>{item.cardNumber}</Text>
-        <Text style={styles.cardHolder}>{item.cardHolder}</Text>
       </View>
     </TouchableOpacity>
   );
@@ -60,9 +59,9 @@ export const PaymentScreen = ({
   return (
     <View style={styles.container}>
       <Card style={styles.card}>
-        <Card.Title title="Payment" />
+        <Card.Title title="Pago" />
         <Card.Content>
-          <Text style={styles.price}>Price: ${price}</Text>
+          <Text style={styles.price}>Precio: ${price}</Text>
           <FlatList
             data={usedCreditCards}
             keyExtractor={(item: CardType) => item.id}

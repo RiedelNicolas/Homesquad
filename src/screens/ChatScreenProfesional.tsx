@@ -107,7 +107,7 @@ interface OfferModalProps {
   visible: boolean;
   hideModal: () => void;
   onAccept: (price: string, description: string, date: Date) => void;
-  clearAllMessages?: () => void;
+  clearAllMessages: () => void;
 }
 
 const OfferModal = ({
