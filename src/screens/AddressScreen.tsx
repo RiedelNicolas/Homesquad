@@ -150,7 +150,7 @@ const styles = StyleSheet.create({
   },
   pickerContainer: {
     flex: 0,
-    borderWidth: 1,
+    borderWidth: 2,
     borderRadius: 10,
     width: '95%',
     alignSelf: 'center',
