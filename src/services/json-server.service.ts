@@ -91,3 +91,14 @@ export const fetchPayments = async () => {
     return defaultPayments;
   }
 };
+
+export const addPayment = async (payment: DayPayments) => {
+  try {
+    await axiosClient.post<DayPayments[]>('paymentsByDay', {
+      ...payment,
+      id: 7, //TODO: VER SI SE PUEDE HACER ALGO PARA NO HARDCODEAR EL ID
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};

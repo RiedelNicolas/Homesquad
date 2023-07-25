@@ -15,6 +15,7 @@ import { WorkerDetails } from '../data/worker-details';
 import { MessageType, useMessages } from '../hooks/useMessages';
 import {
   addEmployment,
+  addPayment,
   getSelectedAddress,
 } from '../services/json-server.service';
 
@@ -71,6 +72,19 @@ export const ChatScreen = ({
     }).catch((error) => {
       console.log(error);
     });
+
+    addPayment({
+      day: date,
+      payments: [
+        {
+          title: 'Ana Sanchez',
+          description: `$${price.toLocaleString()}`, //TODO: Especificar un locale porque puede cambiar el formato de la fecha entre el de usa y el nuestro
+        },
+      ],
+    }).catch((error) => {
+      console.log(error);
+    });
+
     navigation.navigate('PaymentScreen', { price: price });
   };
 
