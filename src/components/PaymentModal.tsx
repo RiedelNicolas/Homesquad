@@ -102,10 +102,10 @@ const CompletedModal = ({ confirmed }: CompletedModalProps) => {
       <Text style={styles.title}>¡Pago Realizado con Éxito!</Text>
       <Button
         mode="contained"
-        onPress={() => navigation.navigate('HomeScreen')}
+        onPress={() => navigation.navigate('HiredWorkersScreen')}
         style={styles.homeButton}
       >
-        Volver al Inicio
+        Ver contratación
       </Button>
     </View>
   );
@@ -128,7 +128,7 @@ export const PaymentModal = ({
       visible={visible}
       onDismiss={() => {
         if (confirmed) {
-          navigation.navigate('HomeScreen');
+          navigation.navigate('HiredWorkersScreen');
         } else {
           hideModal();
         }
