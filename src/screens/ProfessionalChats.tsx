@@ -13,8 +13,8 @@ interface chat {
 
 const chats = [
   {
-    name: 'Pedro Sanchez',
-    lastMessage: 'Nuevos mensaje de Pedro',
+    name: 'Ana Sanchez',
+    lastMessage: 'Nuevos mensaje de Ana',
     date: '27/07/2023',
     mocked: false,
   },
@@ -57,8 +57,7 @@ const ChatInfo = ({ name, lastMessage, mocked, date }: chat) => {
 
   const handleClick = () => {
     if (mocked) return;
-    // TODO: Cambiaria este nombre por el de la persona que vaya a hacer la demo
-    navigation.navigate('chatScreenProfesional', { name: 'Pedro Sanchez' });
+    navigation.navigate('chatScreenProfesional', { name: 'Ana Sanchez' });
   };
   return (
     <TouchableOpacity onPress={handleClick}>

@@ -73,5 +73,190 @@
   "selectedAddress": {
     "id": 1,
     "address": "Av. Paseo Colon 850"
-  }
+  },
+  "employmentsByday": [
+    {
+      "id": 1,
+      "day": "18/07/23",
+      "employments": [
+        {
+          "time": "09:30",
+          "title": "Leandro Lencinas",
+          "description": "Av. San Juan 987, Mendoza"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "day": "19/07/23",
+      "employments": [
+        {
+          "time": "14:00",
+          "title": "Facundo Barboza",
+          "description": "Calle Belgrano 567, Mendoza"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "day": "20/07/23",
+      "employments": [
+        {
+          "time": "10:30",
+          "title": "Juan Andrada",
+          "description": "Calle San Martín 654, Mendoza"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "day": "21/07/23",
+      "employments": [
+        {
+          "time": "11:30",
+          "title": "Victorio Ramis",
+          "description": "Av. España 789, Mendoza"
+        },
+        {
+          "time": "18:30",
+          "title": "Luciano Pizarro",
+          "description": "Calle Belgrano 987, Mendoza"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "day": "24/07/23",
+      "employments": [
+        {
+          "time": "10:00",
+          "title": "Juan Andrada",
+          "description": "Calle 25 de Mayo 345, Mendoza"
+        },
+        {
+          "time": "15:00",
+          "title": "Victorio Ramis",
+          "description": "Av. San Martín 123, Mendoza"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "day": "26/07/23",
+      "employments": [
+        {
+          "time": "11:00",
+          "title": "Ezequiel Zbogar",
+          "description": "Dr. Luis Beláustegui 543, C1416 CXA, Buenos Aires"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "day": "27/07/23",
+      "employments": [
+        {
+          "time": "09:00",
+          "title": "Nicolas Riedel",
+          "description": "Av. Sta. Fe 3253, 1091 CABA"
+        },
+        {
+          "time": "13:00",
+          "title": "Diego Balestieri",
+          "description": "Av. La Plata 96, C1184AAN CABA"
+        },
+        {
+          "time": "18:00",
+          "title": "Nicole Raveszani",
+          "description": "Rocamora 4584, C1184 ABL, Buenos Aires"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "day": "28/07/23",
+      "employments": [
+        {
+          "time": "09:00",
+          "title": "Sebastián Capelli",
+          "description": "Av. Sarmiento s/n, C1425 CABA"
+        },
+        {
+          "time": "14:00",
+          "title": "Ivan Soriano",
+          "description": "Av. Costanera Rafael Obligado s/n, C1425 CABA"
+        }
+      ]
+    }
+  ],
+  "paymentsByday":  [
+    {
+      "id": 1,
+      "day": "18/07/23",
+      "payments": [
+        {
+          "title": "Leandro Lencinas",
+          "description": "$5,000"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "day": "19/07/23",
+      "payments": [
+        {
+          "title": "Facundo Barboza",
+          "description": "$7,500"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "day": "20/07/23",
+      "payments": [
+        {
+          "title": "Juan Andrada",
+          "description": "$9,800"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "day": "21/07/23",
+      "payments": [
+        {
+          "title": "Victorio Ramis",
+          "description": "$3,200"
+        },
+        {
+          "title": "Luciano Pizarro",
+          "description": "$6,700"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "day": "24/07/23",
+      "payments": [
+        {
+          "title": "Juan Andrada",
+          "description": "$8,500"
+        },
+        {
+          "title": "Victorio Ramis",
+          "description": "$2,300"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "day": "26/07/23",
+      "payments": [
+        {
+          "title": "Ezequiel Zbogar",
+          "description": "$10,000"
+        }
+      ]
+    }
+  ]
 }

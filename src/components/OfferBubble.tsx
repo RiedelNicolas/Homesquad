@@ -6,12 +6,17 @@ import { offertMessage } from './ProfOfferBubble';
 
 type OfferBubleProps = {
   price: string;
-  handleWorkerHire: (number: number) => void;
+  handleWorkerHire: (number: number, date: string, time: string) => void;
 };
 
 export const OfferBubble = ({ price, handleWorkerHire }: OfferBubleProps) => {
   const message: offertMessage = JSON.parse(price) as offertMessage;
   const date = new Date(message.date);
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const year = String(date.getFullYear()).slice(-2);
+
+  const formattedDate = `${day}/${month}/${year}`;
 
   return (
     <View style={[styles.bubbleUbication, { justifyContent: 'flex-start' }]}>
@@ -27,7 +32,15 @@ export const OfferBubble = ({ price, handleWorkerHire }: OfferBubleProps) => {
         <Button
           style={styles.acceptButton}
           textColor="black"
-          onPress={() => handleWorkerHire(Number(message.price))}
+          onPress={() =>
+            handleWorkerHire(
+              Number(message.price),
+              formattedDate,
+              date.getHours().toString().padStart(2, '0') +
+                ':' +
+                date.getMinutes().toString().padStart(2, '0')
+            )
+          }
         >
           Aceptar
         </Button>
