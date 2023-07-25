@@ -4,90 +4,91 @@ import { Text } from 'react-native-paper';
 
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Timeline from 'react-native-timeline-flatlist';
+import { useEffect } from 'react';
 import { commonStyle } from '../utils/style';
+import { fetchPayments } from '../services/json-server.service';
 
-type DayPayments = {
+export type DayPayments = {
   day: string;
   payments: Payments;
 };
-type Payments = Array<{
+export type Payments = Array<{
   title: string;
   description: string;
-  icon: React.ReactElement;
 }>;
 
-const getPayments = () => [
-  {
-    day: 'Martes 18/07/23',
-    payments: [
-      {
-        title: 'Leandro Lencinas',
-        description: '$5,000.00',
-        icon: <Text>L</Text>,
-      },
-    ],
-  },
-  {
-    day: 'Miércoles 19/07/23',
-    payments: [
-      {
-        title: 'Facundo Barboza',
-        description: '$7,500.00',
-        icon: <Text>F</Text>,
-      },
-    ],
-  },
-  {
-    day: 'Jueves 20/07/23',
-    payments: [
-      {
-        title: 'Juan Andrada',
-        description: '$9,800.00',
-        icon: <Text>J</Text>,
-      },
-    ],
-  },
-  {
-    day: 'Viernes 21/07/23',
-    payments: [
-      {
-        title: 'Victorio Ramis',
-        description: '$3,200.00',
-        icon: <Text>V</Text>,
-      },
-      {
-        title: 'Luciano Pizarro',
-        description: '$6,700.00',
-        icon: <Text>L</Text>,
-      },
-    ],
-  },
-  {
-    day: 'Lunes 24/07/23',
-    payments: [
-      {
-        title: 'Juan Andrada',
-        description: '$8,500.00',
-        icon: <Text>J</Text>,
-      },
-      {
-        title: 'Victorio Ramis',
-        description: '$2,300.00',
-        icon: <Text>V</Text>,
-      },
-    ],
-  },
-  {
-    day: 'Miércoles 26/07/23',
-    payments: [
-      {
-        title: 'Ezequiel Zbogar',
-        description: '$10,000.00',
-        icon: <Text>E</Text>,
-      },
-    ],
-  },
-];
+// const getPayments = () => [
+//   {
+//     day: 'Martes 18/07/23',
+//     payments: [
+//       {
+//         title: 'Leandro Lencinas',
+//         description: '$5,000.00',
+//         icon: <Text>L</Text>,
+//       },
+//     ],
+//   },
+//   {
+//     day: 'Miércoles 19/07/23',
+//     payments: [
+//       {
+//         title: 'Facundo Barboza',
+//         description: '$7,500.00',
+//         icon: <Text>F</Text>,
+//       },
+//     ],
+//   },
+//   {
+//     day: 'Jueves 20/07/23',
+//     payments: [
+//       {
+//         title: 'Juan Andrada',
+//         description: '$9,800.00',
+//         icon: <Text>J</Text>,
+//       },
+//     ],
+//   },
+//   {
+//     day: 'Viernes 21/07/23',
+//     payments: [
+//       {
+//         title: 'Victorio Ramis',
+//         description: '$3,200.00',
+//         icon: <Text>V</Text>,
+//       },
+//       {
+//         title: 'Luciano Pizarro',
+//         description: '$6,700.00',
+//         icon: <Text>L</Text>,
+//       },
+//     ],
+//   },
+//   {
+//     day: 'Lunes 24/07/23',
+//     payments: [
+//       {
+//         title: 'Juan Andrada',
+//         description: '$8,500.00',
+//         icon: <Text>J</Text>,
+//       },
+//       {
+//         title: 'Victorio Ramis',
+//         description: '$2,300.00',
+//         icon: <Text>V</Text>,
+//       },
+//     ],
+//   },
+//   {
+//     day: 'Miércoles 26/07/23',
+//     payments: [
+//       {
+//         title: 'Ezequiel Zbogar',
+//         description: '$10,000.00',
+//         icon: <Text>E</Text>,
+//       },
+//     ],
+//   },
+// ];
 
 const renderTimeline = (payments: Payments) => {
   return (
@@ -130,12 +131,36 @@ const renderIconWithText = (
   );
 };
 
-const renderHeader = () => {
+const calculateTotalPayments = (payments: DayPayments[]) => {
+  let total = 0;
+  payments.forEach((day) => {
+    total += day.payments.length;
+  });
+  return total;
+};
+
+const calculateTotalProfits = (payments: DayPayments[]) => {
+  let total = 0;
+  payments.forEach((day) => {
+    day.payments.forEach((payment) => {
+      total += Number(payment.description.replace(/[^0-9.-]+/g, ''));
+    });
+  });
+  return total;
+};
+
+const renderHeader = (paymentsByDay: DayPayments[]) => {
   return (
     <View style={styles.headerContainer}>
       <Text style={styles.headerText}>Historial de pagos</Text>
-      {renderIconWithText('counter', 'Cantidad: 8')}
-      {renderIconWithText('cash', 'Total facturado: $52,000.00')}
+      {renderIconWithText(
+        'counter',
+        `Cantidad: ${calculateTotalPayments(paymentsByDay)}`
+      )}
+      {renderIconWithText(
+        'cash',
+        `Total facturado: $${calculateTotalProfits(paymentsByDay)}`
+      )}
       <View
         style={{ height: 1, backgroundColor: 'grey', marginTop: 10 }}
       ></View>
@@ -143,11 +168,10 @@ const renderHeader = () => {
   );
 };
 
-const renderTimelineSection = () => {
-  const payments = getPayments();
+const renderTimelineSection = (paymentsByDay: DayPayments[]) => {
   return (
     <ScrollView style={styles.scrollViewContainer}>
-      {payments.map((day, index) => renderDayTimeline(day, index))}
+      {paymentsByDay.map((day, index) => renderDayTimeline(day, index))}
     </ScrollView>
   );
 };
@@ -156,18 +180,35 @@ export type PaymentsRecordScreenProps = {
   title: string;
 };
 
-export const PaymentsRecordScreen = () =>
-  // {
-  //   route,
-  // }: NativeStackScreenProps<RootStackParamList, 'EmploymentsScreen'>
-  {
-    return (
-      <View style={{ flex: 1 }}>
-        {renderHeader()}
-        {renderTimelineSection()}
-      </View>
-    );
-  };
+export const PaymentsRecordScreen = () => {
+  const [paymentsByDay, setPaymentsByDay] = React.useState<DayPayments[]>([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetchPayments();
+        response.forEach((day: DayPayments) => {
+          day.payments = day.payments.map((payment) => ({
+            ...payment,
+            icon: <Text>{payment.title.charAt(0)}</Text>,
+          }));
+        });
+        setPaymentsByDay(response);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData().catch((error) => {
+      console.error(error);
+    });
+  }, [paymentsByDay]);
+
+  return (
+    <View style={{ flex: 1 }}>
+      {renderHeader(paymentsByDay)}
+      {renderTimelineSection(paymentsByDay)}
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   headerContainer: {

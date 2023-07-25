@@ -4,6 +4,8 @@ import * as DefaultCategories from '../data/categories';
 import * as DefaultAddresses from '../data/addresses';
 import { defaultEmployments } from '../data/employments';
 import { DayEmployments } from '../screens/EmploymentsScreen';
+import { defaultPayments } from '../data/payments';
+import { DayPayments } from '../screens/PaymentsRecordScreen';
 const axiosClient = axios.create({
   baseURL: `https://homesquad-json-server.fly.dev`,
   headers: {
@@ -78,5 +80,14 @@ export const addEmployment = async (employment: DayEmployments) => {
     });
   } catch (error) {
     console.log(error);
+  }
+};
+
+export const fetchPayments = async () => {
+  try {
+    return (await axiosClient.get<DayPayments[]>('paymentsByDay')).data;
+  } catch (error) {
+    console.log(error);
+    return defaultPayments;
   }
 };
