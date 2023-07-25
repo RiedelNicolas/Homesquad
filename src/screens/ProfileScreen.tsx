@@ -101,7 +101,7 @@ const renderEmploymentsButton = () => {
       <MaterialCommunityIcons
         name="clipboard-text-clock"
         size={20}
-        color={commonStyle.backgroundColor}
+        color={'black'}
       />
       <Text style={styles.contactText}> Mis prestaciones</Text>
     </Button>
@@ -111,11 +111,7 @@ const renderEmploymentsButton = () => {
 const renderEditButton = () => {
   return (
     <Button style={styles.contactButton}>
-      <MaterialCommunityIcons
-        name="pencil"
-        size={20}
-        color={commonStyle.backgroundColor}
-      />
+      <MaterialCommunityIcons name="pencil" size={20} color={'black'} />
       <Text style={styles.contactText}> Editar perfil</Text>
     </Button>
   );
@@ -175,11 +171,7 @@ const Professional = ({ workerDetails, editable }: ProfessionalProps) => {
               })
             }
           >
-            <MaterialCommunityIcons
-              name="chat"
-              size={20}
-              color={commonStyle.backgroundColor}
-            />
+            <MaterialCommunityIcons name="chat" size={20} color={'black'} />
             <Text style={styles.contactText}> Contactar al profesional</Text>
           </Button>
         )}
@@ -290,7 +282,6 @@ const styles = StyleSheet.create({
   contactText: {
     fontSize: 16,
     fontWeight: '300',
-    color: commonStyle.backgroundColor,
   },
   basicInfo: {
     flexDirection: 'row',
