@@ -12,13 +12,17 @@ type OfferBubleProps = {
 export const OfferBubble = ({ price, handleWorkerHire }: OfferBubleProps) => {
   const message: offertMessage = JSON.parse(price) as offertMessage;
   const date = new Date(message.date);
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const year = String(date.getFullYear()).slice(-2);
+
+  const formattedDate = `${day}/${month}/${year}`;
 
   return (
     <View style={[styles.bubbleUbication, { justifyContent: 'flex-start' }]}>
       <View style={styles.chatContainer}>
         <Text style={styles.chatOfferTitle}>Oferta</Text>
         <Text style={styles.chatText}>Descripción: {message.description}</Text>
-        {/* TODO: Especificar un locale porque puede cambiar el formato de la fecha entre el de usa y el nuestro */}
         <Text style={styles.chatText}>Fecha: {date.toLocaleDateString()}</Text>
         <Text style={styles.chatText}>
           Hora: {date.getHours().toString().padStart(2, '0')}:
@@ -31,7 +35,7 @@ export const OfferBubble = ({ price, handleWorkerHire }: OfferBubleProps) => {
           onPress={() =>
             handleWorkerHire(
               Number(message.price),
-              date.toLocaleDateString(),
+              formattedDate,
               date.getHours().toString().padStart(2, '0') +
                 ':' +
                 date.getMinutes().toString().padStart(2, '0')

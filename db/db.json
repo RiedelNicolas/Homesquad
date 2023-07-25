@@ -196,7 +196,7 @@
       "payments": [
         {
           "title": "Leandro Lencinas",
-          "description": "$5,000.00"
+          "description": "$5,000"
         }
       ]
     },
@@ -206,7 +206,7 @@
       "payments": [
         {
           "title": "Facundo Barboza",
-          "description": "$7,500.00"
+          "description": "$7,500"
         }
       ]
     },
@@ -216,7 +216,7 @@
       "payments": [
         {
           "title": "Juan Andrada",
-          "description": "$9,800.00"
+          "description": "$9,800"
         }
       ]
     },
@@ -226,11 +226,11 @@
       "payments": [
         {
           "title": "Victorio Ramis",
-          "description": "$3,200.00"
+          "description": "$3,200"
         },
         {
           "title": "Luciano Pizarro",
-          "description": "$6,700.00"
+          "description": "$6,700"
         }
       ]
     },
@@ -240,11 +240,11 @@
       "payments": [
         {
           "title": "Juan Andrada",
-          "description": "$8,500.00"
+          "description": "$8,500"
         },
         {
           "title": "Victorio Ramis",
-          "description": "$2,300.00"
+          "description": "$2,300"
         }
       ]
     },
@@ -254,7 +254,7 @@
       "payments": [
         {
           "title": "Ezequiel Zbogar",
-          "description": "$10,000.00"
+          "description": "$10,000"
         }
       ]
     }
