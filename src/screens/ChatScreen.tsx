@@ -64,7 +64,7 @@ export const ChatScreen = ({
       employments: [
         {
           time,
-          title: 'Pedro Sanchez', //TODO: Poner el mismo nombre que esta hardcodeado en ProfessionalChats.tsx
+          title: 'Ana Sanchez',
           description: selectedAddress,
         },
       ],
