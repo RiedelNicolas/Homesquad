@@ -2,7 +2,7 @@ import { DayEmployments } from '../screens/EmploymentsScreen';
 
 export const defaultEmployments: DayEmployments[] = [
   {
-    day: 'Martes 18/07/23',
+    day: '18/07/23',
     employments: [
       {
         time: '09:30',
@@ -12,7 +12,7 @@ export const defaultEmployments: DayEmployments[] = [
     ],
   },
   {
-    day: 'Miércoles 19/07/23',
+    day: '19/07/23',
     employments: [
       {
         time: '14:00',
@@ -22,7 +22,7 @@ export const defaultEmployments: DayEmployments[] = [
     ],
   },
   {
-    day: 'Jueves 20/07/23',
+    day: '20/07/23',
     employments: [
       {
         time: '10:30',
@@ -32,7 +32,7 @@ export const defaultEmployments: DayEmployments[] = [
     ],
   },
   {
-    day: 'Viernes 21/07/23',
+    day: '21/07/23',
     employments: [
       {
         time: '11:30',
@@ -47,7 +47,7 @@ export const defaultEmployments: DayEmployments[] = [
     ],
   },
   {
-    day: 'Lunes 24/07/23',
+    day: '24/07/23',
     employments: [
       {
         time: '10:00',
@@ -62,7 +62,7 @@ export const defaultEmployments: DayEmployments[] = [
     ],
   },
   {
-    day: 'Miércoles 26/07/23',
+    day: '26/07/23',
     employments: [
       {
         time: '11:00',
@@ -72,7 +72,7 @@ export const defaultEmployments: DayEmployments[] = [
     ],
   },
   {
-    day: 'Jueves 27/07/23 (Hoy)',
+    day: '27/07/23',
     employments: [
       {
         time: '09:00',
@@ -92,7 +92,7 @@ export const defaultEmployments: DayEmployments[] = [
     ],
   },
   {
-    day: 'Viernes 28/07/23 (Mañana)',
+    day: '28/07/23',
     employments: [
       {
         time: '09:00',

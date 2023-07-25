@@ -13,7 +13,10 @@ import {
 } from '../contexts/hired-workers.context';
 import { WorkerDetails } from '../data/worker-details';
 import { MessageType, useMessages } from '../hooks/useMessages';
-import { getSelectedAddress } from '../services/json-server.service';
+import {
+  addEmployment,
+  getSelectedAddress,
+} from '../services/json-server.service';
 
 export type ChatScreenProps = {
   workerDetails: WorkerDetails;
@@ -54,10 +57,22 @@ export const ChatScreen = ({
     sendMessage(message, isOffer);
   }
 
-  function handleWorkerHire(price: number) {
+  const handleWorkerHire = (price: number, date: string, time: string) => {
     setHiredWorkers((hiredWorkers) => [...hiredWorkers, workerDetails]);
+    addEmployment({
+      day: date,
+      employments: [
+        {
+          time,
+          title: 'Pedro Sanchez', //TODO: Poner el mismo nombre que esta hardcodeado en ProfessionalChats.tsx
+          description: selectedAddress,
+        },
+      ],
+    }).catch((error) => {
+      console.log(error);
+    });
     navigation.navigate('PaymentScreen', { price: price });
-  }
+  };
 
   return (
     <View style={styles.container}>

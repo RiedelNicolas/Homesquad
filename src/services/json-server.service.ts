@@ -69,3 +69,14 @@ export const fetchEmployments = async () => {
     return defaultEmployments;
   }
 };
+
+export const addEmployment = async (employment: DayEmployments) => {
+  try {
+    await axiosClient.post<DayEmployments[]>('employmentsByDay', {
+      ...employment,
+      id: 9, //TODO: VER SI SE PUEDE HACER ALGO PARA NO HARDCODEAR EL ID
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};

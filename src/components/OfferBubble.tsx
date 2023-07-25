@@ -6,7 +6,7 @@ import { offertMessage } from './ProfOfferBubble';
 
 type OfferBubleProps = {
   price: string;
-  handleWorkerHire: (number: number) => void;
+  handleWorkerHire: (number: number, date: string, time: string) => void;
 };
 
 export const OfferBubble = ({ price, handleWorkerHire }: OfferBubleProps) => {
@@ -18,6 +18,7 @@ export const OfferBubble = ({ price, handleWorkerHire }: OfferBubleProps) => {
       <View style={styles.chatContainer}>
         <Text style={styles.chatOfferTitle}>Oferta</Text>
         <Text style={styles.chatText}>Descripción: {message.description}</Text>
+        {/* TODO: Especificar un locale porque puede cambiar el formato de la fecha entre el de usa y el nuestro */}
         <Text style={styles.chatText}>Fecha: {date.toLocaleDateString()}</Text>
         <Text style={styles.chatText}>
           Hora: {date.getHours().toString().padStart(2, '0')}:
@@ -27,7 +28,15 @@ export const OfferBubble = ({ price, handleWorkerHire }: OfferBubleProps) => {
         <Button
           style={styles.acceptButton}
           textColor="black"
-          onPress={() => handleWorkerHire(Number(message.price))}
+          onPress={() =>
+            handleWorkerHire(
+              Number(message.price),
+              date.toLocaleDateString(),
+              date.getHours().toString().padStart(2, '0') +
+                ':' +
+                date.getMinutes().toString().padStart(2, '0')
+            )
+          }
         >
           Aceptar
         </Button>
