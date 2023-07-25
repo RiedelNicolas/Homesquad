@@ -2,6 +2,8 @@ import axios from 'axios';
 import { AddressType, CategoryType } from '../data/dataTypes';
 import * as DefaultCategories from '../data/categories';
 import * as DefaultAddresses from '../data/addresses';
+import { defaultEmployments } from '../data/employments';
+import { DayEmployments } from '../screens/EmploymentsScreen';
 const axiosClient = axios.create({
   baseURL: `https://homesquad-json-server.fly.dev`,
   headers: {
@@ -56,5 +58,14 @@ export const getSelectedAddress = async (): Promise<AddressType> => {
   } catch (error) {
     console.log(error);
     return DefaultAddresses.addresses[0];
+  }
+};
+
+export const fetchEmployments = async () => {
+  try {
+    return (await axiosClient.get<DayEmployments[]>('employmentsByDay')).data;
+  } catch (error) {
+    console.log(error);
+    return defaultEmployments;
   }
 };
