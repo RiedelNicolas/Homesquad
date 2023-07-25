@@ -78,7 +78,7 @@ export const ChatScreen = ({
       payments: [
         {
           title: 'Ana Sanchez',
-          description: `$${price.toLocaleString()}`, //TODO: Especificar un locale porque puede cambiar el formato de la fecha entre el de usa y el nuestro
+          description: `$${price.toLocaleString()}`,
         },
       ],
     }).catch((error) => {

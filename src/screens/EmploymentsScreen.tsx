@@ -122,7 +122,7 @@ export const EmploymentsScreen = () => {
     fetchData().catch((error) => {
       console.error(error);
     });
-  }, [employmentsByDay]);
+  }, []);
 
   return (
     <View style={{ flex: 1 }}>

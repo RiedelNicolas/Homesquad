@@ -200,7 +200,7 @@ export const PaymentsRecordScreen = () => {
     fetchData().catch((error) => {
       console.error(error);
     });
-  }, [paymentsByDay]);
+  }, []);
 
   return (
     <View style={{ flex: 1 }}>
