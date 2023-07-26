@@ -63,4 +63,34 @@ export const defaultPayments: DayPayments[] = [
       },
     ],
   },
+  {
+    day: '27/07/23',
+    payments: [
+      {
+        title: 'Nicolas Riedel',
+        description: '$12,000.00',
+      },
+      {
+        title: 'Diego Balestieri',
+        description: '$7,000.00',
+      },
+      {
+        title: 'Nicole Raveszani',
+        description: '$3,000.00',
+      },
+    ],
+  },
+  {
+    day: '28/07/23',
+    payments: [
+      {
+        title: 'Sebastián Capelli',
+        description: '$2,500.00',
+      },
+      {
+        title: 'Ivan Soriano',
+        description: '$4,500.00',
+      },
+    ],
+  },
 ];

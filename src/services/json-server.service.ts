@@ -104,8 +104,26 @@ export const addPayment = async (payment: DayPayments) => {
     console.log('Posting payment to json-server', payment);
     await axiosClient.post<DayPayments[]>('paymentsByDay', {
       ...payment,
-      id: 7, //TODO: VER SI SE PUEDE HACER ALGO PARA NO HARDCODEAR EL ID
+      id: 9, //TODO: VER SI SE PUEDE HACER ALGO PARA NO HARDCODEAR EL ID
     });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const deletePayment = async () => {
+  try {
+    console.log('Deleting payment from json-server');
+    await axiosClient.delete('paymentsByDay/7');
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const deleteEmployment = async () => {
+  try {
+    console.log('Deleting employment from json-server');
+    await axiosClient.delete('employmentsByDay/9');
   } catch (error) {
     console.log(error);
   }
